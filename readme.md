@@ -3,7 +3,7 @@
 
 Chroma Control is a set of modules for use with Razer Synapse. It allows the control of 3rd party RGB software from within Synapse.
 
-To use download the installer (*.msix file) of the provider you want to use and double click to install it.
+To use download the installer (*.msix file) of the provider you want to use and double click to install it. Downloads can be found [here](https://github.com/ChromaControl/ChromaControl/releases)
 
 These modules do not have a UI and will automatically show up inside of Razer Synapse. If they do not feel free to ask in the Discord server or create an issue.
 
