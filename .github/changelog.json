@@ -1,0 +1,39 @@
+{
+  "categories": [
+    {
+      "title": "## ✔️ New Features",
+      "labels": ["added"]
+    },
+    {
+      "title": "## 🔄️ Changes",
+      "labels": ["changed"]
+    },
+    {
+      "title": "## ⚠️ Deprecated",
+      "labels": ["deprecated"]
+    },
+    {
+      "title": "## ❌ Removed",
+      "labels": ["removed"]
+    },
+    {
+      "title": "## 🪲 Bug Fixes",
+      "labels": ["fixed"]
+    },
+    {
+      "title": "## 🔒 Security Fixes",
+      "labels": ["security"]
+    }
+  ],
+  "label_extractor": [
+    {
+      "pattern": "(.): (.+)",
+      "target": "$1"
+    }
+  ],
+  "template": "${{CHANGELOG}}",
+  "pr_template": "- ${{TITLE}}",
+  "empty_template": "- No Changes",
+  "max_tags_to_fetch": 200,
+  "max_back_track_time_days": 365
+}

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64;x86</Platforms>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <Company>Chroma Control Contributors</Company>
+    <Product>Chroma Control</Product>
+    <Description>Razer Synapse modules for controlling all of your RGB products.</Description>
+    <Copyright>© Chroma Control Contibutors. All rights reserved.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ChromaBroadcastSDK.NET" Version="1.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="NReco.Logging.File" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChromaControl.Abstractions\ChromaControl.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿@page "/download/{channel}"
+@inject NavigationManager NavManager
+
+<div class="blankslate">
+    <img src="img/icon.png" class="mb-3" />
+    <h1 class="mb-1">Thank You For Downloading</h1>
+    <p>The app installer should open automatically. Click <button class="btn-link" type="button" @onclick="OpenAppInstaller">here</button> if it doesnt.</p>
+</div>
+
+@code {
+    [Parameter]
+    public string Channel { get; set; }
+
+    protected override void OnInitialized()
+    {
+        OpenAppInstaller();
+    }
+
+    private void OpenAppInstaller()
+    {
+        NavManager.NavigateTo($"ms-appinstaller:?source=https://github.com/ChromaControl/ChromaControl/releases/download/{Channel}/ChromaControl.appinstaller");
+    }
+}
