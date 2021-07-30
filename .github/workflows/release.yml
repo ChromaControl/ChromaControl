@@ -125,6 +125,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           nodetail: true
+          title: Version ${{ env.ReleaseVersion }} Released To ${{ env.ReleaseChannelName }} Channel
           color: ${{ env.ReleaseChannelColor }}
           description: |
             ${{ env.ReleaseChannelName }} Version `${{ env.ReleaseVersion }}`
