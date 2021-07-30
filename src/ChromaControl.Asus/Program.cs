@@ -22,6 +22,7 @@ namespace ChromaControl.Asus
             Host.CreateDefaultBuilder(args)
                 .UseChromaControl()
                 .UseAsusProvider()
+                .UseAppCenter()
                 .RunWithMutex();
         }
     }

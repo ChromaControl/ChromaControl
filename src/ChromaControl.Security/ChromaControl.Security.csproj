@@ -11,8 +11,4 @@
     <Copyright>© Chroma Control Contibutors. All rights reserved.</Copyright>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ChromaControl.Security\ChromaControl.Security.csproj" />
-  </ItemGroup>
-
 </Project>

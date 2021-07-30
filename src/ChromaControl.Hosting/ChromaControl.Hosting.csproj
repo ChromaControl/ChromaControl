@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <PackageReference Include="ChromaBroadcastSDK.NET" Version="1.0.4" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.3.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="NReco.Logging.File" Version="1.1.2" />
   </ItemGroup>

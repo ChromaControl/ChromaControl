@@ -22,6 +22,7 @@ namespace ChromaControl.Corsair
             Host.CreateDefaultBuilder(args)
                 .UseChromaControl()
                 .UseCorsairProvider()
+                .UseAppCenter()
                 .RunWithMutex();
         }
     }

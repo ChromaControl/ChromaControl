@@ -6,6 +6,11 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using ChromaControl.Abstractions;
+using ChromaControl.Security;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -28,6 +33,7 @@ namespace ChromaControl.Hosting
         /// Configures the host builder for Chroma Control
         /// </summary>
         /// <param name="hostBuilder">The host builder</param>
+        /// <returns>The host builder</returns>
         public static IHostBuilder UseChromaControl(this IHostBuilder hostBuilder)
         {
             var debugMode = ApplicationData.Current.LocalSettings.Values["DebugMode"];
@@ -52,6 +58,25 @@ namespace ChromaControl.Hosting
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<ModuleService>();
+                });
+        }
+
+        /// <summary>
+        /// Configures the host to use app center
+        /// </summary>
+        /// <param name="hostBuilder">The host builder</param>
+        /// <returns>The host builder</returns>
+        public static IHostBuilder UseAppCenter(this IHostBuilder hostBuilder)
+        {
+            return hostBuilder
+                .ConfigureServices((hostContext, services) =>
+                {
+#if !DEBUG
+                    var sp = services.BuildServiceProvider();
+                    var deviceProvider = sp.GetService<IDeviceProvider>();
+
+                    AppCenter.Start(Guids.GetSecureGuid($"ChromaControl.{deviceProvider.Name}.AppCenter").ToString(), typeof(Analytics), typeof(Crashes));
+#endif
                 });
         }
 

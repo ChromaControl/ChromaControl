@@ -4,9 +4,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Security.Cryptography;
+using ChromaControl.Security;
 
 namespace ChromaControl.Abstractions
 {
@@ -24,34 +22,7 @@ namespace ChromaControl.Abstractions
         /// Gets the device provider guid
         /// </summary>
         /// <returns>The guid</returns>
-        Guid GetGuid()
-        {
-            var filePath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "ChromaControl.dat");
-
-            using var fileStream = new FileStream(filePath, FileMode.Open);
-            using var aes = Aes.Create();
-
-            var key = new byte[32];
-            var iv = new byte[16];
-
-            fileStream.Read(key, 0, key.Length);
-            fileStream.Read(iv, 0, iv.Length);
-
-            using var cryptoStream = new CryptoStream(fileStream, aes.CreateDecryptor(key, iv), CryptoStreamMode.Read);
-            using var binReader = new BinaryReader(cryptoStream);
-
-            var count = binReader.ReadInt32();
-
-            for (int i = 0; i < count; i++)
-            {
-                if (binReader.ReadString() == Name)
-                    return Guid.Parse(binReader.ReadString());
-                else
-                    binReader.ReadString();
-            }
-
-            return Guid.Empty;
-        }
+        Guid GetGuid() => Guids.GetSecureGuid($"ChromaControl.{Name}");
 
         /// <summary>
         /// The devices the provider has

@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Launcher", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Hosting", "ChromaControl.Hosting\ChromaControl.Hosting.csproj", "{284CB691-0A31-42FD-8246-12740790422A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaControl.Abstractions", "ChromaControl.Abstractions\ChromaControl.Abstractions.csproj", "{2328038C-EAC0-41BD-BE21-128C11BFA1B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Abstractions", "ChromaControl.Abstractions\ChromaControl.Abstractions.csproj", "{2328038C-EAC0-41BD-BE21-128C11BFA1B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaControl.Providers.Asus", "ChromaControl.Providers.Asus\ChromaControl.Providers.Asus.csproj", "{7C8BA0FA-36F9-441C-8508-32CC3901B808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.Asus", "ChromaControl.Providers.Asus\ChromaControl.Providers.Asus.csproj", "{7C8BA0FA-36F9-441C-8508-32CC3901B808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaControl.Providers.Corsair", "ChromaControl.Providers.Corsair\ChromaControl.Providers.Corsair.csproj", "{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.Corsair", "ChromaControl.Providers.Corsair\ChromaControl.Providers.Corsair.csproj", "{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Security", "ChromaControl.Security\ChromaControl.Security.csproj", "{E790A9CD-418C-43B6-85E7-EC7FB90093A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +117,14 @@ Global
 		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x64.Build.0 = Release|x64
 		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.ActiveCfg = Release|x86
 		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.Build.0 = Release|x86
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x64.ActiveCfg = Debug|x64
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x64.Build.0 = Debug|x64
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x86.ActiveCfg = Debug|x86
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x86.Build.0 = Debug|x86
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x64.ActiveCfg = Release|x64
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x64.Build.0 = Release|x64
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x86.ActiveCfg = Release|x86
+		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
