@@ -68,7 +68,7 @@ namespace ChromaControl.Hosting
 
             _logger.LogInformation("Initializing Razer Chroma Broadcast SDK...");
 
-            RzChromaBroadcastAPI.Init(Guid.Parse("00000000-0000-0000-0000-000000000000"));
+            RzChromaBroadcastAPI.Init(_deviceProvider.GetGuid());
 
             RzChromaBroadcastAPI.RegisterEventNotification(OnChromaBroadcastEvent);
 

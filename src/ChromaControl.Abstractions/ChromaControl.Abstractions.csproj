@@ -11,4 +11,10 @@
     <Copyright>© Chroma Control Contibutors. All rights reserved.</Copyright>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="ChromaControl.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
