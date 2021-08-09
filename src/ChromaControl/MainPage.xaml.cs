@@ -134,6 +134,10 @@ namespace ChromaControl
         /// <param name="e">The arguments</param>
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            var packageVersion = Package.Current.Id.Version;
+
+            VersionNumberText.Text = $"{packageVersion.Major}.{packageVersion.Minor}.{packageVersion.Build}";
+
             var asusStartupTask = await StartupTask.GetAsync("Asus");
             var corsairStartupTask = await StartupTask.GetAsync("Corsair");
 

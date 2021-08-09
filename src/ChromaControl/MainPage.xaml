@@ -47,6 +47,29 @@
                                 CornerRadius="8"
                                 BorderThickness="1"
                                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
+                            <Grid Margin="16,24">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Grid.Column="1">Chroma Control Version:</TextBlock>
+
+                                <TextBlock x:Name="VersionNumberText"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Grid.Column="2">0.0.0</TextBlock>
+                            </Grid>
+                        </Border>
+                        <Border Background="{ThemeResource LayerFillColorDefaultBrush}"
+                                VerticalAlignment="Top"
+                                Margin="16,0,24,4"
+                                CornerRadius="8"
+                                BorderThickness="1"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
                             <Grid Margin="16,14">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
