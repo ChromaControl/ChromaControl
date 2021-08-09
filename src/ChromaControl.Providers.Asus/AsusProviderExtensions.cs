@@ -22,7 +22,7 @@ namespace ChromaControl.Providers.Asus
         {
             return hostBuilder.ConfigureServices((hostContext, services) =>
             {
-                services.AddSingleton<IDeviceProvider>(new AsusDeviceProvider());
+                services.AddSingleton(typeof(IDeviceProvider), typeof(AsusDeviceProvider));
             });
         }
     }

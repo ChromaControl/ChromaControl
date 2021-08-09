@@ -3,8 +3,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using AuraServiceLib;
 using ChromaControl.Abstractions;
+using Microsoft.Extensions.Logging;
 
 namespace ChromaControl.Providers.Asus
 {
@@ -39,13 +41,20 @@ namespace ChromaControl.Providers.Asus
         private readonly IAuraSyncDevice _device;
 
         /// <summary>
+        /// The logger
+        /// </summary>
+        private readonly ILogger<AsusDeviceProvider> _logger;
+
+        /// <summary>
         /// Creates an Asus device
         /// </summary>
         /// <param name="device">The device</param>
-        internal AsusDevice(IAuraSyncDevice device)
+        /// <param name="logger">The logger</param>
+        internal AsusDevice(IAuraSyncDevice device, ILogger<AsusDeviceProvider> logger)
         {
             _device = device;
             _lights = new List<AsusDeviceLight>();
+            _logger = logger;
 
             foreach (IAuraRgbLight light in _device.Lights)
             {
@@ -58,8 +67,15 @@ namespace ChromaControl.Providers.Asus
         /// </summary>
         public void ApplyLights()
         {
-            if (NumberOfLights > 0)
-                _device.Apply();
+            try
+            {
+                if (NumberOfLights > 0)
+                    _device.Apply();
+            }
+            catch (COMException ex)
+            {
+                _logger.LogError(ex, "Failed Applying Lights");
+            }
         }
     }
 }

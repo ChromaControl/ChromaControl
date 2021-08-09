@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using AuraServiceLib;
 using ChromaControl.Abstractions;
+using Microsoft.Extensions.Logging;
 
 namespace ChromaControl.Providers.Asus
 {
@@ -41,13 +42,20 @@ namespace ChromaControl.Providers.Asus
         private readonly bool _inExclusiveMode;
 
         /// <summary>
+        /// The logger
+        /// </summary>
+        private readonly ILogger<AsusDeviceProvider> _logger;
+
+        /// <summary>
         /// Creates an Asus device provider
         /// </summary>
-        public AsusDeviceProvider()
+        /// <param name="logger">The logger</param>
+        public AsusDeviceProvider(ILogger<AsusDeviceProvider> logger)
         {
             _devices = new List<AsusDevice>();
             _sdk = new AuraSdk();
             _inExclusiveMode = false;
+            _logger = logger;
         }
 
         /// <summary>
@@ -60,7 +68,7 @@ namespace ChromaControl.Providers.Asus
             Thread.Sleep(30000);
 
             foreach (IAuraSyncDevice device in _sdk.Enumerate(0))
-                _devices.Add(new AsusDevice(device));
+                _devices.Add(new AsusDevice(device, _logger));
         }
 
         /// <summary>

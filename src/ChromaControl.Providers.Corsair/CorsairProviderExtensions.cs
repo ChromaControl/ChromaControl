@@ -22,7 +22,7 @@ namespace ChromaControl.Providers.Corsair
         {
             return hostBuilder.ConfigureServices((hostContext, services) =>
             {
-                services.AddSingleton<IDeviceProvider>(new CorsairDeviceProvider());
+                services.AddSingleton(typeof(IDeviceProvider), typeof(CorsairDeviceProvider));
             });
         }
     }
