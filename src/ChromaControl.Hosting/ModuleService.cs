@@ -5,6 +5,7 @@
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using ChromaBroadcast;
@@ -55,7 +56,9 @@ namespace ChromaControl.Hosting
                 return;
             }
 
-            _logger.LogInformation($"Initializing Chroma Control - {_deviceProvider.Name}...");
+            var version = Assembly.GetEntryAssembly().GetName().Version.ToString().Substring(0, 5);
+
+            _logger.LogInformation($"Initializing Chroma Control - {_deviceProvider.Name} v{version}...");
             _logger.LogInformation("Initializing Device Provider...");
 
             _deviceProvider.Initialize();
