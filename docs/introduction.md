@@ -9,3 +9,9 @@ You can install the core application [from our website](https://chromacontrol.gi
 - Corsair (via iCUE)
 - Asus (via ???)
 <!-- TODO: Fill in above info -->
+
+
+## Requirements
+
+- Windows 10 1903 (Minimum OS)
+- Razer Synapse 3
