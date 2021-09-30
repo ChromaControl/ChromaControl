@@ -18,6 +18,7 @@
 
 ## Asus Setup
 
-1. Install ???
-2. Do XYZ
-3. Do ABC
+1. Install ASUS Aura [from the Asus website](https://www.asus.com/campaign/aura/us/download.php).
+   - There have been reports in the Discord that using Armoury Crate instead or at the same time as Aura may cause issues. There is currently no estimated fix for this incompatibility.
+3. Ensure that the software is functioning correctly (no visible errors).
+4. If you are prompted to restart your computer to fully install the software, it is recommended you do so to ensure the lights are connected properly.
