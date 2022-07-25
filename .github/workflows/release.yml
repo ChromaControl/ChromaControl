@@ -49,7 +49,7 @@ jobs:
         run: msbuild 'src\ChromaControl.sln' /t:Restore /p:Configuration=Release
 
       - name: Build App
-        run: msbuild 'src\ChromaControl.sln' /p:Configuration=Release /p:AppxBundlePlatforms="x86|x64" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true /p:PackageCertificateKeyFile=ChromaControl.pfx /p:Version=${{ env.ReleaseVersion }} /restore
+        run: msbuild 'src\ChromaControl.sln' /p:Configuration=Release /p:AppxBundlePlatforms="x86|x64" /p:AppxBundle=Always /p:UapAppxPackageBuildMode=SideloadOnly /p:AppxPackageSigningEnabled=true /p:PackageCertificateKeyFile=ChromaControl.pfx /p:AppxPackageSigningTimestampServerUrl=http://timestamp.sectigo.com/ /p:Version=${{ env.ReleaseVersion }} /restore
 
       - name: Remove Signing Certificate
         run: |
