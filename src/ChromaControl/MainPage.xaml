@@ -104,7 +104,7 @@
 
                                 <TextBlock VerticalAlignment="Center"
                                            HorizontalAlignment="Left"
-                                           Grid.Column="1">Corsair Enabled</TextBlock>
+                                           Grid.Column="1">OpenRGB Enabled</TextBlock>
 
                                 <ToggleSwitch x:Name="CorsairToggleSwitch"
                                               VerticalAlignment="Center"

@@ -45,7 +45,7 @@
         </desktop:Extension>
         
         <desktop:Extension Category="windows.startupTask" Executable="ChromaControl.Corsair\ChromaControl.Corsair.exe" EntryPoint="Windows.FullTrustApplication">
-          <desktop:StartupTask DisplayName="Chroma Control - Corsair" TaskId="Corsair" Enabled="false" />
+          <desktop:StartupTask DisplayName="Chroma Control - OpenRGB" TaskId="Corsair" Enabled="false" />
         </desktop:Extension>
         
       </Extensions>
