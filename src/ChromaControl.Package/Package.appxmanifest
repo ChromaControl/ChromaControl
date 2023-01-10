@@ -37,6 +37,7 @@
           <desktop:FullTrustProcess>
             <desktop:ParameterGroup GroupId="Asus" Parameters="Asus" />
             <desktop:ParameterGroup GroupId="Corsair" Parameters="Corsair" />
+            <desktop:ParameterGroup GroupId="GHUB" Parameters="GHUB" />
           </desktop:FullTrustProcess>
         </desktop:Extension>
         
@@ -46,6 +47,10 @@
         
         <desktop:Extension Category="windows.startupTask" Executable="ChromaControl.Corsair\ChromaControl.Corsair.exe" EntryPoint="Windows.FullTrustApplication">
           <desktop:StartupTask DisplayName="Chroma Control - Corsair" TaskId="Corsair" Enabled="false" />
+        </desktop:Extension>
+
+        <desktop:Extension Category="windows.startupTask" Executable="ChromaControl.GHUB\ChromaControl.GHUB.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask DisplayName="Chroma Control - GHUB" TaskId="GHUB" Enabled="false" />
         </desktop:Extension>
         
       </Extensions>

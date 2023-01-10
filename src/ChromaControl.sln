@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Website", "ChromaControl.Website\ChromaControl.Website.csproj", "{7CF17938-4192-4C5E-8270-5680E8C331D2}"
 EndProject
@@ -24,6 +24,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.Corsair", "ChromaControl.Providers.Corsair\ChromaControl.Providers.Corsair.csproj", "{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Security", "ChromaControl.Security\ChromaControl.Security.csproj", "{E790A9CD-418C-43B6-85E7-EC7FB90093A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.GHUB", "ChromaControl.Providers.GHUB\ChromaControl.Providers.GHUB.csproj", "{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.GHUB", "ChromaControl.GHUB\ChromaControl.GHUB.csproj", "{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,7 @@ Global
 		{EA1C36D4-51E9-448B-8F87-768725B3B426}.Release|x86.Deploy.0 = Release|x86
 		{38B4D4CD-FF5F-4880-B80A-3EE9ABDEA3B2}.Debug|x64.ActiveCfg = Debug|x64
 		{38B4D4CD-FF5F-4880-B80A-3EE9ABDEA3B2}.Debug|x64.Build.0 = Debug|x64
+		{38B4D4CD-FF5F-4880-B80A-3EE9ABDEA3B2}.Debug|x64.Deploy.0 = Debug|x64
 		{38B4D4CD-FF5F-4880-B80A-3EE9ABDEA3B2}.Debug|x86.ActiveCfg = Debug|x86
 		{38B4D4CD-FF5F-4880-B80A-3EE9ABDEA3B2}.Debug|x86.Build.0 = Debug|x86
 		{38B4D4CD-FF5F-4880-B80A-3EE9ABDEA3B2}.Release|x64.ActiveCfg = Release|x64
@@ -125,6 +130,22 @@ Global
 		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x64.Build.0 = Release|x64
 		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x86.ActiveCfg = Release|x86
 		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Release|x86.Build.0 = Release|x86
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Debug|x64.ActiveCfg = Debug|x64
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Debug|x64.Build.0 = Debug|x64
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Debug|x86.ActiveCfg = Debug|x86
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Debug|x86.Build.0 = Debug|x86
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Release|x64.ActiveCfg = Release|x64
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Release|x64.Build.0 = Release|x64
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Release|x86.ActiveCfg = Release|x86
+		{BAA12721-7C8F-4203-AA16-4CDA4BDF5F4A}.Release|x86.Build.0 = Release|x86
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Debug|x64.ActiveCfg = Debug|x64
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Debug|x64.Build.0 = Debug|x64
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Debug|x86.ActiveCfg = Debug|x86
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Debug|x86.Build.0 = Debug|x86
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Release|x64.ActiveCfg = Release|x64
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Release|x64.Build.0 = Release|x64
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Release|x86.ActiveCfg = Release|x86
+		{08278AB9-F8DD-4EFC-9BCF-2502E8D165B3}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

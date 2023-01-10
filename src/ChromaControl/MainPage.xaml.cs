@@ -139,13 +139,19 @@ namespace ChromaControl
             VersionNumberText.Text = $"{packageVersion.Major}.{packageVersion.Minor}.{packageVersion.Build}";
 
             var asusStartupTask = await StartupTask.GetAsync("Asus");
+
+            var GHUBStartupTask = await StartupTask.GetAsync("GHUB");
             var corsairStartupTask = await StartupTask.GetAsync("Corsair");
+
 
             if (asusStartupTask.State == StartupTaskState.Enabled)
                 AsusToggleSwitch.IsOn = true;
 
             if (corsairStartupTask.State == StartupTaskState.Enabled)
                 CorsairToggleSwitch.IsOn = true;
+
+            if (GHUBStartupTask.State == StartupTaskState.Enabled)
+                GHUBToggleSwitch.IsOn = true;
 
             var debugMode = ApplicationData.Current.LocalSettings.Values["DebugMode"];
 
@@ -176,6 +182,18 @@ namespace ChromaControl
             if (_pageLoaded)
                 await ToggleModule("Corsair", CorsairToggleSwitch.IsOn);
         }
+
+        /// <summary>
+        /// Occurs when the GHub toggle switch is toggled
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The arguments</param>
+        private async void GHUBToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (_pageLoaded)
+                await ToggleModule("GHUB", GHUBToggleSwitch.IsOn);
+        }
+
 
         /// <summary>
         /// Toggles a module on or off
