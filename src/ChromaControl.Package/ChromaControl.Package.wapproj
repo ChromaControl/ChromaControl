@@ -30,9 +30,9 @@
     <TargetPlatformVersion>10.0.19041.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\ChromaControl\ChromaControl.csproj</EntryPointProjectUniqueName>
-    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
@@ -40,6 +40,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppInstallerUri>https://github.com/ChromaControl/ChromaControl/releases/download/stable</AppInstallerUri>
     <NoWarn>NU1702;MSB3277</NoWarn>
+    <PackageCertificateThumbprint>AB73324F74E0183EC77E978E521B51B8A2E1546F</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <AppxBundle>Always</AppxBundle>
@@ -65,6 +66,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ChromaControl.Asus\ChromaControl.Asus.csproj" />
     <ProjectReference Include="..\ChromaControl.Corsair\ChromaControl.Corsair.csproj" />
+    <ProjectReference Include="..\ChromaControl.ORGB\ChromaControl.ORGB.csproj" />
     <ProjectReference Include="..\ChromaControl.Launcher\ChromaControl.Launcher.csproj" />
     <ProjectReference Include="..\ChromaControl\ChromaControl.csproj" />
   </ItemGroup>
@@ -119,6 +121,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <None Include="ChromaControl.Package_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\ChromaControl.dat">

@@ -140,12 +140,16 @@ namespace ChromaControl
 
             var asusStartupTask = await StartupTask.GetAsync("Asus");
             var corsairStartupTask = await StartupTask.GetAsync("Corsair");
+			var oRGBStartupTask = await StartupTask.GetAsync("ORGB");
 
             if (asusStartupTask.State == StartupTaskState.Enabled)
                 AsusToggleSwitch.IsOn = true;
 
             if (corsairStartupTask.State == StartupTaskState.Enabled)
                 CorsairToggleSwitch.IsOn = true;
+
+            if (oRGBStartupTask.State == StartupTaskState.Enabled)
+                ORGBToggleSwitch.IsOn = true;
 
             var debugMode = ApplicationData.Current.LocalSettings.Values["DebugMode"];
 
@@ -175,6 +179,17 @@ namespace ChromaControl
         {
             if (_pageLoaded)
                 await ToggleModule("Corsair", CorsairToggleSwitch.IsOn);
+        }
+
+        /// <summary>
+        /// Occurs when the ORGB toggle switch is toggled
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The arguments</param>
+        private async void ORGBToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (_pageLoaded)
+                await ToggleModule("ORGB", ORGBToggleSwitch.IsOn);
         }
 
         /// <summary>

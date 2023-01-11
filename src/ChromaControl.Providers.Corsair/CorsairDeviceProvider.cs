@@ -3,10 +3,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
-using System.Drawing;
+using System.Diagnostics;
+using System.Threading;
 using ChromaControl.Abstractions;
-using Microsoft.Extensions.Logging;
-using OpenRGB.NET;
+using CUESDK;
 
 namespace ChromaControl.Providers.Corsair
 {
@@ -31,24 +31,11 @@ namespace ChromaControl.Providers.Corsair
         private readonly List<CorsairDevice> _devices;
 
         /// <summary>
-        /// The provider sdk
+        /// Creates a Corsair device provider
         /// </summary>
-        private readonly OpenRGBClient _sdk;
-
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly ILogger<CorsairDeviceProvider> _logger;
-
-        /// <summary>
-        /// Creates an Corsair device provider
-        /// </summary>
-        /// <param name="logger">The logger</param>
-        public CorsairDeviceProvider(ILogger<CorsairDeviceProvider> logger)
+        public CorsairDeviceProvider()
         {
             _devices = new List<CorsairDevice>();
-            _sdk = new OpenRGBClient(name: "My Corsair Client", autoconnect: true, timeout: 1000);
-            _logger = logger;
         }
 
         /// <summary>
@@ -56,44 +43,52 @@ namespace ChromaControl.Providers.Corsair
         /// </summary>
         public void Initialize()
         {
-            /*PerformHealthCheck();
+            PerformHealthCheck();
 
-            Thread.Sleep(30000);*/
+            Thread.Sleep(30000);
 
-            var deviceCount = _sdk.GetControllerCount();
-            var devices = _sdk.GetAllControllerData();
-
-            int i = 0;
-            foreach (OpenRGB.NET.Models.Device device in devices)
-            {
-                _devices.Add(new CorsairDevice(device, _logger, i, _sdk));
-                i++;
-            }
-
-            /*foreach (var device in Devices)
-            {
-                foreach (var light in device.Lights)
-                {
-                    light.Color = Color.FromArgb(255, 0, 0);
-                }
-
-                device.ApplyLights();
-            }*/
+            for (var i = 0; i < CorsairLightingSDK.GetDeviceCount(); i++)
+                _devices.Add(new CorsairDevice(i));
         }
 
         /// <summary>
         /// Performs a health check on the provider
         /// </summary>
-        public void PerformHealthCheck() { }
+        public void PerformHealthCheck()
+        {
+            var cueRunning = Process.GetProcessesByName("iCUE").Length != 0;
+
+            while (!cueRunning)
+            {
+                Thread.Sleep(1000);
+                cueRunning = Process.GetProcessesByName("iCUE").Length != 0;
+            }
+
+            CorsairLightingSDK.GetDeviceCount();
+            var error = CorsairLightingSDK.GetLastError();
+
+            while (error == CorsairError.ServerNotFound || error == CorsairError.ProtocolHandshakeMissing)
+            {
+                CorsairLightingSDK.PerformProtocolHandshake();
+                Thread.Sleep(1000);
+                error = CorsairLightingSDK.GetLastError();
+            }
+        }
 
         /// <summary>
         /// Requests exclusive control over the provider
         /// </summary>
-        public void RequestControl() { }
+        public void RequestControl()
+        {
+            CorsairLightingSDK.RequestControl(CorsairAccessMode.ExclusiveLightingControl);
+        }
 
         /// <summary>
         /// Releases exclusive control over the provider
         /// </summary>
-        public void ReleaseControl() { }
+        public void ReleaseControl()
+        {
+            CorsairLightingSDK.ReleaseControl(CorsairAccessMode.ExclusiveLightingControl);
+        }
     }
 }

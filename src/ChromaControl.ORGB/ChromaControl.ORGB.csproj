@@ -1,8 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
     <Platforms>x64;x86</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
     <Company>Chroma Control Contributors</Company>
@@ -12,12 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CUESDK.NET" Version="3.0.378.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChromaControl.Abstractions\ChromaControl.Abstractions.csproj" />
+    <ProjectReference Include="..\ChromaControl.Hosting\ChromaControl.Hosting.csproj" />
+    <ProjectReference Include="..\ChromaControl.Providers.ORGB\ChromaControl.Providers.ORGB.csproj" />
   </ItemGroup>
 
 </Project>

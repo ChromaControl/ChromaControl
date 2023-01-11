@@ -9,8 +9,8 @@
 
   <Identity
     Name="ChromaControl"
-    Publisher="CN=Andrew Babbitt, O=Andrew Babbitt, L=Colorado, S=Colorado Springs, C=US"
-    Version="1.0.0.0" />
+    Publisher="CN=Sabik"
+    Version="1.3.0.0" />
 
   <Properties>
     <DisplayName>Chroma Control</DisplayName>
@@ -37,6 +37,7 @@
           <desktop:FullTrustProcess>
             <desktop:ParameterGroup GroupId="Asus" Parameters="Asus" />
             <desktop:ParameterGroup GroupId="Corsair" Parameters="Corsair" />
+			<desktop:ParameterGroup GroupId="ORGB" Parameters="ORGB" />
           </desktop:FullTrustProcess>
         </desktop:Extension>
         
@@ -45,7 +46,11 @@
         </desktop:Extension>
         
         <desktop:Extension Category="windows.startupTask" Executable="ChromaControl.Corsair\ChromaControl.Corsair.exe" EntryPoint="Windows.FullTrustApplication">
-          <desktop:StartupTask DisplayName="Chroma Control - OpenRGB" TaskId="Corsair" Enabled="false" />
+          <desktop:StartupTask DisplayName="Chroma Control - Corsair" TaskId="Corsair" Enabled="false" />
+        </desktop:Extension>
+        
+		<desktop:Extension Category="windows.startupTask" Executable="ChromaControl.ORGB\ChromaControl.ORGB.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask DisplayName="Chroma Control - OpenRGB" TaskId="ORGB" Enabled="false" />
         </desktop:Extension>
         
       </Extensions>

@@ -4,14 +4,13 @@
 
 using System.Drawing;
 using ChromaControl.Abstractions;
-using CUESDK;
 
-namespace ChromaControl.Providers.Corsair
+namespace ChromaControl.Providers.ORGB
 {
     /// <summary>
-    /// A Corsair device light
+    /// An ORGB device light
     /// </summary>
-    public class CorsairDeviceLight : IDeviceLight
+    public class ORGBDeviceLight : IDeviceLight
     {
         /// <summary>
         /// The device lights color
@@ -21,13 +20,13 @@ namespace ChromaControl.Providers.Corsair
         /// <summary>
         /// The device light
         /// </summary>
-        internal CorsairLedColor _deviceLight;
+        internal OpenRGB.NET.Models.Color _deviceLight;
 
         /// <summary>
-        /// Creates a Corsair device light
+        /// Creates an ORGB device light
         /// </summary>
         /// <param name="deviceLight">The device light</param>
-        internal CorsairDeviceLight(CorsairLedColor deviceLight)
+        internal ORGBDeviceLight(OpenRGB.NET.Models.Color deviceLight)
         {
             _deviceLight = deviceLight;
         }

@@ -3,22 +3,20 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using ChromaControl.Abstractions;
-using Microsoft.Extensions.Logging;
-using OpenRGB.NET;
+using CUESDK;
 
 namespace ChromaControl.Providers.Corsair
 {
     /// <summary>
-    /// An Corsair device
+    /// A Corsair device
     /// </summary>
     public class CorsairDevice : IDevice
     {
         /// <summary>
         /// The device name
         /// </summary>
-        public string Name => _device.Name;
+        public string Name => _device.Model;
 
         /// <summary>
         /// The lights the device has
@@ -26,44 +24,41 @@ namespace ChromaControl.Providers.Corsair
         public IEnumerable<IDeviceLight> Lights => _lights;
 
         /// <summary>
+        /// The number of lights on the device
+        /// </summary>
+        public int NumberOfLights => _device.LedsCount;
+
+        /// <summary>
+        /// The device index
+        /// </summary>
+        private readonly int _deviceIndex;
+
+        /// <summary>
+        /// The device
+        /// </summary>
+        private readonly CorsairDeviceInfo _device;
+
+        /// <summary>
         /// The lights the device has
         /// </summary>
         private readonly List<CorsairDeviceLight> _lights;
 
         /// <summary>
-        /// The number of lights on the device
+        /// Creates a Corsair device
         /// </summary>
-        public int NumberOfLights => _device.Colors.Length;
-
-        /// <summary>
-        /// The device
-        /// </summary>
-        private readonly OpenRGB.NET.Models.Device _device;
-
-        private readonly OpenRGBClient _sdk;
-
-        private readonly int _deviceIndex;
-
-        /// <summary>
-        /// The logger
-        /// </summary>
-        private readonly ILogger<CorsairDeviceProvider> _logger;
-
-        /// <summary>
-        /// Creates an Corsair device
-        /// </summary>
-        /// <param name="device">The device</param>
-        /// <param name="logger">The logger</param>
-        internal CorsairDevice(OpenRGB.NET.Models.Device device, ILogger<CorsairDeviceProvider> logger, int deviceIndex, OpenRGBClient sdk)
+        /// <param name="device">The device index</param>
+        internal CorsairDevice(int deviceIndex)
         {
-            _device = device;
-            _lights = new List<CorsairDeviceLight>();
-            _logger = logger;
             _deviceIndex = deviceIndex;
-            _sdk = sdk;
+            _device = CorsairLightingSDK.GetDeviceInfo(_deviceIndex);
+            _lights = new List<CorsairDeviceLight>();
 
-            foreach (OpenRGB.NET.Models.Color light in _device.Colors)
-                _lights.Add(new CorsairDeviceLight(light));
+            var positions = CorsairLightingSDK.GetLedPositionsByDeviceIndex(_deviceIndex);
+
+            foreach (var position in positions.LedPosition)
+            {
+                _lights.Add(new CorsairDeviceLight(new CorsairLedColor() { LedId = position.LedId }));
+            }
         }
 
         /// <summary>
@@ -71,16 +66,15 @@ namespace ChromaControl.Providers.Corsair
         /// </summary>
         public void ApplyLights()
         {
-            try
+            if (NumberOfLights > 0)
             {
-                if (NumberOfLights > 0)
-                {
-                    _sdk.UpdateLeds(_deviceIndex, _device.Colors);
-                }
-            }
-            catch (COMException ex)
-            {
-                _logger.LogError(ex, "Failed Applying Lights");
+                var buffer = new CorsairLedColor[_lights.Count];
+
+                for (var i = 0; i < _lights.Count; i++)
+                    buffer[i] = _lights[i]._deviceLight;
+
+                CorsairLightingSDK.SetLedsColorsBufferByDeviceIndex(_deviceIndex, buffer);
+                CorsairLightingSDK.SetLedsColorsFlushBuffer();
             }
         }
     }
