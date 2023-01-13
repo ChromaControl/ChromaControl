@@ -157,7 +157,7 @@ jobs:
           touch release/wwwroot/.nojekyll
 
       - name: Upload Website
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           token: ${{ secrets.WEBSITE_TOKEN }}
           branch: main
