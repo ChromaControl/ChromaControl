@@ -76,8 +76,7 @@ namespace ChromaControl.Hosting
                     var sp = services.BuildServiceProvider();
                     var deviceProvider = sp.GetService<IDeviceProvider>();
 
-                    var guid = Guids.GetSecureGuid($"ChromaControl.{deviceProvider.Name}.AppCenter").ToString();
-                    AppCenter.Start(guid, typeof(Analytics), typeof(Crashes));
+                    AppCenter.Start(Guids.GetSecureGuid($"ChromaControl.{deviceProvider.Name}.AppCenter").ToString(), typeof(Analytics), typeof(Crashes));
 #endif
                 });
         }
