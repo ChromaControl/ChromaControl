@@ -1,0 +1,27 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+@page "/download/{channel}"
+@inject NavigationManager NavManager
+
+<div class="blankslate">
+    <img src="common/img/logo.svg" class="mb-3" />
+    <h1 class="mb-1">Thank You For Downloading</h1>
+    <p>The app installer should start downloading automatically. Click <button class="btn-link" type="button" @onclick="DownloadAppInstaller">here</button> if it doesnt.</p>
+</div>
+
+@code {
+    [Parameter]
+    public string Channel { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DownloadAppInstaller();
+    }
+
+    private void DownloadAppInstaller()
+    {
+        NavManager.NavigateTo($"https://github.com/ChromaControl/ChromaControl/releases/download/{Channel}/ChromaControl.appinstaller");
+    }
+}

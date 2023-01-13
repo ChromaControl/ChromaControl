@@ -4,38 +4,62 @@
 
 @inherits LayoutComponentBase
 
-<header>
-    <div class="container-new py-6 px-3 text-center">
-        <a href="/">
-            <img src="common/img/logo.svg" alt="Chroma Control" width="96" height="96" />
-        </a>
-        <ul class="nav list-style-none d-flex flex-justify-center f4">
-            <li>
-                <NavLink class="d-inline-block m-2" href="" Match="NavLinkMatch.All">Overview</NavLink>
-            </li>
-            <li>
-                <a class="d-inline-block m-2" href="https://github.com/ChromaControl/ChromaControl/releases" target="_blank">Release Notes</a>
-            </li>
-            <li>
-                <a class="d-inline-block m-2" href="https://github.com/ChromaControl/ChromaControl/issues" target="_blank">Help</a>
-            </li>
-        </ul>
+<nav class="UnderlineNav UnderlineNav--full">
+    <div class="UnderlineNav-container container-lg px-3 px-md-6 px-lg-3 py-0">
+        <div class="UnderlineNav-body">
+            <img height="32" width="32" src="common/img/logo.svg" />
+            <a class="UnderlineNav-item pl-0" style="background: transparent;" href="/" aria-current="false">Chroma Control</a>
+        </div>
+        <div class="UnderlineNav-actions">
+            <div class="UnderlineNav-body hide-sm hide-md">
+                <a class="UnderlineNav-item anim-hover-grow" href="https://github.com/ChromaControl/ChromaControl/releases" target="_blank">Release Notes</a>
+                <a class="UnderlineNav-item anim-hover-grow" href="https://github.com/ChromaControl/ChromaControl/issues" target="_blank">Help</a>
+                <a class="UnderlineNav-item anim-hover-grow" href="https://discord.gg/6xGy7cycrt" target="_blank">Discord</a>
+            </div>
+            <div class="UnderlineNav-body hide-lg hide-xl">
+                <button class="btn btn-outline color-bg-default color-border-muted" style="padding: 6px 12px;" type="button" @onclick="ToggleMobileNav">
+                    <svg version="1.1" height="16" width="12" viewBox="0 0 16 16" class="octicon octicon-three-bars">
+                        <path fill-rule="evenodd" d="M1 2.75A.75.75 0 011.75 2h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 2.75zm0 5A.75.75 0 011.75 7h12.5a.75.75 0 110 1.5H1.75A.75.75 0 011 7.75zM1.75 12a.75.75 0 100 1.5h12.5a.75.75 0 100-1.5H1.75z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
-</header>
+</nav>
+
+@if (!mobileNavCollapsed)
+{
+    <div class="Box border-top-0 border-right-0 rounded-0 position-fixed right-0 width-full height-full text-center overflow-hidden hide-lg hide-xl" style="z-index: 11; max-width: 300px;">
+        <a class="UnderlineNav-item anim-hover-grow d-block" role="tab" href="https://github.com/ChromaControl/ChromaControl/releases" target="_blank">Release Notes</a>
+        <a class="UnderlineNav-item anim-hover-grow d-block" role="tab" href="https://github.com/ChromaControl/ChromaControl/issues" target="_blank">Help</a>
+        <a class="UnderlineNav-item anim-hover-grow d-block" role="tab" href="https://discord.gg/6xGy7cycrt" target="_blank">Discord</a>
+    </div>
+}
 
 @Body
 
-<hr class="my-6 mx-auto col-md-1" />
-
-<div class="col-md-6 mx-auto text-center">
-    <p>
-        <a href="https://github.com/ChromaControl/ChromaControl/security/policy" class="mr-4" target="_blank">Security</a>
-        <a href="https://github.com/ChromaControl/ChromaControl/blob/main/CODE_OF_CONDUCT.md" class="mr-4" target="_blank">Code of Conduct</a>
-        <a href="https://github.com/ChromaControl/ChromaControl/blob/main/LICENSE.txt" class="mr-4" target="_blank">EULA</a>
-        <a href="https://github.com/ChromaControl/ChromaControl/releases" target="_blank">Release Notes</a>
-    </p>
-</div>
-
-<footer class="mb-6 px-3 color-fg-subtle text-center">
-    <p>&copy; @(DateTime.Now.Year) Chroma Control Contibutors. All rights reserved.</p>
+<footer class="mt-6">
+    <div class="container-xl p-responsive f6 py-4 d-sm-flex flex-justify-center flex-items-center">
+        <ul class="list-style-none d-flex color-fg-muted">
+            <li class="mr-3">&copy; @(DateTime.Now.Year) Chroma Control Contibutors. All rights reserved.</li>
+            <li class="mr-3">
+                <a class="Link--primary" href="https://github.com/ChromaControl/ChromaControl/blob/main/LICENSE.txt" target="_blank">Terms</a>
+            </li>
+            <li class="mr-3">
+                <a class="Link--primary" href="https://github.com/ChromaControl/ChromaControl/security/policy" target="_blank">Security</a>
+            </li>
+            <li>
+                <a class="Link--primary" href="https://github.com/ChromaControl/ChromaControl/blob/main/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a>
+            </li>
+        </ul>
+    </div>
 </footer>
+
+@code {
+    private bool mobileNavCollapsed = true;
+
+    private void ToggleMobileNav()
+    {
+        mobileNavCollapsed = !mobileNavCollapsed;
+    }
+}
