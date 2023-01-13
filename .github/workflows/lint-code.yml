@@ -1,0 +1,34 @@
+name: Lint Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request_target:
+    branches:
+      - main
+
+permissions:
+  checks: write
+  contents: read
+
+jobs:
+  lint-code:
+    name: Lint Code
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.x"
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          continue_on_error: false
+          dotnet_format: true
+          dotnet_format_dir: src/

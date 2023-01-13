@@ -1,0 +1,46 @@
+name: Scan Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '22 7 * * 1'
+
+jobs:
+  scan-code:
+    name: Scan Code
+    runs-on: windows-latest
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'csharp' ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.x"
+
+      - name: Build solution
+        run: dotnet build src/
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
