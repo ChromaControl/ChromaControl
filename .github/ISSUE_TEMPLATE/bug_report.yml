@@ -1,0 +1,65 @@
+name: 🐞 Bug Report
+description: Create a report about something that is not working
+labels:
+  - Bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please keep in mind that the GitHub issue tracker is not intended as a general support forum, but for reporting **non-security** bugs and feature requests.
+
+        If you believe you have an issue that affects the SECURITY of the project, please do NOT create an issue and instead follow the instructions in the [Security Policy](https://github.com/ChromaControl/ChromaControl/security/policy).
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered ([issues](https://github.com/ChromaControl/ChromaControl/issues?q=is%3Aissue)).
+      options:
+        - label: I have searched the existing issues
+          required: true
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Steps to reproduce the behavior.
+
+        We will close this issue if:
+        - If we will not be able to repro the behavior you're reporting.
+        - There is an already known open issue for this bug.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Exceptions or error messages (if any)
+      description: Include the exception or error message you get when facing this issue.
+    validations:
+      required: false
+  - type: input
+    attributes:
+      label: Version number
+      description: Please specify the version number of the application you are using.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Anything else?
+      description: |
+        - OS version
+        - Dependent software versions
+
+        Links? References? Anything that will give us more context about the issue you are encountering!
+
+        Tip: You can attatch images or log files by clicking this area to highlight it and then dragging files in.
+    validations:
+      required: false
