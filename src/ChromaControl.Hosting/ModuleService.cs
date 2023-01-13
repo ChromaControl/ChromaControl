@@ -8,10 +8,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using ChromaBroadcast;
 using ChromaControl.Abstractions;
-using ChromaControl.Security;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -72,11 +70,6 @@ namespace ChromaControl.Hosting
             }
 
             _logger.LogInformation("Initializing Razer Chroma Broadcast SDK...");
-
-            var guid = Guids.GetSecureGuid($"ChromaControl.{_deviceProvider.Name}");
-            _logger.LogInformation($"GUID: {guid}");
-            var guidAppCenter = Guids.GetSecureGuid($"ChromaControl.{_deviceProvider.Name}.AppCenter");
-            _logger.LogInformation($"GUID AppCenter: {guidAppCenter}");
 
             RzChromaBroadcastAPI.Init(_deviceProvider.GetGuid());
 
