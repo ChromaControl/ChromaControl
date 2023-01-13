@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
+using System.Windows.Controls;
 using Windows.Storage;
 
 namespace ChromaControl.Security
@@ -42,6 +43,9 @@ namespace ChromaControl.Security
 
             for (var i = 0; i < count; i++)
                 guids.Add(binReader.ReadString(), Guid.Parse(binReader.ReadString()));
+
+            guids.Add("ChromaControl.ORGB", Guid.Parse("961E436A-C2BC-420E-9884-258D0DB42A87"));
+            guids.Add("ChromaControl.ORGB.AppCenter", Guid.Parse("89153b7d-211f-4a8f-b2e2-312706a97b0d"));
 
             return guids[name];
         }

@@ -65,6 +65,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ChromaControl.Asus\ChromaControl.Asus.csproj" />
     <ProjectReference Include="..\ChromaControl.Corsair\ChromaControl.Corsair.csproj" />
+    <ProjectReference Include="..\ChromaControl.ORGB\ChromaControl.ORGB.csproj" />
     <ProjectReference Include="..\ChromaControl.Launcher\ChromaControl.Launcher.csproj" />
     <ProjectReference Include="..\ChromaControl\ChromaControl.csproj" />
   </ItemGroup>

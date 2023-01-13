@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Asus", "Chrom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Corsair", "ChromaControl.Corsair\ChromaControl.Corsair.csproj", "{829270C4-5451-4249-8691-023F92E98C11}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.ORGB", "ChromaControl.ORGB\ChromaControl.ORGB.csproj", "{829270C5-5451-4249-8691-023F92E98C11}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Launcher", "ChromaControl.Launcher\ChromaControl.Launcher.csproj", "{FC135883-C59C-4833-B46F-532D5C4B0DEF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Hosting", "ChromaControl.Hosting\ChromaControl.Hosting.csproj", "{284CB691-0A31-42FD-8246-12740790422A}"
@@ -22,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.Asus", "ChromaControl.Providers.Asus\ChromaControl.Providers.Asus.csproj", "{7C8BA0FA-36F9-441C-8508-32CC3901B808}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.Corsair", "ChromaControl.Providers.Corsair\ChromaControl.Providers.Corsair.csproj", "{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Providers.ORGB", "ChromaControl.Providers.ORGB\ChromaControl.Providers.ORGB.csproj", "{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Security", "ChromaControl.Security\ChromaControl.Security.csproj", "{E790A9CD-418C-43B6-85E7-EC7FB90093A8}"
 EndProject
@@ -76,7 +80,15 @@ Global
 		{829270C4-5451-4249-8691-023F92E98C11}.Release|x64.ActiveCfg = Release|x64
 		{829270C4-5451-4249-8691-023F92E98C11}.Release|x64.Build.0 = Release|x64
 		{829270C4-5451-4249-8691-023F92E98C11}.Release|x86.ActiveCfg = Release|x86
-		{829270C4-5451-4249-8691-023F92E98C11}.Release|x86.Build.0 = Release|x86
+		{829270C4-5451-4249-8691-023F92E98C11}.Release|x86.Build.0 = Release|x86		
+		{829270C5-5451-4249-8691-023F92E98C11}.Debug|x64.ActiveCfg = Debug|x64
+		{829270C5-5451-4249-8691-023F92E98C11}.Debug|x64.Build.0 = Debug|x64
+		{829270C5-5451-4249-8691-023F92E98C11}.Debug|x86.ActiveCfg = Debug|x86
+		{829270C5-5451-4249-8691-023F92E98C11}.Debug|x86.Build.0 = Debug|x86
+		{829270C5-5451-4249-8691-023F92E98C11}.Release|x64.ActiveCfg = Release|x64
+		{829270C5-5451-4249-8691-023F92E98C11}.Release|x64.Build.0 = Release|x64
+		{829270C5-5451-4249-8691-023F92E98C11}.Release|x86.ActiveCfg = Release|x86
+		{829270C5-5451-4249-8691-023F92E98C11}.Release|x86.Build.0 = Release|x86		
 		{FC135883-C59C-4833-B46F-532D5C4B0DEF}.Debug|x64.ActiveCfg = Debug|x64
 		{FC135883-C59C-4833-B46F-532D5C4B0DEF}.Debug|x64.Build.0 = Debug|x64
 		{FC135883-C59C-4833-B46F-532D5C4B0DEF}.Debug|x86.ActiveCfg = Debug|x86
@@ -116,7 +128,15 @@ Global
 		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x64.ActiveCfg = Release|x64
 		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x64.Build.0 = Release|x64
 		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.ActiveCfg = Release|x86
-		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.Build.0 = Release|x86
+		{F8ECAE1C-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.Build.0 = Release|x86		
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Debug|x64.ActiveCfg = Debug|x64
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Debug|x64.Build.0 = Debug|x64
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Debug|x86.ActiveCfg = Debug|x86
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Debug|x86.Build.0 = Debug|x86
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Release|x64.ActiveCfg = Release|x64
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Release|x64.Build.0 = Release|x64
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.ActiveCfg = Release|x86
+		{F8ECAE1D-9768-496F-8D79-9D1FC5D4CE3A}.Release|x86.Build.0 = Release|x86		
 		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x64.ActiveCfg = Debug|x64
 		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x64.Build.0 = Debug|x64
 		{E790A9CD-418C-43B6-85E7-EC7FB90093A8}.Debug|x86.ActiveCfg = Debug|x86
