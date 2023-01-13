@@ -140,7 +140,7 @@ namespace ChromaControl
 
             var asusStartupTask = await StartupTask.GetAsync("Asus");
             var corsairStartupTask = await StartupTask.GetAsync("Corsair");
-			var oRGBStartupTask = await StartupTask.GetAsync("ORGB");
+            var oRGBStartupTask = await StartupTask.GetAsync("ORGB");
 
             if (asusStartupTask.State == StartupTaskState.Enabled)
                 AsusToggleSwitch.IsOn = true;
