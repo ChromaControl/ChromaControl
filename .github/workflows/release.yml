@@ -93,7 +93,7 @@ jobs:
 
       - name: Build Changelog
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v2
+        uses: mikepenz/release-changelog-builder-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fromTag: ${{ steps.previous_release.outputs.tag_name }}
