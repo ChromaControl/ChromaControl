@@ -2,6 +2,7 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections.Generic;
 using ChromaControl.Abstractions;
 using CUESDK;
@@ -66,6 +67,7 @@ namespace ChromaControl.Providers.Corsair
         /// </summary>
         public void ApplyLights()
         {
+    
             if (NumberOfLights > 0)
             {
                 var buffer = new CorsairLedColor[_lights.Count];

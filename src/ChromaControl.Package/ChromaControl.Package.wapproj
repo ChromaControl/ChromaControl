@@ -60,11 +60,14 @@
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.19041.8" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChromaControl.Asus\ChromaControl.Asus.csproj" />
     <ProjectReference Include="..\ChromaControl.Corsair\ChromaControl.Corsair.csproj" />
+    <ProjectReference Include="..\ChromaControl.GHUB\ChromaControl.GHUB.csproj">
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\ChromaControl.Launcher\ChromaControl.Launcher.csproj" />
     <ProjectReference Include="..\ChromaControl\ChromaControl.csproj" />
   </ItemGroup>
