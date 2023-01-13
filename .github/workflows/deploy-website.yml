@@ -1,0 +1,39 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-website:
+    name: Deploy Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.x"
+
+      - name: Create release directory
+        run: mkdir release
+
+      - name: Build website
+        run: dotnet publish src/Website/ChromaControl.Website.csproj -c Release -o release --nologo
+
+      - name: Stage website
+        run: |
+          cp release/wwwroot/index.html release/wwwroot/404.html
+          touch release/wwwroot/.nojekyll
+
+      - name: Deploy website
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.WEBSITE_TOKEN }}
+          branch: main
+          folder: release/wwwroot
+          repository-name: ChromaControl/ChromaControl.github.io

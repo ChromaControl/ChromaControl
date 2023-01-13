@@ -13,7 +13,7 @@ on:
 jobs:
   scan-code:
     name: Scan Code
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     permissions:
       actions: read
