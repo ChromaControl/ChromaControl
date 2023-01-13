@@ -1,0 +1,41 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+@inherits LayoutComponentBase
+
+<header>
+    <div class="container-new py-6 px-3 text-center">
+        <a href="/">
+            <img src="common/img/logo.svg" alt="Chroma Control" width="96" height="96" />
+        </a>
+        <ul class="nav list-style-none d-flex flex-justify-center f4">
+            <li>
+                <NavLink class="d-inline-block m-2" href="" Match="NavLinkMatch.All">Overview</NavLink>
+            </li>
+            <li>
+                <a class="d-inline-block m-2" href="https://github.com/ChromaControl/ChromaControl/releases" target="_blank">Release Notes</a>
+            </li>
+            <li>
+                <a class="d-inline-block m-2" href="https://github.com/ChromaControl/ChromaControl/issues" target="_blank">Help</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+@Body
+
+<hr class="my-6 mx-auto col-md-1" />
+
+<div class="col-md-6 mx-auto text-center">
+    <p>
+        <a href="https://github.com/ChromaControl/ChromaControl/security/policy" class="mr-4" target="_blank">Security</a>
+        <a href="https://github.com/ChromaControl/ChromaControl/blob/main/CODE_OF_CONDUCT.md" class="mr-4" target="_blank">Code of Conduct</a>
+        <a href="https://github.com/ChromaControl/ChromaControl/blob/main/LICENSE.txt" class="mr-4" target="_blank">EULA</a>
+        <a href="https://github.com/ChromaControl/ChromaControl/releases" target="_blank">Release Notes</a>
+    </p>
+</div>
+
+<footer class="mb-6 px-3 color-fg-subtle text-center">
+    <p>&copy; @(DateTime.Now.Year) Chroma Control Contibutors. All rights reserved.</p>
+</footer>

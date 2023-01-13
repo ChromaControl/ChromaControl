@@ -1,0 +1,25 @@
+.container-new {
+    max-width: 980px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1012px) {
+    .container-new {
+        max-width: 1012px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container-new {
+        max-width: 1280px;
+    }
+}
+
+.nav .active {
+    color: #ffffff;
+}
+
+a {
+    color: var(--color-scale-green-3);
+}

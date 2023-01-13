@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <Company>Chroma Control Contributors</Company>
+    <Product>Chroma Control</Product>
+    <Description>Razer Synapse modules for controlling all of your RGB products.</Description>
+    <Copyright>© Chroma Control Contibutors. All rights reserved.</Copyright>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WarningsAsErrors>Nullable</WarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>
