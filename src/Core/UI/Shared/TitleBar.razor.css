@@ -1,0 +1,52 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.title-bar {
+    padding-left: 13px;
+    padding-right: 3px;
+}
+
+    .title-bar .Header-item button {
+        width: 45px;
+        color: #a0a0a0;
+        background-color: transparent;
+        transition: background-color 0.25s ease;
+    }
+
+        .title-bar .Header-item button:focus {
+            outline: none;
+        }
+
+        .title-bar .Header-item button:hover {
+            background-color: #888;
+            color: #fff;
+        }
+
+            .title-bar .Header-item button:hover:active {
+                background-color: #666;
+                transition: none;
+            }
+
+        .title-bar .Header-item button.close:hover {
+            background-color: #e81123;
+            color: #fff;
+        }
+
+            .title-bar .Header-item button.close:hover:active {
+                background-color: #bf0f1d;
+                transition: none;
+            }
+
+        .title-bar .Header-item button svg {
+            fill: currentColor;
+        }
+
+    .title-bar.blurred .Header-item {
+        opacity: 0.6;
+    }
+
+.dragger {
+    -webkit-app-region: drag;
+    height: 27px;
+}
