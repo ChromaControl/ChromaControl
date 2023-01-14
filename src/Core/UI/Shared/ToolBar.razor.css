@@ -1,0 +1,13 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.tool-bar-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    .tool-bar-item:hover {
+        background-color: var(--color-ansi-gray);
+        color: #fff;
+    }

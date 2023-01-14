@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
@@ -9,7 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{B813
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F494F535-DEDB-40FA-BFDC-D7C63350A653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaControl.Common.Assets", "Common\Assets\ChromaControl.Common.Assets.csproj", "{36EE625D-970A-4A09-9C1E-23432D4EA56F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Common.Assets", "Common\Assets\ChromaControl.Common.Assets.csproj", "{36EE625D-970A-4A09-9C1E-23432D4EA56F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{98B41A23-03CE-4DA7-BBE2-C4055C1CF8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaControl.Core.UI", "Core\UI\ChromaControl.Core.UI.csproj", "{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,18 @@ Global
 		{36EE625D-970A-4A09-9C1E-23432D4EA56F}.Release|x64.Build.0 = Release|Any CPU
 		{36EE625D-970A-4A09-9C1E-23432D4EA56F}.Release|x86.ActiveCfg = Release|Any CPU
 		{36EE625D-970A-4A09-9C1E-23432D4EA56F}.Release|x86.Build.0 = Release|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Debug|x64.Build.0 = Debug|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Debug|x86.Build.0 = Debug|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Release|x64.ActiveCfg = Release|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Release|x64.Build.0 = Release|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Release|x86.ActiveCfg = Release|Any CPU
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +68,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7CF17938-4192-4C5E-8270-5680E8C331D2} = {B8137F47-39E3-457E-97EA-8F9F042D82CF}
 		{36EE625D-970A-4A09-9C1E-23432D4EA56F} = {F494F535-DEDB-40FA-BFDC-D7C63350A653}
+		{A4DE65FB-1010-43C6-90F6-B7CB98D759E8} = {98B41A23-03CE-4DA7-BBE2-C4055C1CF8E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {72C363D5-14DF-4FD8-AD47-3B4CCEB2C9CD}
