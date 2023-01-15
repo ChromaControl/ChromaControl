@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/800996203609194517?style=for-the-badge&logo=discord&label=Discord&color=7289DA)](https://discord.gg/6xGy7cycrt)
 
 # Chroma Control
-Chroma Control is an application that allows you to control 3rd party devices from within Razer Synapse.
+Razer Synapse modules for controlling all of your RGB products.
 
 ## Getting Started
 This repository contains all the source code for Chroma Control. This includes the Chroma Control website, API, as well as the device drivers.
