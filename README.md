@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/800996203609194517?style=for-the-badge&logo=discord&label=Discord&color=7289DA)](https://discord.gg/6xGy7cycrt)
 
 # Chroma Control
-Razer Synapse modules for controlling all of your RGB products.
+RGB ligting control for 3rd party devices inside of Razer Synapse.
 
 ## Getting Started
 This repository contains all the source code for Chroma Control. This includes the Chroma Control website, API, as well as the device drivers.
