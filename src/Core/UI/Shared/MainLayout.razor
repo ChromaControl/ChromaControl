@@ -5,30 +5,5 @@
 @inherits LayoutComponentBase
 @inject Window window
 
-<div style="@padding">
-    <TitleBar />
-    @Body
-</div>
-
-@code {
-    private string? padding = "";
-
-    protected override void OnInitialized()
-    {
-        window.StateChanged += WindowStateChanged;
-    }
-
-    private void WindowStateChanged(object? sender, EventArgs e)
-    {
-        if (window.WindowState == WindowState.Maximized)
-        {
-            padding = "padding: 8px 8px 0px 8px;";
-        }
-        else
-        {
-            padding = "";
-        }
-
-        StateHasChanged();
-    }
-}
+<TitleBar />
+@Body
