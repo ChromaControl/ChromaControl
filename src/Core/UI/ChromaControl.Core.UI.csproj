@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Assets\ChromaControl.Common.Assets.csproj" />
+    <ProjectReference Include="..\..\Common\Extensions\ChromaControl.Common.Extensions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
