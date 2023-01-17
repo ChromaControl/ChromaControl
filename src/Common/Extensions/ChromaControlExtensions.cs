@@ -36,7 +36,7 @@ public static class ChromaControlExtensions
     /// <param name="args">The command line arguments.</param>
     public static IServiceCollection AddChromaControl(this IServiceCollection services, string[] args)
     {
-        if (Debugger.IsAttached || args.Contains("--debug"))
+        if (!args.Contains("--no-console"))
         {
             AllocConsole();
             Console.Title = ChromaControlConstants.ExecutingAssemblyName;
