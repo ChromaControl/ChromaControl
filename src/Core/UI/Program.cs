@@ -11,8 +11,6 @@ var builder = BlazorDesktopHostBuilder.CreateDefault(args);
 
 builder.Services.AddChromaControl(args);
 
-builder.Logging.AddChromaControl();
-
 builder.UseWebViewInstaller();
 
 builder.RootComponents.Add<App>("#app");

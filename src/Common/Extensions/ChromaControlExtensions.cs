@@ -44,6 +44,16 @@ public static class ChromaControlExtensions
             Directory.CreateDirectory(ChromaControlConstants.DataDirectory);
         }
 
+        if (!Directory.Exists(ChromaControlConstants.LogDirectory))
+        {
+            Directory.CreateDirectory(ChromaControlConstants.LogDirectory);
+        }
+
+        services.AddLogging(builder =>
+        {
+            builder.AddFile(Path.Combine(ChromaControlConstants.LogDirectory, $"{ChromaControlConstants.ExecutingAssemblyName}.log"), true);
+        });
+
         var mutex = new AppMutex();
 
         if (mutex.Success)
@@ -61,22 +71,5 @@ public static class ChromaControlExtensions
         }
 
         return services;
-    }
-
-    /// <summary>
-    /// Adds Chroma Control logging to the specified <see cref="ILoggingBuilder"/>.
-    /// </summary>
-    /// <param name="logging">The <see cref="ILoggingBuilder"/> for adding logging.</param>
-    /// <returns>The <see cref="ILoggingBuilder"/> to allow for method chaining.</returns>
-    public static ILoggingBuilder AddChromaControl(this ILoggingBuilder logging)
-    {
-        if (!Directory.Exists(ChromaControlConstants.LogDirectory))
-        {
-            Directory.CreateDirectory(ChromaControlConstants.LogDirectory);
-        }
-
-        logging.AddFile(Path.Combine(ChromaControlConstants.LogDirectory, $"{ChromaControlConstants.ExecutingAssemblyName}.log"), true);
-
-        return logging;
     }
 }
