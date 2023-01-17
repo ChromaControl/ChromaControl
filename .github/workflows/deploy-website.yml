@@ -27,7 +27,7 @@ jobs:
 
       - name: Stage website
         run: |
-          cp bin/Release/website/publish/wwwroot/index.html src/bin/Release/website/publish/wwwroot/404.html
+          cp bin/Release/website/publish/wwwroot/index.html bin/Release/website/publish/wwwroot/404.html
           touch bin/Release/website/publish/wwwroot/.nojekyll
 
       - name: Deploy website
