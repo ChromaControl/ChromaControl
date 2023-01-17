@@ -16,4 +16,5 @@ message GetDriversResponse {
 
 message Driver {
     string name = 1;
+    bool enabled = 2;
 }
