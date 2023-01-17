@@ -18,14 +18,24 @@ public static class ChromaControlConstants
     public static readonly string DataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ChromaControl");
 
     /// <summary>
+    /// The path to the environment directory.
+    /// </summary>
+    public static readonly string EnvironmentDirectory = Path.Combine(DataDirectory, "environment");
+
+    /// <summary>
+    /// The path to the runtime directory.
+    /// </summary>
+    public static readonly string RuntimeDirectory = Path.Combine(DataDirectory, "runtime");
+
+    /// <summary>
     /// The path to the log directory.
     /// </summary>
-    public static readonly string LogDirectory = Path.Combine(DataDirectory, "logs");
+    public static readonly string LogDirectory = Path.Combine(EnvironmentDirectory, "logs");
 
     /// <summary>
     /// The path to the chroma control socket.
     /// </summary>
-    public static readonly string SocketPath = Path.Combine(DataDirectory, "API.sock");
+    public static readonly string SocketPath = Path.Combine(RuntimeDirectory, "API.sock");
 
     /// <summary>
     /// The executing assembly name.

@@ -47,6 +47,16 @@ public static class ChromaControlExtensions
             Directory.CreateDirectory(ChromaControlConstants.DataDirectory);
         }
 
+        if (!Directory.Exists(ChromaControlConstants.EnvironmentDirectory))
+        {
+            Directory.CreateDirectory(ChromaControlConstants.EnvironmentDirectory);
+        }
+
+        if (!Directory.Exists(ChromaControlConstants.RuntimeDirectory))
+        {
+            Directory.CreateDirectory(ChromaControlConstants.RuntimeDirectory);
+        }
+
         if (!Directory.Exists(ChromaControlConstants.LogDirectory))
         {
             Directory.CreateDirectory(ChromaControlConstants.LogDirectory);
