@@ -1,0 +1,88 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+@using Microsoft.Win32;
+@using System.IO.Compression;
+@using System.IO;
+
+@page "/support"
+
+<div class="Subhead">
+    <h2 class="Subhead-heading">Support</h2>
+</div>
+
+<p>Running into an issue? Feel free to reach out to the development team to get support. We want to make sure Chroma Control is as good of an experience as it can be!</p>
+
+<div class="d-flex flex-md-row flex-column flex-md-items-center py-3 border-bottom border-top color-border-muted">
+    <div class="mb-md-0 mb-2 mr-4 flex-auto">
+        <h4>Discord</h4>
+        <p class="mb-0">
+            Come talk to us about any issues you may be having on our Discord server. We also share news about upcoming features there. If you are a developer you can also find out how to contribute by joining.
+        </p>
+    </div>
+    <div class="BtnGroup flex-auto">
+        <a class="btn btn-primary" href="https://discord.gg/6xGy7cycrt">Join</a>
+    </div>
+</div>
+
+<div class="d-flex flex-md-row flex-column flex-md-items-center py-3 border-bottom color-border-muted">
+    <div class="mb-md-0 mb-2 mr-4 flex-auto">
+        <h4>GitHub</h4>
+        <p class="mb-0">
+            Open an issue on GitHub, you may be asked to open one even if you start in the Discord server support channels. We use issues for tracking issues and discussing potential fixes.
+        </p>
+    </div>
+    <div class="BtnGroup flex-auto">
+        <a class="btn btn-primary" href="https://github.com/ChromaControl/ChromaControl/issues/new/choose">Open Issue</a>
+    </div>
+</div>
+
+<div class="d-flex flex-md-row flex-column flex-md-items-center py-3 border-bottom color-border-muted">
+    <div class="mb-md-0 mb-2 mr-4 flex-auto">
+        <h4>Save Support Bundle</h4>
+        <p class="mb-0">
+            A support bundle contains log files and the Chroma Control configuration, this bundle can be uploaded to Discord or GitHub in order to aid in the troubleshooting of issues.
+        </p>
+    </div>
+    <div class="BtnGroup flex-auto">
+        <button class="btn btn-primary" @onclick="SaveSupportBundle">Save</button>
+    </div>
+</div>
+
+@code {
+    async Task SaveSupportBundle()
+    {
+        var save = await Task.Run<(bool Result, string FileName)>(() =>
+        {
+            var dialog = new SaveFileDialog();
+
+            dialog.FileName = $"bundle-{DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss")}";
+            dialog.DefaultExt = ".zip";
+            dialog.Filter = "Zip archives (.zip)|*.zip";
+
+            return (dialog.ShowDialog() ?? false, dialog.FileName);
+        });
+
+        if (save.Result)
+        {
+            if (File.Exists(save.FileName))
+            {
+                File.Delete(save.FileName);
+            }
+
+            using var zipStream = new FileStream(save.FileName, FileMode.Create);
+            using var zip = new ZipArchive(zipStream, ZipArchiveMode.Create);
+
+            foreach (var file in Directory.EnumerateFiles(ChromaControlConstants.EnvironmentDirectory, "*.*", SearchOption.AllDirectories))
+            {
+                var entryName = file.Substring(ChromaControlConstants.EnvironmentDirectory.Length).TrimStart(Path.DirectorySeparatorChar);
+                var entry = zip.CreateEntry(entryName);
+                entry.LastWriteTime = File.GetLastWriteTime(file);
+                using var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var entryStream = entry.Open();
+                await fileStream.CopyToAsync(entryStream);
+            }
+        }
+    }
+}

@@ -24,12 +24,14 @@ public class DriversService : Drivers.DriversBase
 
         response.Drivers.Add(new Driver()
         {
-            Name = "Asus"
+            Name = "Asus",
+            Enabled = true,
         });
 
         response.Drivers.Add(new Driver()
         {
-            Name = "Corsair"
+            Name = "Corsair",
+            Enabled = false
         });
 
         return Task.FromResult(response);

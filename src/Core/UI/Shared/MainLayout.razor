@@ -6,4 +6,14 @@
 @inject Window window
 
 <TitleBar />
-@Body
+
+<div class="pt-4 container-xl p-responsive">
+    <div class="Layout Layout--flowRow-until-md">
+        <div class="Layout-sidebar">
+            <NavMenu />
+        </div>
+        <div class="Layout-main">
+            @Body
+        </div>
+    </div>
+</div>

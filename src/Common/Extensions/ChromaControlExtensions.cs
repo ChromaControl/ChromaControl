@@ -36,7 +36,7 @@ public static class ChromaControlExtensions
     /// <param name="args">The command line arguments.</param>
     public static IServiceCollection AddChromaControl(this IServiceCollection services, string[] args)
     {
-        if (Debugger.IsAttached || args.Contains("--debug"))
+        if (!args.Contains("--no-console"))
         {
             AllocConsole();
             Console.Title = ChromaControlConstants.ExecutingAssemblyName;
@@ -45,6 +45,16 @@ public static class ChromaControlExtensions
         if (!Directory.Exists(ChromaControlConstants.DataDirectory))
         {
             Directory.CreateDirectory(ChromaControlConstants.DataDirectory);
+        }
+
+        if (!Directory.Exists(ChromaControlConstants.EnvironmentDirectory))
+        {
+            Directory.CreateDirectory(ChromaControlConstants.EnvironmentDirectory);
+        }
+
+        if (!Directory.Exists(ChromaControlConstants.RuntimeDirectory))
+        {
+            Directory.CreateDirectory(ChromaControlConstants.RuntimeDirectory);
         }
 
         if (!Directory.Exists(ChromaControlConstants.LogDirectory))
