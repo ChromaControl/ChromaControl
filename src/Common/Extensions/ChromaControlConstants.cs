@@ -23,6 +23,11 @@ public static class ChromaControlConstants
     public static readonly string LogDirectory = Path.Combine(DataDirectory, "logs");
 
     /// <summary>
+    /// The path to the chroma control socket.
+    /// </summary>
+    public static readonly string SocketPath = Path.Combine(DataDirectory, "ChromaControl.sock");
+
+    /// <summary>
     /// The executing assembly name.
     /// </summary>
     public static readonly string ExecutingAssemblyName = Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly()!.Location);

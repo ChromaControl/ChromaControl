@@ -4,8 +4,11 @@
 
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using ChromaControl.Common.Keys;
+using Grpc.Net.Client;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -69,6 +72,35 @@ public static class ChromaControlExtensions
         {
             AppCenter.Start(KeyData.AppCenterKey, typeof(Analytics), typeof(Crashes));
         }
+
+        return services;
+    }
+
+    /// <summary>
+    /// Adds a chroma control client to the <see cref="IServiceCollection"/>.
+    /// </summary>
+    /// <typeparam name="TClient">The client to add.</typeparam>
+    /// <param name="services">The <see cref="IServiceCollection"/> to add the client to.</param>
+    /// <returns>The <see cref="IServiceCollection"/>.</returns>
+    public static IServiceCollection AddChromaControlClient<TClient>(this IServiceCollection services) where TClient : class
+    {
+        var channel = GrpcChannel.ForAddress("http://localhost");
+        services.AddGrpcClient<TClient>(o =>
+        {
+            o.Address = new Uri("http://localhost");
+
+            o.ChannelOptionsActions.Add(channel =>
+            {
+                var udsEndPoint = new UnixDomainSocketEndPoint(ChromaControlConstants.SocketPath);
+                var connectionFactory = new UnixDomainSocketConnectionFactory(udsEndPoint);
+                var socketsHttpHandler = new SocketsHttpHandler
+                {
+                    ConnectCallback = connectionFactory.ConnectAsync
+                };
+
+                channel.HttpHandler = socketsHttpHandler;
+            });
+        });
 
         return services;
     }
