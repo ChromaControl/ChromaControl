@@ -53,6 +53,7 @@
     {
         window.Activated += WindowActivated;
         window.Deactivated += WindowDeactivated;
+        window.StateChanged += WindowStateChanged;
         activeClass = window.IsActive ? "focused" : "blurred";
     }
 
@@ -65,6 +66,11 @@
     private void WindowDeactivated(object? sender, EventArgs e)
     {
         activeClass = "blurred";
+        StateHasChanged();
+    }
+
+    private void WindowStateChanged(object? sender, EventArgs e)
+    {
         StateHasChanged();
     }
 }

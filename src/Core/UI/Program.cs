@@ -3,10 +3,18 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Hosting;
+using ChromaControl.Common.Extensions;
+using ChromaControl.Common.Protobufs;
 using ChromaControl.Core.UI;
 using Microsoft.AspNetCore.Components.Web;
 
 var builder = BlazorDesktopHostBuilder.CreateDefault(args);
+
+builder.Services.AddChromaControl(args);
+
+builder.Services.AddChromaControlClient<Drivers.DriversClient>();
+
+builder.UseWebViewInstaller();
 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");

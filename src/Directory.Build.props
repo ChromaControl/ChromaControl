@@ -3,12 +3,39 @@
     <Version>1.0.0</Version>
     <Company>Chroma Control Contributors</Company>
     <Product>Chroma Control</Product>
-    <Description>Razer Synapse modules for controlling all of your RGB products.</Description>
+    <Description>RGB ligting control for 3rd party devices inside of Razer Synapse.</Description>
     <Copyright>© Chroma Control Contibutors. All rights reserved.</Copyright>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <WarningsAsErrors>Nullable</WarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Core'))">
+    <ApplicationIcon>..\..\..\assets\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Core')) AND '$(Configuration)'=='Debug'">
+    <OutputPath>..\..\..\bin\Debug\core</OutputPath>
+    <PublishDir>..\..\..\bin\Debug\core\publish</PublishDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Core')) AND '$(Configuration)'=='Release'">
+    <OutputPath>..\..\..\bin\Release\core</OutputPath>
+    <PublishDir>..\..\..\bin\Release\core\publish</PublishDir>
+    <SelfContained>true</SelfContained>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Website')) AND '$(Configuration)'=='Debug'">
+    <OutputPath>..\..\bin\Debug\website</OutputPath>
+    <PublishDir>..\..\bin\Debug\website\publish</PublishDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Website')) AND '$(Configuration)'=='Release'">
+    <OutputPath>..\..\bin\Release\website</OutputPath>
+    <PublishDir>..\..\bin\Release\website\publish</PublishDir>
   </PropertyGroup>
 </Project>

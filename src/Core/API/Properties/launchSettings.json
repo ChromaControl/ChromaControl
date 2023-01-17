@@ -1,8 +1,9 @@
 {
   "profiles": {
-    "ChromaControl.Core.UI": {
+    "ChromaControl.Core.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
+      "externalUrlConfiguration": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

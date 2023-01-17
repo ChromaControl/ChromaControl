@@ -23,17 +23,17 @@ jobs:
         run: mkdir release
 
       - name: Build website
-        run: dotnet publish src/Website/ChromaControl.Website.csproj -c Release -o release --nologo
+        run: dotnet publish src/Website/ChromaControl.Website.csproj -c Release --nologo
 
       - name: Stage website
         run: |
-          cp release/wwwroot/index.html release/wwwroot/404.html
-          touch release/wwwroot/.nojekyll
+          cp bin/Release/website/publish/wwwroot/index.html src/bin/Release/website/publish/wwwroot/404.html
+          touch bin/Release/website/publish/wwwroot/.nojekyll
 
       - name: Deploy website
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.WEBSITE_TOKEN }}
           branch: main
-          folder: release/wwwroot
+          folder: bin/Release/website/publish/wwwroot
           repository-name: ChromaControl/ChromaControl.github.io
