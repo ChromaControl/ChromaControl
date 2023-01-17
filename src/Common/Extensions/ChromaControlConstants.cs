@@ -41,4 +41,9 @@ public static class ChromaControlConstants
     /// The executing assembly name.
     /// </summary>
     public static readonly string ExecutingAssemblyName = Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly()!.Location);
+
+    /// <summary>
+    /// The executing assembly name.
+    /// </summary>
+    public static readonly string ExecutingAssemblyVersion = Assembly.GetEntryAssembly()!.GetName().Version!.ToString(3);
 }

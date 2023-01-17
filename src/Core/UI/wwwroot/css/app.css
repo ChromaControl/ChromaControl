@@ -9,3 +9,65 @@ body {
 :not(input):not(textarea) {
     user-select: none;
 }
+
+.title-bar {
+    padding-left: 14px;
+    padding-right: 2px;
+}
+
+    .title-bar .Header-item button {
+        width: 45px;
+        color: #a0a0a0;
+        background-color: transparent;
+        transition: background-color 0.25s ease;
+    }
+
+        .title-bar .Header-item button:focus {
+            outline: none;
+        }
+
+        .title-bar .Header-item button:hover {
+            background-color: #888;
+            color: #fff;
+        }
+
+            .title-bar .Header-item button:hover:active {
+                background-color: #666;
+                transition: none;
+            }
+
+        .title-bar .Header-item button.close:hover {
+            background-color: #e81123;
+            color: #fff;
+        }
+
+            .title-bar .Header-item button.close:hover:active {
+                background-color: #bf0f1d;
+                transition: none;
+            }
+
+        .title-bar .Header-item button svg {
+            fill: currentColor;
+        }
+
+    .title-bar.blurred .Header-item {
+        opacity: 0.6;
+    }
+
+.dragger {
+    -webkit-app-region: drag;
+    height: 27px;
+}
+
+.Layout-main {
+    height: calc(100vh - 52px);
+    overflow-y: auto
+}
+
+    .Layout-main::-webkit-scrollbar {
+        display: none;
+    }
+
+:is(.menu-item.selected,.menu-item[aria-selected=true],.menu-item[aria-current]:not([aria-current=false])):before {
+    background-color: var(--color-btn-primary-bg);
+}
