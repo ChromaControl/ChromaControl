@@ -19,23 +19,23 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Core')) AND '$(Configuration)'=='Debug'">
-    <OutputPath>..\..\bin\Debug\core</OutputPath>
-    <PublishDir>..\..\bin\Debug\core\publish</PublishDir>
+    <OutputPath>..\..\..\bin\Debug\core</OutputPath>
+    <PublishDir>..\..\..\bin\Debug\core\publish</PublishDir>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Core')) AND '$(Configuration)'=='Release'">
-    <OutputPath>..\..\bin\Release\core</OutputPath>
-    <PublishDir>..\..\bin\Release\core\publish</PublishDir>
+    <OutputPath>..\..\..\bin\Release\core</OutputPath>
+    <PublishDir>..\..\..\bin\Release\core\publish</PublishDir>
     <SelfContained>true</SelfContained>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Website')) AND '$(Configuration)'=='Debug'">
-    <OutputPath>..\bin\Debug\website</OutputPath>
-    <PublishDir>..\bin\Debug\website\publish</PublishDir>
+    <OutputPath>..\..\bin\Debug\website</OutputPath>
+    <PublishDir>..\..\bin\Debug\website\publish</PublishDir>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Website')) AND '$(Configuration)'=='Release'">
-    <OutputPath>..\bin\Release\website</OutputPath>
-    <PublishDir>..\bin\Release\website\publish</PublishDir>
+    <OutputPath>..\..\bin\Release\website</OutputPath>
+    <PublishDir>..\..\bin\Release\website\publish</PublishDir>
   </PropertyGroup>
 </Project>
