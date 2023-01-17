@@ -25,7 +25,7 @@ public static class ChromaControlConstants
     /// <summary>
     /// The path to the chroma control socket.
     /// </summary>
-    public static readonly string SocketPath = Path.Combine(DataDirectory, "ChromaControl.sock");
+    public static readonly string SocketPath = Path.Combine(DataDirectory, "API.sock");
 
     /// <summary>
     /// The executing assembly name.
