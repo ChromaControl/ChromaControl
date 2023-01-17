@@ -11,4 +11,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.Contains('ChromaControl.Core'))">
+    <ApplicationIcon>..\..\..\assets\icon.ico</ApplicationIcon>
+  </PropertyGroup>
 </Project>
