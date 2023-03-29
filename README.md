@@ -7,7 +7,22 @@
 RGB ligting control for 3rd party devices inside of Razer Synapse.
 
 ## Getting Started
-This repository contains all the source code for Chroma Control. This includes the Chroma Control website, API, as well as the device drivers.
+Before installing the dependencies, make sure to install and enable Razer Chroma Connect.
+
+Enable SDK support/external integration and similar functionalities in other 3rd party RGB control apps You would want to use. 
+
+In case of iCUE that would be setttings->software and games and enable there: Software integrations, Game integrations.
+
+ Similar logic applies to other 3rd party apps controling hardware RGBs, if possible.
+
+
+To install the application since version 0.1.0 and above You need to:
+1. Install every appx package from release page
+2. Install the .msixbundle
+3. Press windows key and the Chroma Control should appear on top as last installed app, if not just type on keyboard Chroma and it should appear.
+
+ 
+_This repository contains all the source code for Chroma Control. This includes the Chroma Control website, API, as well as the device drivers._
 
 ## Download
 Downloads for Chroma Control can be found on the [Chroma Control website](https://chromacontrol.github.io) as well as on the [releases page](https://github.com/ChromaControl/ChromaControl/releases).
