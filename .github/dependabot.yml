@@ -4,8 +4,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    commit-message:
+      prefix: ci
 
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
       interval: "daily"
+    commit-message:
+      prefix: build

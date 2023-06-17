@@ -1,33 +1,71 @@
 {
-  "categories": [
-      {
-          "title": "## ✔️ New Features",
-          "labels": [
-              "feat"
-          ]
-      },
-      {
-          "title": "## 🪲 Bug Fixes",
-          "labels": [
-              "fix"
-          ]
-      },
-      {
-          "title": "## ❌ Removed",
-          "labels": [
-              "revert"
-          ]
-      }
-  ],
-  "label_extractor": [
-      {
-          "pattern": "(.): (.+)",
-          "target": "$1"
-      }
-  ],
-  "template": "${{CHANGELOG}}",
-  "pr_template": "- ${{TITLE}}",
-  "empty_template": "- No Changes",
-  "max_tags_to_fetch": 200,
-  "max_back_track_time_days": 1825
+    "categories": [
+        {
+            "title": "## 🚀 Features",
+            "labels": [
+                "feat"
+            ]
+        },
+        {
+            "title": "## 🪲 Bug Fixes",
+            "labels": [
+                "fix"
+            ]
+        },
+        {
+            "title": "## 📄 Documentation",
+            "labels": [
+                "docs"
+            ]
+        },
+        {
+            "title": "## 🚅 Performance Improvements",
+            "labels": [
+                "perf"
+            ]
+        },
+        {
+            "title": "## 🧪 Tests",
+            "labels": [
+                "test"
+            ]
+        },
+        {
+            "title": "## 📦 Builds",
+            "labels": [
+                "build"
+            ]
+        },
+        {
+            "title": "## ♾️ Continuous Integrations",
+            "labels": [
+                "ci"
+            ]
+        },
+        {
+            "title": "## ❌ Reverts",
+            "labels": [
+                "revert"
+            ]
+        },
+        {
+            "title": "## ✔️ Other Changes",
+            "labels": [
+                "style",
+                "refactor",
+                "chore"
+            ]
+        }
+    ],
+    "label_extractor": [
+        {
+            "pattern": "^(feat|fix|docs|perf|test|build|ci|revert|style|refactor|chore){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
+            "target": "$1"
+        }
+    ],
+    "template": "${{CHANGELOG}}",
+    "pr_template": "- ${{TITLE}} #${{NUMBER}}",
+    "empty_template": "- No Changes",
+    "max_tags_to_fetch": 1000,
+    "max_back_track_time_days": 1000
 }

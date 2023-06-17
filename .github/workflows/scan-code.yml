@@ -20,24 +20,24 @@ jobs:
       contents: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'csharp' ]
-
     steps:
-      - name: Checkout repository
+      - name: Check out Git repository
         uses: actions/checkout@v3
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: ${{ matrix.language }}
+          languages: csharp
 
       - name: Set up .NET
-        uses: actions/setup-dotnet@v3
+        uses: zyactions/dotnet-setup@v1
         with:
-          dotnet-version: "7.0.x"
+          global-json-file: src/global.json
+
+      - name: Restore .NET dependencies
+        uses: zyactions/dotnet-restore@v1
+        with:
+          working-directory: src/
 
       - name: Build solution
         run: dotnet build src/
