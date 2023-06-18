@@ -16,7 +16,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <WarningsAsErrors>Nullable</WarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <BaseOutputPath>$(MSBuildThisFileDirectory)../bin/$(MSBuildProjectName)</BaseOutputPath>
     <Copyright>© $(Authors). All rights reserved.</Copyright>
     <RepositoryType>git</RepositoryType>
     <IncludeSymbols>true</IncludeSymbols>
@@ -32,5 +31,24 @@
     <None Include="$(MSBuildThisFileDirectory)../README.md" Pack="true" PackagePath="/" Visible="false" />
     <None Include="$(MSBuildThisFileDirectory)../LICENSE.txt" Pack="true" PackagePath="/" Visible="false" />
   </ItemGroup>
+
+  <PropertyGroup>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Common'))">
+    <BaseOutputPath>$(MSBuildThisFileDirectory)../bin/Common</BaseOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Core'))">
+    <BaseOutputPath>$(MSBuildThisFileDirectory)../bin/App</BaseOutputPath>
+    <ApplicationIcon>..\..\..\assets\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(MSBuildProjectFile.StartsWith('ChromaControl.Website'))">
+    <BaseOutputPath>$(MSBuildThisFileDirectory)../bin/Website</BaseOutputPath>
+  </PropertyGroup>
 
 </Project>
