@@ -3,8 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net7.0-windows10.0.22000.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
