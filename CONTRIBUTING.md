@@ -14,7 +14,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
-- [I Want To Contribute](#i-want-to-contribute)
+  - [I Want To Contribute](#i-want-to-contribute)
   - [Reporting Bugs](#reporting-bugs)
   - [Suggesting Enhancements](#suggesting-enhancements)
   - [Your First Code Contribution](#your-first-code-contribution)
@@ -32,7 +32,7 @@ to <andrew.babbitt@outlook.com>.
 
 ## I Have a Question
 
-> If you want to ask a question, we assume that you have read the available [Documentation](https://chromacontrol.github.io).
+> If you want to ask a question, we assume that you have read the available [Documentation](https://github.com/ChromaControl/ChromaControl/tree/main/docs).
 
 Before you ask a question, it is best to search for existing [Issues](https://github.com/ChromaControl/ChromaControl/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
@@ -62,13 +62,13 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - Collect information about the bug:
   - Stack trace (Traceback)
   - OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
-  - Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
+  - Version of the interpreter, compiler, the software, runtime environment, package manager, depending on what seems relevant.
   - Possibly your input and the output
   - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
 
 #### How Do I Submit a Good Bug Report?
 
-> You must never report security related issues, vulnerabilities or bugs to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <andrew.babbitt@outlook.com>.
+> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <andrew.babbitt@outlook.com>.
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 

@@ -11,7 +11,7 @@ on:
 jobs:
   lint-code:
     name: Lint Code
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Check out Git repository
@@ -20,14 +20,10 @@ jobs:
       - name: Set up .NET
         uses: zyactions/dotnet-setup@v1
         with:
-          global-json-file: src/global.json
+          global-json-file: global.json
 
       - name: Restore .NET dependencies
         uses: zyactions/dotnet-restore@v1
-        with:
-          working-directory: src/
 
       - name: Lint solution
         uses: zyactions/dotnet-lint@v1
-        with:
-          working-directory: src/

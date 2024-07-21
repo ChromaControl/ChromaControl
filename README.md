@@ -4,10 +4,10 @@
 [![Discord](https://img.shields.io/discord/800996203609194517?style=for-the-badge&logo=discord&label=Discord&color=7289DA)](https://discord.gg/6xGy7cycrt)
 
 # Chroma Control
-Chroma Control is a set of connectors (we refer to them as drivers) to integrate 3rd party devices inside of Razer Synapse.
+Chroma Control is an application that integrates 3rd party devices into Razer Synapse.
 
 ## Getting Started
-This repository contains all the source code for Chroma Control. This includes the Chroma Control website, API, as well as the device drivers.
+This repository contains the source code for the primary Chroma Control installable components. Other auxiliary libraries used as a part of it can be found under the [Chroma Control GitHub organization](https://github.com/ChromaControl).
 
 ## Download
 Downloads for Chroma Control can be found on the [Chroma Control website](https://chromacontrol.github.io) as well as on the [releases page](https://github.com/ChromaControl/ChromaControl/releases).

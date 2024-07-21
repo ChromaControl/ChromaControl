@@ -30,7 +30,7 @@ body:
   - type: textarea
     attributes:
       label: Risks / unknowns
-      description: How might people misinterpret/misuse this? How might implementing it restrict us from other enhancements in the future? Also list any other perf/security/corectness concerns.
+      description: How might others misinterpret/misuse this? How might implementing it restrict us from other enhancements in the future? Also list any perf/security/correctness concerns.
     validations:
       required: true
   - type: textarea
@@ -39,12 +39,21 @@ body:
       description: |
         Give brief examples of possible developer and user experiences.
 
-        Don't be deeply concerned with how it will be implemented yet. Your examples could even be from other technology stacks or applications.
+        Don't be deeply concerned with how it would be implemented yet. Your examples could even be from other technology stacks or applications.
     validations:
       required: true
   - type: textarea
     attributes:
       label: Detailed design
-      description: Detail the design here.
+      description: |
+        It's often best not to fill this out until you get basic consensus about the above. When you do, consider adding an implementation proposal with the following headings:
+
+        Detailed design
+        Drawbacks
+        Considered alternatives
+        Open questions
+        References
+
+        If there's one clear design you have consensus on, you could do that directly in a PR.
     validations:
-      required: true
+      required: false

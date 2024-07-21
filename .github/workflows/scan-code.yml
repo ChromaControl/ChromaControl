@@ -13,34 +13,37 @@ on:
 jobs:
   scan-code:
     name: Scan Code
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     permissions:
       actions: read
       contents: read
       security-events: write
 
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'csharp' ]
+
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
-          languages: csharp
+          languages: ${{ matrix.language }}
 
       - name: Set up .NET
         uses: zyactions/dotnet-setup@v1
         with:
-          global-json-file: src/global.json
+          global-json-file: global.json
 
       - name: Restore .NET dependencies
         uses: zyactions/dotnet-restore@v1
-        with:
-          working-directory: src/
 
       - name: Build solution
-        run: dotnet build src/
+        run: dotnet build
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3

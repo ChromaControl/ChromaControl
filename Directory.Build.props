@@ -1,0 +1,52 @@
+<Project>
+
+  <PropertyGroup>
+    <Product>Chroma Control</Product>
+    <Version>1.0.0</Version>
+    <Authors>Chroma Control Contributors</Authors>
+    <Description>3rd party device lighting support for Razer Synapse.</Description>
+    <RepositoryUrl>https://github.com/ChromaControl/ChromaControl</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ChromaControl/ChromaControl</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/ChromaControl/ChromaControl/releases</PackageReleaseNotes>
+    <PackageTags>ChromaControl</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AnalysisLevelDesign>latest-recommended</AnalysisLevelDesign>
+    <AnalysisLevelDocumentation>latest-recommended</AnalysisLevelDocumentation>
+    <AnalysisLevelGlobalization>latest-minimum</AnalysisLevelGlobalization>
+    <AnalysisLevelInteroperability>latest-recommended</AnalysisLevelInteroperability>
+    <AnalysisLevelMaintainability>latest-recommended</AnalysisLevelMaintainability>
+    <AnalysisLevelNaming>latest-recommended</AnalysisLevelNaming>
+    <AnalysisLevelPerformance>latest-recommended</AnalysisLevelPerformance>
+    <AnalysisLevelSingleFile>latest-recommended</AnalysisLevelSingleFile>
+    <AnalysisLevelReliability>latest-recommended</AnalysisLevelReliability>
+    <AnalysisLevelSecurity>latest-recommended</AnalysisLevelSecurity>
+    <AnalysisLevelUsage>latest-recommended</AnalysisLevelUsage>
+    <AnalysisLevelStyle>latest-all</AnalysisLevelStyle>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)bin/$(MSBuildProjectName)</BaseOutputPath>
+    <Copyright>© $(Authors). All rights reserved.</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageIcon>nuget.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup Condition="$(IsPackable) == 'true'">
+    <None Include="$(MSBuildThisFileDirectory)assets/nuget.png" Visible="false" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)README.md" Visible="false" Pack="true" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)LICENSE.txt" Visible="False" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>
