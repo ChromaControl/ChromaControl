@@ -3,7 +3,6 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Hosting;
-using ChromaControl.App.Shell.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace ChromaControl.App.Shell;
@@ -44,7 +43,7 @@ public static class ShellExtensions
 
     private static BlazorDesktopHostBuilder ConfigureRootComponents(this BlazorDesktopHostBuilder builder)
     {
-        builder.RootComponents.Add<Routes>("#app");
+        builder.RootComponents.Add<Components.Routes>("#app");
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
         return builder;
