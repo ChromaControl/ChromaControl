@@ -2,8 +2,13 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-var builder = DistributedApplication.CreateBuilder(args);
+using BlazorDesktop.Hosting;
+using ChromaControl.App.Core;
+using ChromaControl.App.Shell;
 
-builder.AddProject<Projects.ChromaControl_App>("app");
+var builder = BlazorDesktopHostBuilder.CreateDefault(args);
 
-builder.Build().Run();
+builder.ConfigureCore()
+    .ConfigureShell();
+
+await builder.Build().RunAsync();

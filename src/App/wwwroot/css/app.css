@@ -1,0 +1,48 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+body, html {
+    background-color: #222;
+    color: #ccc;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    height: 100%;
+    margin: 0;
+    min-height: 720px;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+#blazor-error-ui {
+    background: #111;
+    color: #999;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    left: 0;
+    display: none;
+    padding: 14px 12px 18px 16px;
+}
+
+    #blazor-error-ui .reload {
+        color: #999;
+    }
+
+        #blazor-error-ui .reload:hover {
+            color: #44d62c;
+        }
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 14px;
+        top: 11px;
+    }

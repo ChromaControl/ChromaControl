@@ -1,0 +1,14 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.title-bar {
+    width: 100%;
+    background-color: #000;
+    cursor: default;
+    font-size: 14px;
+    height: 42px;
+    position: relative;
+    z-index: 2;
+    -webkit-app-region: drag;
+}
