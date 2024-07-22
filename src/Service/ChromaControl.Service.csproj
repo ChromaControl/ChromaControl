@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+    <AssemblyTitle>Chroma Control Service</AssemblyTitle>
     <OutputType>WinExe</OutputType>
     <SelfContained>true</SelfContained>
   </PropertyGroup>

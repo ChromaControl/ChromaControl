@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+    <AssemblyTitle>Chroma Control</AssemblyTitle>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
     <SelfContained>true</SelfContained>
