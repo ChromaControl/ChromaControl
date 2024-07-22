@@ -5,15 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ChromaControl.Keys" Version="1.0.3" />
-    <PackageReference Include="Google.Protobuf" Version="3.27.2" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.64.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.65.0">
+    <PackageReference Include="ChromaControl.Keys" />
+    <PackageReference Include="Google.Protobuf" />
+    <PackageReference Include="Grpc.Net.ClientFactory" />
+    <PackageReference Include="Grpc.Tools">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
-    <PackageReference Include="NReco.Logging.File" Version="1.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="NReco.Logging.File" />
   </ItemGroup>
 
   <ItemGroup>
