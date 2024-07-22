@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.Build.Traversal/4.1.0">
 
+  <PropertyGroup>
+    <NoWarn>MSB3644;MSB3270;$(NoWarn)</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\App\ChromaControl.App.csproj" />
     <ProjectReference Include="..\Service\ChromaControl.Service.csproj" />
