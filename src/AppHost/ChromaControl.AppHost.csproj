@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsAspireHost>true</IsAspireHost>
     <UserSecretsId>ChromaControl</UserSecretsId>
-    <NoWarn>CS1591</NoWarn>
+    <NoWarn>CS1591;$(NoWarn)</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
