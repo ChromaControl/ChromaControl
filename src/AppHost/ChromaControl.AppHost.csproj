@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\App\ChromaControl.App.csproj" />
+    <ProjectReference Include="..\Service\ChromaControl.Service.csproj" />
   </ItemGroup>
 
 </Project>

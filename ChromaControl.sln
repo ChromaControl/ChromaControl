@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.AppHost", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.App", "src\App\ChromaControl.App.csproj", "{EB3044DF-1995-411D-9A60-E59529AAC0EB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChromaControl.Service", "src\Service\ChromaControl.Service.csproj", "{30EB18DA-A416-4DD3-9869-9493D2CABD8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromaControl.Common", "src\Common\ChromaControl.Common.csproj", "{8C80D8A1-FA95-4B95-94E5-CADDFDE8A811}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{EB3044DF-1995-411D-9A60-E59529AAC0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB3044DF-1995-411D-9A60-E59529AAC0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB3044DF-1995-411D-9A60-E59529AAC0EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30EB18DA-A416-4DD3-9869-9493D2CABD8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30EB18DA-A416-4DD3-9869-9493D2CABD8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30EB18DA-A416-4DD3-9869-9493D2CABD8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30EB18DA-A416-4DD3-9869-9493D2CABD8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C80D8A1-FA95-4B95-94E5-CADDFDE8A811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C80D8A1-FA95-4B95-94E5-CADDFDE8A811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C80D8A1-FA95-4B95-94E5-CADDFDE8A811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C80D8A1-FA95-4B95-94E5-CADDFDE8A811}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

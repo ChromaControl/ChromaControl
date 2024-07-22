@@ -4,6 +4,9 @@
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.ChromaControl_App>("app");
+var service = builder.AddProject<Projects.ChromaControl_Service>("service", "http");
+
+builder.AddProject<Projects.ChromaControl_App>("app")
+    .WithReference(service);
 
 builder.Build().Run();

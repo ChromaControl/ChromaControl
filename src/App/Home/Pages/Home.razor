@@ -4,4 +4,6 @@
 
 @page "/"
 
-<h1>Hello, world!</h1>
+@inject ChromaControl.Common.Protos.Home.HomeClient client
+
+<h1>@(client.GetHome(new()).Content)</h1>

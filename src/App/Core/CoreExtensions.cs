@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Hosting;
+using ChromaControl.Common.Extensions;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -21,10 +22,19 @@ public static class CoreExtensions
     /// <returns>The <see cref="BlazorDesktopHostBuilder"/> to continue adding configuration to.</returns>
     public static BlazorDesktopHostBuilder ConfigureCore(this BlazorDesktopHostBuilder builder)
     {
-        builder.ConfigureTelemetry()
-            .ConfigureServiceDiscovery()
+        builder.ConfigureChromaControl()
+            .ConfigureTelemetry()
             .ConfigureHttpClient()
             .ConfigureDeveloperTools();
+
+        return builder;
+    }
+
+    private static BlazorDesktopHostBuilder ConfigureChromaControl(this BlazorDesktopHostBuilder builder)
+    {
+        builder.Configuration.AddChromaControlConfiguration();
+        builder.Services.AddChromaControlServices();
+        builder.Logging.AddChromaControlLogging();
 
         return builder;
     }
@@ -57,20 +67,11 @@ public static class CoreExtensions
         return builder;
     }
 
-    private static BlazorDesktopHostBuilder ConfigureServiceDiscovery(this BlazorDesktopHostBuilder builder)
-    {
-        builder.Services.AddServiceDiscovery();
-
-        return builder;
-    }
-
     private static BlazorDesktopHostBuilder ConfigureHttpClient(this BlazorDesktopHostBuilder builder)
     {
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
             http.AddStandardResilienceHandler();
-
-            http.AddServiceDiscovery();
         });
 
         builder.Services.AddHttpClient();

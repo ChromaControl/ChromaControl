@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option csharp_namespace = "ChromaControl.Common.Protos";
+
+package chromacontrol.home;
+
+service Home {
+    rpc GetHome(GetHomeRequest) returns (GetHomeReponse);
+}
+
+message GetHomeRequest { }
+
+message GetHomeReponse {
+    string content = 1;
+}

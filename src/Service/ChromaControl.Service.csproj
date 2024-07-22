@@ -3,20 +3,24 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <UseWPF>true</UseWPF>
+    <PublishAot>true</PublishAot>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlazorDesktop" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="8.7.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.9.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common\ChromaControl.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\App\appsettings.Development.json" Link="appsettings.Development.json" />
+    <Content Include="..\App\appsettings.json" Link="appsettings.json" />
   </ItemGroup>
 
 </Project>
