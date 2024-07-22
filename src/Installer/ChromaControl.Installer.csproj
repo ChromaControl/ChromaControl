@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.Build.Traversal/4.1.0">
+
+  <ItemGroup>
+    <ProjectReference Include="..\App\ChromaControl.App.csproj" />
+    <ProjectReference Include="..\Service\ChromaControl.Service.csproj" />
+  </ItemGroup>
+
+  <Import Project="Build.targets" />
+
+  <ItemGroup>
+    <Content Include="Installer.iss" />
+    <Content Include="Build.targets" />
+  </ItemGroup>
+
+</Project>

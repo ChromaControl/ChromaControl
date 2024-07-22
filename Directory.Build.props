@@ -41,6 +41,7 @@
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageIcon>nuget.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <ApplicationIcon>$(MSBuildThisFileDirectory)assets/icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup Condition="$(IsPackable) == 'true'">

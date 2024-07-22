@@ -1,0 +1,40 @@
+<Project>
+
+  <Target Name="BuildInstaller" AfterTargets="Publish">
+
+    <ItemGroup>
+      <DebugFiles Include="$(PublishDir)\*.pdb"/>
+      <DocumentFiles Include="$(PublishDir)\*.xml"/>
+      <InstallerFiles Include="$(PublishDir)\ChromaControlSetup-*.exe"/>
+    </ItemGroup>
+
+    <Delete Files="@(DebugFiles)"/>
+    <Delete Files="@(DocumentFiles)"/>
+    <Delete Files="@(InstallerFiles)"/>
+
+    <Message Text="Generating installer executable. This process might take a while."
+             Importance="High"/>
+
+    <Exec LogStandardErrorAsError="true"
+          StandardOutputImportance="Low"
+          Command='"$(MSBuildProgramFiles32)\Inno Setup 6\ISCC.exe" ^
+                   "$(MSBuildProjectDirectory)\Installer.iss" ^
+                   /DProduct="$(Product)" ^
+                   /DVersion="$(Version)" ^
+                   /DAuthors="$(Authors)" ^
+                   /DObjDir="$(MSBuildProjectExtensionsPath)" ^
+                   /DPublishDir="$(PublishDir)" ^
+                   /DLicenseFile="$(MSBuildThisFileDirectory)../../LICENSE.txt"'/>
+    
+    <RemoveDir Directories="$(PublishDir)"/>
+    <MakeDir Directories="$(PublishDir)"/>
+
+    <Move SourceFiles="$(MSBuildProjectExtensionsPath)ChromaControlSetup-$(Version).exe"
+          DestinationFolder="$(PublishDir)"/>
+
+    <Message Text="$(ProjectName) -> $(PublishDir)\"
+             Importance="High"/>
+
+  </Target>
+
+</Project>

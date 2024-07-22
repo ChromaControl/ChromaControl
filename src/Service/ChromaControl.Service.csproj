@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <PublishAot>true</PublishAot>
+    <SelfContained>true</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
