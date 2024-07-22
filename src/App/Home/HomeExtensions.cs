@@ -5,7 +5,7 @@
 using BlazorDesktop.Hosting;
 using ChromaControl.Common.Extensions;
 
-namespace ChromaControl.App.Core;
+namespace ChromaControl.App.Home;
 
 /// <summary>
 /// Home extension methods.
