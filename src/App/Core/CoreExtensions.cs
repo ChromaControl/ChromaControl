@@ -55,7 +55,8 @@ public static class CoreExtensions
             })
             .WithTracing(tracing =>
             {
-                tracing.AddHttpClientInstrumentation();
+                tracing.AddHttpClientInstrumentation()
+                .AddGrpcClientInstrumentation();
             });
 
         if (!string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]))
