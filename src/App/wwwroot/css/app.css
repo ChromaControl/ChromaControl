@@ -2,47 +2,178 @@
 /* The Chroma Control Contributors licenses this file to you under the MIT license. */
 /* See the LICENSE file in the project root for more information. */
 
-body, html {
-    background-color: #222;
-    color: #ccc;
-    font-family: Roboto, sans-serif;
-    font-size: 16px;
-    height: 100%;
-    margin: 0;
-    min-height: 720px;
-    overflow: hidden;
-    -webkit-user-select: none;
-    user-select: none;
-    width: 100%;
+:root {
+    --text-color: #24292e;
+    --text-secondary-color: #6a737d;
+    --background-color: #fff;
+    --link-button-color: #0372ef;
+    --font-family-sans-serif: system-ui, sans-serif, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
+    --font-family-monospace: Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
+    --font-size: 12px;
+    --box-border-color: #e1e4e8;
+    --spacing: 10px;
+    --border-radius: 6px;
+    --base-border: 1px solid var(--box-border-color);
+    --focus-color: #0366d6;
 }
 
-div {
+html {
     box-sizing: border-box;
 }
 
-#blazor-error-ui {
-    background: #111;
-    color: #999;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    bottom: 0;
-    left: 0;
-    display: none;
-    padding: 14px 12px 18px 16px;
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
-    #blazor-error-ui .reload {
-        color: #999;
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+html {
+    font-size: var(--font-size);
+    position: relative;
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    font-size: var(--font-size);
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+:not(input, textarea),
+:not(input, textarea)::after,
+:not(input, textarea)::before {
+    user-select: none;
+    cursor: default;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+code,
+pre {
+    font-family: var(--font-family-monospace);
+}
+
+button {
+    -webkit-app-region: no-drag;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: auto;
+    outline-color: var(--focus-color);
+}
+
+kbd {
+    border-radius: var(--border-radius);
+    border: var(--base-border);
+    display: inline-block;
+    padding: 1px 2px;
+    line-height: 1;
+    min-height: 16px;
+    font-family: var(--font-family-monospace);
+    text-align: center;
+    min-width: 1.5em;
+}
+
+a {
+    text-decoration: underline;
+}
+
+#blazor-error-ui {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: var(--base-border);
+}
+
+    #blazor-error-ui .banner {
+        height: 30px;
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: var(--spacing);
     }
 
-        #blazor-error-ui .reload:hover {
-            color: #44d62c;
+        #blazor-error-ui .banner .contents {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: left;
+            align-items: center;
         }
 
-    #blazor-error-ui .dismiss {
-        cursor: pointer;
-        position: absolute;
-        right: 14px;
-        top: 11px;
-    }
+            #blazor-error-ui .banner .contents svg {
+                margin-right: var(--spacing);
+                fill: currentColor;
+                flex-shrink: 0;
+                color: #cb2431;
+            }
+
+            #blazor-error-ui .banner .contents span a {
+                color: var(--text-color);
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+            }
+
+        #blazor-error-ui .banner .close {
+            display: flex;
+            flex-shrink: 0;
+            flex-grow: 0;
+            margin-right: var(--spacing);
+            margin-left: var(--spacing);
+        }
+
+            #blazor-error-ui .banner .close button {
+                width: 16px;
+                height: 16px;
+                border: 0;
+                padding: 0;
+                color: var(--text-secondary-color);
+                background: transparent;
+            }
+
+            #blazor-error-ui .banner .close button {
+                width: 16px;
+                height: 16px;
+                border: 0;
+                padding: 0;
+                color: var(--text-secondary-color);
+                background: transparent;
+            }
+
+                #blazor-error-ui .banner .close button svg {
+                    fill: currentColor;
+                    flex-shrink: 0;
+                }

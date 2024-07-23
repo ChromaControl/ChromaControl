@@ -32,11 +32,11 @@ public static class ShellExtensions
 
         builder.Window.UseFrame(false);
 
-        builder.Window.UseHeight(720);
-        builder.Window.UseWidth(1280);
+        builder.Window.UseHeight(660);
+        builder.Window.UseWidth(960);
 
-        builder.Window.UseMinHeight(500);
-        builder.Window.UseMinWidth(600);
+        builder.Window.UseMinHeight(660);
+        builder.Window.UseMinWidth(960);
 
         return builder;
     }
