@@ -17,14 +17,14 @@
 
     <Exec LogStandardErrorAsError="true"
           StandardOutputImportance="Low"
-          Command='"$(MSBuildProgramFiles32)\Inno Setup 6\ISCC.exe" ^
-                   "$(MSBuildProjectDirectory)\Installer.iss" ^
-                   /DProduct="$(Product)" ^
-                   /DVersion="$(Version)" ^
-                   /DAuthors="$(Authors)" ^
-                   /DObjDir="$(MSBuildProjectExtensionsPath)" ^
-                   /DPublishDir="$(PublishDir)" ^
-                   /DLicenseFile="$(MSBuildThisFileDirectory)../../LICENSE.txt"'/>
+          Command="&quot;$(MSBuildProgramFiles32)\Inno Setup 6\ISCC.exe&quot; ^
+                   &quot;$(MSBuildProjectDirectory)\Installer.iss&quot; ^
+                   /DProduct=&quot;$(Product)&quot; ^
+                   /DVersion=&quot;$(Version)&quot; ^
+                   /DAuthors=&quot;$(Authors)&quot; ^
+                   /DObjDir=&quot;$(MSBuildProjectExtensionsPath)&quot; ^
+                   /DPublishDir=&quot;$(PublishDir)&quot; ^
+                   /DLicenseFile=&quot;$(MSBuildThisFileDirectory)../../LICENSE.txt&quot;"/>
     
     <RemoveDir Directories="$(PublishDir)"/>
     <MakeDir Directories="$(PublishDir)"/>
