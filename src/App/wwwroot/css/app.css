@@ -2,18 +2,76 @@
 /* The Chroma Control Contributors licenses this file to you under the MIT license. */
 /* See the LICENSE file in the project root for more information. */
 
-:root {
+:root,
+[data-theme=light] {
     --text-color: #24292e;
     --text-secondary-color: #6a737d;
     --background-color: #fff;
+    --box-border-color: #e1e4e8;
+    --focus-color: #0366d6;
+}
+
+@media (prefers-color-scheme: light) {
+    [data-theme=system] {
+        --text-color: #24292e;
+        --text-secondary-color: #6a737d;
+        --background-color: #fff;
+        --box-border-color: #e1e4e8;
+        --focus-color: #0366d6;
+    }
+}
+
+[data-theme=dark] {
+    --text-color: #f6f8fa;
+    --text-secondary-color: #959da5;
+    --background-color: #24292e;
+    --box-border-color: #141414;
+    --focus-color: #0366d6;
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme=system] {
+        --text-color: #f6f8fa;
+        --text-secondary-color: #959da5;
+        --background-color: #24292e;
+        --box-border-color: #141414;
+        --focus-color: #0366d6;
+    }
+}
+
+[data-theme] {
     --font-family-sans-serif: system-ui, sans-serif, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-family-monospace: Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-size: 12px;
-    --box-border-color: #e1e4e8;
     --spacing: 10px;
     --border-radius: 6px;
     --base-border: 1px solid var(--box-border-color);
-    --focus-color: #0366d6;
+}
+
+:root,
+[data-theme=light] {
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+    [data-theme=system] {
+        color-scheme: light;
+    }
+}
+
+[data-theme=dark] {
+    color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-theme=system] {
+        color-scheme: dark;
+    }
+}
+
+[data-theme] {
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 html {
@@ -103,6 +161,12 @@ kbd {
 
 a {
     text-decoration: underline;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 #blazor-error-ui {

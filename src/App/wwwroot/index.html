@@ -3,22 +3,17 @@
 <!-- See the LICENSE file in the project root for more information. -->
 
 <!DOCTYPE html>
-
 <html>
-
 <head>
+    <title>Chroma Control</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>ChromaControl.App</title>
     <base href="/" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="stylesheet" href="ChromaControl.App.styles.css" />
 </head>
-
-<body>
-    <div id="app"></div>
-
-    <div id="blazor-error-ui">
+<body data-theme="system">
+    <div id="app" data-theme="system"></div>
+    <div id="blazor-error-ui" data-theme="system">
         <div class="banner">
             <div class="contents">
                 <svg aria-hidden="true" version="1.1" viewBox="0 0 16 16" tabindex="-1" height="16" width="16">
@@ -35,8 +30,6 @@
             </div>
         </div>
     </div>
-
     <script src="_framework/blazor.webview.js"></script>
 </body>
-
 </html>

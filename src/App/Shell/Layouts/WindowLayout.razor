@@ -4,8 +4,10 @@
 
 @inherits LayoutComponentBase
 
-<WindowTitleBar />
+<div class="window" data-theme="system">
+    <WindowTitleBar />
 
-<WindowContent>
-    @Body
-</WindowContent>
+    <WindowContent>
+        @Body
+    </WindowContent>
+</div>

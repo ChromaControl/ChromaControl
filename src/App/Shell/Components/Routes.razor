@@ -4,10 +4,10 @@
 
 <Router AppAssembly="typeof(ShellExtensions).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.WindowLayout)" />
+        <RouteView RouteData="routeData" DefaultLayout="typeof(Layouts.WindowLayout)" />
     </Found>
     <NotFound>
-        <LayoutView Layout="@typeof(Layout.WindowLayout)">
+        <LayoutView Layout="@typeof(Layouts.WindowLayout)">
             <p role="alert">Sorry, there's nothing here.</p>
         </LayoutView>
     </NotFound>
