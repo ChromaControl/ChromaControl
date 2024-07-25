@@ -23,20 +23,20 @@
     border: none;
     box-shadow: none;
     border-radius: 0;
-    color: var(--window-control-color);
+    color: var(--foreground-color-tertiary);
     background-color: transparent;
     transition: background-color .25s ease;
     line-height: 10px;
 }
 
     .window-control:hover {
-        color: var(--window-control-hover-color);
-        background-color: var(--window-control-hover-background);
+        color: var(--foreground-color-tertiary);
+        background-color: var(--background-color-inset);
     }
 
     .window-control:active {
-        color: var(--window-control-active-color);
-        background-color: var(--window-control-active-background);
+        color: var(--foreground-color-neutral);
+        background-color: var(--background-color-inset);
     }
 
     .window-control svg {

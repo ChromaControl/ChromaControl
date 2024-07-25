@@ -1,0 +1,15 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="menu-bar-dropdown-item" role="menuitem" tabindex="-1" @attributes="AdditionalAttributes">
+    <div class="menu-bar-dropdown-item-label">
+        <span>@Label</span>
+    </div>
+    @if (Shortcut != null)
+    {
+        <div class="menu-bar-dropdown-item-shortcut">
+            @Shortcut
+        </div>
+    }
+</div>

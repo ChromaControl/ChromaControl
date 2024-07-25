@@ -1,0 +1,21 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="menu-bar-dropdown @StateClass">
+    @if (Expanded)
+    {
+        <div class="menu-bar-dropdown-container">
+            <div class="menu-bar-dropdown-foldout">
+                @ChildContent
+            </div>
+        </div>
+    }
+    <div class="menu-bar-dropdown-button-container">
+        <button class="menu-bar-dropdown-button" type="button" role="menuitem" aria-expanded="@AriaExpanded" aria-haspopup="menu" @onclick="OnOpen" @onblur="OnClose" @onmouseenter="OnMouseEnter">
+            <span aria-label="@Title">
+                @Title
+            </span>
+        </button>
+    </div>
+</div>

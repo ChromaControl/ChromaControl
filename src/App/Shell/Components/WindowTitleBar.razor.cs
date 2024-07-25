@@ -14,7 +14,7 @@ public partial class WindowTitleBar
     /// <summary>
     /// The <see cref="StyleType"/> to use for the title bar.
     /// </summary>
-    [Parameter]
+    [Parameter, EditorRequired]
     public StyleType Style { get; set; }
 
     private string StyleClass => $"window-title-bar-{Style.ToString().ToLower()}";

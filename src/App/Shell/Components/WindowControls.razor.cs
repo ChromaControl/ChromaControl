@@ -12,8 +12,11 @@ namespace ChromaControl.App.Shell.Components;
 /// </summary>
 public partial class WindowControls
 {
+    /// <summary>
+    /// The window.
+    /// </summary>
     [Inject]
-    private Window Window { get; set; } = default!;
+    public required Window Window { get; set; }
 
     /// <inheritdoc/>
     protected override void OnInitialized()

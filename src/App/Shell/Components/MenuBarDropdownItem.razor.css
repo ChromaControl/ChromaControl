@@ -1,0 +1,29 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.menu-bar-dropdown-item {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    height: 30px;
+}
+
+    .menu-bar-dropdown-item:hover {
+        background: var(--background-color-default);
+    }
+
+.menu-bar-dropdown-item-label {
+    flex-grow: 1;
+    margin-left: var(--spacing-double);
+    margin-right: var(--spacing);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.menu-bar-dropdown-item-shortcut {
+    flex-shrink: 0;
+    margin-right: var(--spacing);
+    color: var(--foreground-color-muted);
+}

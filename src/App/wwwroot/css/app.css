@@ -4,58 +4,62 @@
 
 :root,
 [data-theme=light] {
-    --text-color: #212121;
-    --text-secondary-color: #69696c;
-    --background-color: #f4f4f4;
-    --box-border-color: #c7c7c7;
-    --focus-color: #4fd838;
-    --window-control-color: #999999;
-    --window-control-hover-color: #000000;
-    --window-control-hover-background: #ffffff;
-    --window-control-active-color: #999999;
-    --window-control-active-background: #ffffff;
+    --foreground-color-default: #212121;
+    --foreground-color-muted: #69696c;
+    --foreground-color-tertiary: #000000;
+    --foreground-color-neutral: #999999;
+    --foreground-color-accent: #44D62C;
+    --background-color-default: #f4f4f4;
+    --background-color-muted: #ffffff;
+    --background-color-inset: #ffffff;
+    --background-color-accent: #44d62c;
+    --border-color-default: #c7c7c7;
+    --overlay-color-default: rgba(0, 0, 0, 0.75);
 }
 
 @media (prefers-color-scheme: light) {
     [data-theme=system] {
-        --text-color: #212121;
-        --text-secondary-color: #69696c;
-        --background-color: #f4f4f4;
-        --box-border-color: #c7c7c7;
-        --focus-color: #4fd838;
-        --window-control-color: #999999;
-        --window-control-hover-color: #000000;
-        --window-control-hover-background: #ffffff;
-        --window-control-active-color: #999999;
-        --window-control-active-background: #ffffff;
+        --foreground-color-default: #212121;
+        --foreground-color-muted: #69696c;
+        --foreground-color-tertiary: #000000;
+        --foreground-color-neutral: #999999;
+        --foreground-color-accent: #44d62c;
+        --background-color-default: #f4f4f4;
+        --background-color-muted: #ffffff;
+        --background-color-inset: #ffffff;
+        --background-color-accent: #44d62c;
+        --border-color-default: #c7c7c7;
+        --overlay-color-default: rgba(0, 0, 0, 0.75);
     }
 }
 
 [data-theme=dark] {
-    --text-color: #cccccc;
-    --text-secondary-color: #888888;
-    --background-color: #222222;
-    --box-border-color: #111111;
-    --focus-color: #42cb2b;
-    --window-control-color: #999999;
-    --window-control-hover-color: #ffffff;
-    --window-control-hover-background: #000000;
-    --window-control-active-color: #999999;
-    --window-control-active-background: #000000;
+    --foreground-color-default: #cccccc;
+    --foreground-color-muted: #999999;
+    --foreground-color-tertiary: #ffffff;
+    --foreground-color-neutral: #999999;
+    --foreground-color-accent: #44d62c;
+    --background-color-default: #222222;
+    --background-color-muted: #111111;
+    --background-color-inset: #000000;
+    --background-color-accent: #44d62c;
+    --border-color-default: #111111;
+    --overlay-color-default: rgba(0, 0, 0, 0.75);
 }
 
 @media (prefers-color-scheme: dark) {
     [data-theme=system] {
-        --text-color: #cccccc;
-        --text-secondary-color: #888888;
-        --background-color: #222222;
-        --box-border-color: #111111;
-        --focus-color: #42cb2b;
-        --window-control-color: #999999;
-        --window-control-hover-color: #ffffff;
-        --window-control-hover-background: #000000;
-        --window-control-active-color: #999999;
-        --window-control-active-background: #000000;
+        --foreground-color-default: #cccccc;
+        --foreground-color-muted: #999999;
+        --foreground-color-tertiary: #ffffff;
+        --foreground-color-neutral: #999999;
+        --foreground-color-accent: #44d62c;
+        --background-color-default: #222222;
+        --background-color-muted: #111111;
+        --background-color-inset: #000000;
+        --background-color-accent: #44d62c;
+        --border-color-default: #111111;
+        --overlay-color-default: rgba(0, 0, 0, 0.75);
     }
 }
 
@@ -64,8 +68,11 @@
     --font-family-monospace: Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-size: 12px;
     --spacing: 10px;
+    --spacing-half: 5px;
+    --spacing-double: 20px;
     --border-radius: 0px;
-    --base-border: 1px solid var(--box-border-color);
+    --base-border: 1px solid var(--border-color-default);
+    --foldout-z-index: 17;
 }
 
 :root,
@@ -90,8 +97,8 @@
 }
 
 [data-theme] {
-    color: var(--text-color);
-    background-color: var(--background-color);
+    color: var(--foreground-color-default);
+    background-color: var(--background-color-default);
 }
 
 html {
@@ -122,8 +129,8 @@ body {
     font-family: var(--font-family-sans-serif);
     font-size: var(--font-size);
     line-height: 1.5;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    color: var(--foreground-color-default);
+    background-color: var(--background-color-default);
 }
 
 :not(input, textarea),
@@ -163,7 +170,7 @@ button {
 }
 
 :focus-visible {
-    outline: dashed 1px var(--focus-color);
+    outline: dashed 1px var(--background-color-accent);
 }
 
 kbd {
@@ -179,8 +186,14 @@ kbd {
 }
 
 a {
+    color: var(--foreground-color-default);
     text-decoration: underline;
+    cursor: pointer;
 }
+
+    a:hover {
+        color: var(--foreground-color-accent);
+    }
 
 #app {
     width: 100%;
@@ -223,8 +236,6 @@ a {
             }
 
             #blazor-error-ui .banner .contents span a {
-                color: var(--text-color);
-                cursor: pointer;
                 display: inline-flex;
                 align-items: center;
             }
@@ -242,7 +253,7 @@ a {
                 height: 16px;
                 border: 0;
                 padding: 0;
-                color: var(--text-secondary-color);
+                color: var(--foreground-color-muted);
                 background: transparent;
             }
 
@@ -251,7 +262,7 @@ a {
                 height: 16px;
                 border: 0;
                 padding: 0;
-                color: var(--text-secondary-color);
+                color: var(--foreground-color-muted);
                 background: transparent;
             }
 
