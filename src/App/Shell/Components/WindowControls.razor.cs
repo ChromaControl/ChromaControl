@@ -8,9 +8,9 @@ using System.Windows;
 namespace ChromaControl.App.Shell.Components;
 
 /// <summary>
-/// The window buttons component.
+/// The window controls component.
 /// </summary>
-public partial class WindowButtons
+public partial class WindowControls
 {
     [Inject]
     private Window Window { get; set; } = default!;

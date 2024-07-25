@@ -4,38 +4,58 @@
 
 :root,
 [data-theme=light] {
-    --text-color: #24292e;
-    --text-secondary-color: #6a737d;
-    --background-color: #fff;
-    --box-border-color: #e1e4e8;
-    --focus-color: #0366d6;
+    --text-color: #212121;
+    --text-secondary-color: #69696c;
+    --background-color: #f4f4f4;
+    --box-border-color: #c7c7c7;
+    --focus-color: #4fd838;
+    --window-control-color: #999999;
+    --window-control-hover-color: #000000;
+    --window-control-hover-background: #ffffff;
+    --window-control-active-color: #999999;
+    --window-control-active-background: #ffffff;
 }
 
 @media (prefers-color-scheme: light) {
     [data-theme=system] {
-        --text-color: #24292e;
-        --text-secondary-color: #6a737d;
-        --background-color: #fff;
-        --box-border-color: #e1e4e8;
-        --focus-color: #0366d6;
+        --text-color: #212121;
+        --text-secondary-color: #69696c;
+        --background-color: #f4f4f4;
+        --box-border-color: #c7c7c7;
+        --focus-color: #4fd838;
+        --window-control-color: #999999;
+        --window-control-hover-color: #000000;
+        --window-control-hover-background: #ffffff;
+        --window-control-active-color: #999999;
+        --window-control-active-background: #ffffff;
     }
 }
 
 [data-theme=dark] {
-    --text-color: #f6f8fa;
-    --text-secondary-color: #959da5;
-    --background-color: #24292e;
-    --box-border-color: #141414;
-    --focus-color: #0366d6;
+    --text-color: #cccccc;
+    --text-secondary-color: #888888;
+    --background-color: #222222;
+    --box-border-color: #111111;
+    --focus-color: #42cb2b;
+    --window-control-color: #999999;
+    --window-control-hover-color: #ffffff;
+    --window-control-hover-background: #000000;
+    --window-control-active-color: #999999;
+    --window-control-active-background: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
     [data-theme=system] {
-        --text-color: #f6f8fa;
-        --text-secondary-color: #959da5;
-        --background-color: #24292e;
-        --box-border-color: #141414;
-        --focus-color: #0366d6;
+        --text-color: #cccccc;
+        --text-secondary-color: #888888;
+        --background-color: #222222;
+        --box-border-color: #111111;
+        --focus-color: #42cb2b;
+        --window-control-color: #999999;
+        --window-control-hover-color: #ffffff;
+        --window-control-hover-background: #000000;
+        --window-control-active-color: #999999;
+        --window-control-active-background: #000000;
     }
 }
 
@@ -44,7 +64,7 @@
     --font-family-monospace: Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-size: 12px;
     --spacing: 10px;
-    --border-radius: 6px;
+    --border-radius: 0px;
     --base-border: 1px solid var(--box-border-color);
 }
 
@@ -143,8 +163,7 @@ button {
 }
 
 :focus-visible {
-    outline: auto;
-    outline-color: var(--focus-color);
+    outline: dashed 1px var(--focus-color);
 }
 
 kbd {

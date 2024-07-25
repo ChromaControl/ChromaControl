@@ -2,13 +2,25 @@
 /* The Chroma Control Contributors licenses this file to you under the MIT license. */
 /* See the LICENSE file in the project root for more information. */
 
-.title-bar {
-    width: 100%;
-    background-color: #000;
-    cursor: default;
-    font-size: 14px;
-    height: 42px;
-    position: relative;
-    z-index: 2;
+.window-title-bar {
     -webkit-app-region: drag;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 28px;
+}
+
+.window-title-bar-icon {
+    margin: 0 var(--spacing);
+    align-self: center;
+}
+
+.window-title-bar-light {
+    border-bottom: none;
+}
+
+.window-title-bar-full {
+    border-bottom: var(--base-border);
 }
