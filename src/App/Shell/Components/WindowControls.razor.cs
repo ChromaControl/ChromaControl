@@ -2,6 +2,7 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using BlazorDesktop.Wpf;
 using Microsoft.AspNetCore.Components;
 using System.Windows;
 
@@ -16,7 +17,7 @@ public partial class WindowControls
     /// The window.
     /// </summary>
     [Inject]
-    public required Window Window { get; set; }
+    public required BlazorDesktopWindow Window { get; set; }
 
     /// <inheritdoc/>
     protected override void OnInitialized()

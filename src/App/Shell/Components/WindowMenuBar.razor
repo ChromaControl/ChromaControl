@@ -8,20 +8,20 @@
         <MenuBarDropdownLine />
         <MenuBarDropdownItem Label="Settings" Shortcut="Ctrl+," @onmousedown="NotImplemented" />
         <MenuBarDropdownLine />
-        <MenuBarDropdownItem Label="Exit" Shortcut="Alt+F4" @onmousedown="NotImplemented" />
+        <MenuBarDropdownItem Label="Exit" Shortcut="Alt+F4" @onmousedown="Exit" />
     </MenuBarDropdown>
     <MenuBarDropdown Title="View">
-        <MenuBarDropdownItem Label="Toggle full screen" Shortcut="F11" @onmousedown="NotImplemented" />
+        <MenuBarDropdownItem Label="Toggle full screen" Shortcut="F11" @onmousedown="ToggleFullScreen" />
         <MenuBarDropdownLine />
-        <MenuBarDropdownItem Label="Reset zoom" Shortcut="Ctrl+0" @onmousedown="NotImplemented" />
-        <MenuBarDropdownItem Label="Zoom in" Shortcut="Ctrl+=" @onmousedown="NotImplemented" />
-        <MenuBarDropdownItem Label="Zoom out" Shortcut="Ctrl+-" @onmousedown="NotImplemented" />
+        <MenuBarDropdownItem Label="Reset zoom" Shortcut="Ctrl+0" @onmousedown="ResetZoom" />
+        <MenuBarDropdownItem Label="Zoom in" Shortcut="Ctrl+=" @onmousedown="ZoomIn" />
+        <MenuBarDropdownItem Label="Zoom out" Shortcut="Ctrl+-" @onmousedown="ZoomOut" />
     </MenuBarDropdown>
     <MenuBarDropdown Title="Help">
-        <MenuBarDropdownItem Label="Report issue..." @onmousedown="NotImplemented" />
-        <MenuBarDropdownItem Label="Contact support..." @onmousedown="NotImplemented" />
-        <MenuBarDropdownItem Label="Show user guides" @onmousedown="NotImplemented" />
-        <MenuBarDropdownItem Label="Show logs in File Explorer" @onmousedown="NotImplemented" />
+        <MenuBarDropdownItem Label="Report issue..." @onmousedown="ReportIssue" />
+        <MenuBarDropdownItem Label="Contact support..." @onmousedown="ContactSupport" />
+        <MenuBarDropdownItem Label="Show user guides" @onmousedown="ShowUserGuides" />
+        <MenuBarDropdownItem Label="Show logs in File Explorer" @onmousedown="ShowLogs" />
         <MenuBarDropdownLine />
         <MenuBarDropdownItem Label="About Chroma Control" @onmousedown="NotImplemented" />
     </MenuBarDropdown>

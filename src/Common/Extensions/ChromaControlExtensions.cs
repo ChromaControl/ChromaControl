@@ -104,7 +104,7 @@ public static class ChromaControlExtensions
     /// <param name="config">The <see cref="IConfigurationManager"/> to get the path from.</param>
     /// <param name="pathName">The name of the path requested.</param>
     /// <returns>The requested path.</returns>
-    public static string GetChromaControlPath(this IConfigurationManager config, string pathName)
+    public static string GetChromaControlPath(this IConfiguration config, string pathName)
     {
         var result = config[$"CHROMACONTROL_PATH_{pathName.ToUpper()}"]
             ?? throw new InvalidOperationException($"The requested path '{pathName}` could not be found.");

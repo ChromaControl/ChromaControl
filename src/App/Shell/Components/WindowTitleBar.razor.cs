@@ -2,6 +2,7 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using BlazorDesktop.Wpf;
 using Microsoft.AspNetCore.Components;
 
 namespace ChromaControl.App.Shell.Components;
@@ -11,6 +12,12 @@ namespace ChromaControl.App.Shell.Components;
 /// </summary>
 public partial class WindowTitleBar
 {
+    /// <summary>
+    /// The window.
+    /// </summary>
+    [Inject]
+    public required BlazorDesktopWindow Window { get; set; }
+
     /// <summary>
     /// The <see cref="StyleType"/> to use for the title bar.
     /// </summary>
@@ -33,5 +40,16 @@ public partial class WindowTitleBar
         /// A light title bar.
         /// </summary>
         Light
+    }
+
+    /// <inheritdoc/>
+    protected override void OnInitialized()
+    {
+        Window.OnFullscreenChanged += OnFullscreenChanged;
+    }
+
+    private void OnFullscreenChanged(object? sender, bool e)
+    {
+        StateHasChanged();
     }
 }
