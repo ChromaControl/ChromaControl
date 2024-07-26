@@ -22,4 +22,9 @@
     <ProjectReference Include="..\Common\ChromaControl.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\Service\appsettings.json" Link="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\Service\appsettings.Development.json" Link="appsettings.Development.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
