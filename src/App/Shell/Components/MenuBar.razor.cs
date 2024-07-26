@@ -15,7 +15,7 @@ public partial class MenuBar
     /// The content to be rendered.
     /// </summary>
     [Parameter]
-    public RenderFragment ChildContent { get; set; } = default!;
+    public required RenderFragment ChildContent { get; set; }
 
     /// <summary>
     /// If a menu is active.

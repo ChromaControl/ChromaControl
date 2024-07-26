@@ -2,11 +2,6 @@
 @* The Chroma Control Contributors licenses this file to you under the MIT license. *@
 @* See the LICENSE file in the project root for more information. *@
 
-@inherits LayoutComponentBase
-@layout BaseWindowLayout
-
-<WindowTitleBar Style="WindowTitleBar.StyleType.Full" />
-
-<WindowContent>
-    @Body
-</WindowContent>
+<div class="window-content">
+    @ChildContent
+</div>
