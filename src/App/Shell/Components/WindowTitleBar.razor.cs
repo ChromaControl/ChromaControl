@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Wpf;
+using ChromaControl.App.Shell.Services;
 using Microsoft.AspNetCore.Components;
 
 namespace ChromaControl.App.Shell.Components;
@@ -12,11 +13,19 @@ namespace ChromaControl.App.Shell.Components;
 /// </summary>
 public partial class WindowTitleBar
 {
+    private readonly Dictionary<string, object> _rootAttributes = [];
+
     /// <summary>
     /// The window.
     /// </summary>
     [Inject]
     public required BlazorDesktopWindow Window { get; set; }
+
+    /// <summary>
+    /// The <see cref="DialogService"/>.
+    /// </summary>
+    [Inject]
+    public required DialogService DialogService { get; set; }
 
     /// <summary>
     /// The <see cref="StyleType"/> to use for the title bar.
@@ -46,10 +55,25 @@ public partial class WindowTitleBar
     protected override void OnInitialized()
     {
         Window.OnFullscreenChanged += OnFullscreenChanged;
+        DialogService.CurrentDialogChanged += CurrentDialogChanged;
     }
 
     private void OnFullscreenChanged(object? sender, bool e)
     {
+        StateHasChanged();
+    }
+
+    private void CurrentDialogChanged()
+    {
+        if (DialogService.Any())
+        {
+            _rootAttributes.Add("inert", "");
+        }
+        else
+        {
+            _rootAttributes.Clear();
+        }
+
         StateHasChanged();
     }
 }

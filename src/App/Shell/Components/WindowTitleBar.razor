@@ -4,7 +4,7 @@
 
 @if(!Window.IsFullscreen)
 {
-    <div class="window-title-bar @StyleClass">
+    <div class="window-title-bar @StyleClass" @attributes="_rootAttributes">
         @if (Style == StyleType.Full)
         {
             <svg aria-hidden="true" class="window-title-bar-icon" version="1.1" viewBox="0 0 167.77 167.77" tabindex="-1" height="16" width="16">
