@@ -6,6 +6,7 @@ using BlazorDesktop.Hosting;
 using ChromaControl.App.Core;
 using ChromaControl.App.Home;
 using ChromaControl.App.Shell;
+using ChromaControl.App.Updater;
 
 var builder = BlazorDesktopHostBuilder.CreateDefault(args);
 
