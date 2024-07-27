@@ -1,0 +1,7 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.release-notes-container {
+    font-family: var(--font-family-monospace);
+}

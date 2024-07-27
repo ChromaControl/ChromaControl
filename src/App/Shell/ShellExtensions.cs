@@ -30,6 +30,7 @@ public static class ShellExtensions
     private static BlazorDesktopHostBuilder ConfigureServices(this BlazorDesktopHostBuilder builder)
     {
         builder.Services.AddSingleton<DialogService>();
+        builder.Services.AddSingleton<NotificationService>();
 
         return builder;
     }

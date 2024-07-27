@@ -20,6 +20,7 @@
     --background-color-accent: #44d62c;
     --background-color-accent-muted: #7ce26b;
     --background-color-accent-emphasis: #30961f;
+    --background-color-disabled: #dcdcdc;
     --background-color-scroll: #cccccc;
     --border-color-default: #c7c7c7;
     --border-color-neutral: #6d6d6d;
@@ -49,6 +50,7 @@
         --background-color-accent: #44d62c;
         --background-color-accent-muted: #7ce26b;
         --background-color-accent-emphasis: #30961f;
+        --background-color-disabled: #dcdcdc;
         --background-color-scroll: #cccccc;
         --border-color-default: #c7c7c7;
         --border-color-neutral: #6d6d6d;
@@ -78,6 +80,7 @@
     --background-color-accent: #44d62c;
     --background-color-accent-muted: #7ce26b;
     --background-color-accent-emphasis: #30961f;
+    --background-color-disabled: #313131;
     --background-color-scroll: #4e4e4e;
     --border-color-default: #111111;
     --border-color-neutral: #1b1b1b;
@@ -107,6 +110,7 @@
         --background-color-accent: #44d62c;
         --background-color-accent-muted: #7ce26b;
         --background-color-accent-emphasis: #30961f;
+        --background-color-disabled: #313131;
         --background-color-scroll: #4e4e4e;
         --border-color-default: #111111;
         --border-color-neutral: #1b1b1b;

@@ -14,18 +14,23 @@
     min-width: 120px;
 }
 
+    .button[aria-disabled=true] {
+        opacity: .6;
+        pointer-events: none;
+    }
+
 .button-primary {
     border: 1px solid var(--border-color-accent);
     color: var(--foreground-color-inset);
     background-color: var(--background-color-accent);
 }
 
-    .button-primary:hover {
+    .button-primary:not([aria-disabled=true]):hover {
         border: 1px solid var(--border-color-accent-muted);
         background-color: var(--background-color-accent-muted);
     }
 
-    .button-primary:active {
+    .button-primary:not([aria-disabled=true]):active {
         border: 1px solid var(--border-color-accent-emphasis);
         background-color: var(--background-color-accent-emphasis);
     }
@@ -36,12 +41,12 @@
     background-color: var(--background-color-neutral);
 }
 
-    .button-secondary:hover {
+    .button-secondary:not([aria-disabled=true]):hover {
         border: 1px solid var(--border-color-neutral-muted);
         background-color: var(--background-color-neutral-muted);
     }
 
-    .button-secondary:active {
+    .button-secondary:not([aria-disabled=true]):active {
         border: 1px solid var(--border-color-neutral-emphasis);
         background-color: var(--background-color-neutral-emphasis);
     }

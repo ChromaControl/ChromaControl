@@ -1,0 +1,47 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.notification {
+    height: 30px;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: var(--spacing);
+}
+
+.notification-content {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: center;
+}
+
+.notification-close {
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-right: var(--spacing);
+    margin-left: var(--spacing);
+}
+
+.notification-close-button {
+    width: 16px;
+    height: 16px;
+    border: 0;
+    padding: 0;
+    color: var(--foreground-color-neutral);
+    background: transparent;
+}
+
+    .notification-close-button:hover {
+        color: var(--foreground-color-tertiary);
+    }
+
+.notification-close-button-icon {
+    fill: currentColor;
+    flex: 0;
+}

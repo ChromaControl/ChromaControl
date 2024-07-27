@@ -17,6 +17,7 @@ public partial class AboutDialog
 {
     private string? _version;
     private string? _hash;
+    private bool _checkingForUpdates;
 
     /// <summary>
     /// The <see cref="DialogService"/>.
@@ -79,5 +80,16 @@ public partial class AboutDialog
     private void OpenLicenseInfo()
     {
         DialogService.Open<LicenseDialog>();
+    }
+
+    private async Task CheckForUpdates()
+    {
+        _checkingForUpdates = true;
+
+        await UpdateService.CheckForUpdates();
+
+        await Task.Delay(500);
+
+        _checkingForUpdates = false;
     }
 }

@@ -77,14 +77,21 @@
     overflow-y: auto;
 }
 
+::deep .dialog-content > div > span {
+    margin: 0;
+}
+
 ::deep .dialog-content > div > p {
-    margin-top: 0;
-    margin-bottom: var(--spacing);
+    margin: 0;
 }
 
 ::deep .dialog-content > div > h2 {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-semibold);
+    margin: 0;
+}
+
+::deep .dialog-content > div > svg {
     margin: 0;
 }
 
@@ -103,3 +110,11 @@
     border-top: var(--base-border);
     padding: var(--spacing-double);
 }
+
+::deep .dialog-footer button {
+    margin-right: var(--spacing);
+}
+
+    ::deep .dialog-footer button:last-child {
+        margin-right: 0;
+    }
