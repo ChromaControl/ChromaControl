@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using ChromaControl.App.Shell.Services;
+using ChromaControl.App.Updater.Services;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics;
 using System.IO;
@@ -22,6 +23,12 @@ public partial class AboutDialog
     /// </summary>
     [Inject]
     public required DialogService DialogService { get; set; }
+
+    /// <summary>
+    /// The <see cref="UpdateService"/>.
+    /// </summary>
+    [Inject]
+    public required UpdateService UpdateService { get; set; }
 
     /// <inheritdoc/>
     protected override void OnInitialized()

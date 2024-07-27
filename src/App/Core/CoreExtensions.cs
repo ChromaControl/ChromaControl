@@ -7,6 +7,8 @@ using ChromaControl.Common.Extensions;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using System.Diagnostics;
+using System.IO;
 
 namespace ChromaControl.App.Core;
 
@@ -70,9 +72,19 @@ public static class CoreExtensions
 
     private static BlazorDesktopHostBuilder ConfigureHttpClient(this BlazorDesktopHostBuilder builder)
     {
+        var appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        var appExecutable = $"{AppDomain.CurrentDomain.FriendlyName}.exe";
+        var appPath = Path.Combine(appDirectory, appExecutable);
+        var appVersionInfo = FileVersionInfo.GetVersionInfo(appPath);
+        var appVersion = appVersionInfo.ProductVersion;
+
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
             http.AddStandardResilienceHandler();
+            http.ConfigureHttpClient(client =>
+            {
+                client.DefaultRequestHeaders.Add("User-Agent", $"ChromaControl/{appVersion}");
+            });
         });
 
         builder.Services.AddHttpClient();

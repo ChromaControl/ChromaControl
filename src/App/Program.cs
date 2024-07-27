@@ -10,6 +10,7 @@ using ChromaControl.App.Shell;
 var builder = BlazorDesktopHostBuilder.CreateDefault(args);
 
 builder.ConfigureCore()
+    .ConfigureUpdater()
     .ConfigureShell()
     .ConfigureHome();
 
