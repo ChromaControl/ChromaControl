@@ -20,6 +20,7 @@
     --background-color-accent: #44d62c;
     --background-color-accent-muted: #7ce26b;
     --background-color-accent-emphasis: #30961f;
+    --background-color-scroll: #cccccc;
     --border-color-default: #c7c7c7;
     --border-color-neutral: #6d6d6d;
     --border-color-neutral-muted: #343434;
@@ -48,6 +49,7 @@
         --background-color-accent: #44d62c;
         --background-color-accent-muted: #7ce26b;
         --background-color-accent-emphasis: #30961f;
+        --background-color-scroll: #cccccc;
         --border-color-default: #c7c7c7;
         --border-color-neutral: #6d6d6d;
         --border-color-neutral-muted: #343434;
@@ -76,6 +78,7 @@
     --background-color-accent: #44d62c;
     --background-color-accent-muted: #7ce26b;
     --background-color-accent-emphasis: #30961f;
+    --background-color-scroll: #4e4e4e;
     --border-color-default: #111111;
     --border-color-neutral: #1b1b1b;
     --border-color-neutral-muted: #262626;
@@ -104,6 +107,7 @@
         --background-color-accent: #44d62c;
         --background-color-accent-muted: #7ce26b;
         --background-color-accent-emphasis: #30961f;
+        --background-color-scroll: #4e4e4e;
         --border-color-default: #111111;
         --border-color-neutral: #1b1b1b;
         --border-color-neutral-muted: #262626;
@@ -248,6 +252,33 @@ a {
     a:hover {
         color: var(--foreground-color-accent);
     }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-color-scroll);
+    border-radius: 5px;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 2px;
+    background-clip: padding-box;
+}
+
+    ::-webkit-scrollbar-thumb:hover,
+    ::-webkit-scrollbar-thumb:active {
+        background-color: var(--background-color-accent);
+        cursor: pointer;
+    }
+
+.selectable-text {
+    user-select: text;
+    cursor: auto;
+}
 
 #app {
     width: 100%;

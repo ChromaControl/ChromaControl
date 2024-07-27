@@ -71,6 +71,23 @@
     flex-direction: column;
 }
 
+.dialog-content-scrollable {
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+::deep .dialog-content > div > p {
+    margin-top: 0;
+    margin-bottom: var(--spacing);
+}
+
+::deep .dialog-content > div > h2 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    margin: 0;
+}
+
 .dialog-content-padding-standard {
     padding: var(--spacing-double);
 }

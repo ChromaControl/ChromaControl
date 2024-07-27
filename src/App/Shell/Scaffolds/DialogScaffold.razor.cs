@@ -43,12 +43,25 @@ public partial class DialogScaffold
     public string? Title { get; set; }
 
     /// <summary>
+    /// The cancel text of the dialog.
+    /// </summary>
+    [Parameter]
+    public string? CancelText { get; set; } = "CANCEL";
+
+    /// <summary>
+    /// If the dialog is scrollable.
+    /// </summary>
+    [Parameter]
+    public bool Scrollable { get; set; }
+
+    /// <summary>
     /// The <see cref="PaddingType"/> to use for the dialog.
     /// </summary>
     [Parameter]
     public PaddingType Padding { get; set; } = PaddingType.Standard;
 
     private string PaddingClass => $"dialog-content-padding-{Padding.ToString().ToLower()}";
+    private string ScrollableClass => Scrollable ? "dialog-content-scrollable" : "dialog-content-static";
 
     /// <summary>
     /// The padding type the dialog can use.

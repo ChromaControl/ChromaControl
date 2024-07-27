@@ -2,11 +2,27 @@
 @* The Chroma Control Contributors licenses this file to you under the MIT license. *@
 @* See the LICENSE file in the project root for more information. *@
 
-<DialogScaffold Title="SETTINGS" Width="600">
+<DialogScaffold Width="450" CancelText="CLOSE">
     <Content>
-        <h1>Hello World</h1>
+        <Row Center="true">
+            <svg aria-hidden="true" class="window-title-bar-icon" version="1.1" viewBox="0 0 167.77 167.77" tabindex="-1" height="64" width="64">
+                <g transform="translate(-20.557 -67.25)">
+                    <circle cx="104.44" cy="151.14" r="83.886" fill="#42d728" stroke-width=".31655" />
+                    <path d="m131.16 204.74h-53.626l26.813-26.813 26.813 26.813m25.875-63.681c-1.3407-7.1055-4.022-13.675-8.0439-19.708-4.022-6.033-9.1164-11.127-15.015-15.015-5.7648-3.7539-12.2-6.4351-19.037-7.7758-6.8373-1.3407-13.675-1.3407-20.512-0.13407-7.1055 1.3407-13.675 4.022-19.708 8.0439-6.0329 4.022-11.127 9.1164-15.015 15.015-3.7538 5.7648-6.4351 12.2-7.7758 19.037-1.3407 6.8373-1.3407 13.675-0.13406 20.512 1.3407 7.1055 4.022 13.675 8.0439 19.708 3.6198 5.3626 8.0439 9.9208 13.138 13.675l10.725-10.725c-4.5582-2.8154-8.4461-6.7033-11.53-11.262-5.7648-8.5802-7.7758-18.903-5.7648-29.092 2.011-10.189 7.9099-18.903 16.49-24.668 6.4351-4.2901 13.809-6.5692 21.45-6.5692 2.5472 0 5.0945 0.26814 7.6417 0.80441 10.189 2.011 18.903 7.9098 24.668 16.49 5.7648 8.5802 7.7758 18.903 5.7648 29.092-2.011 10.189-7.9099 18.903-16.49 24.668-0.26812 0.13409-0.53626 0.26813-0.80438 0.53625l10.725 10.725c5.2286-3.7538 9.7868-8.4461 13.272-13.943 3.7538-5.7648 6.4352-12.2 7.7758-19.037 1.3406-6.5692 1.4747-13.541 0.13406-20.378" fill="#1c1c1c" stroke-width="1.3407" />
+                </g>
+            </svg>
+        </Row>
+        <Row Center="true">
+            <h2>Chroma Control</h2>
+        </Row>
+        <Row Center="true" Margin="Row.MarginType.None">
+            <span class="selectable-text">Version @_version @_hash</span>
+        </Row>
+        <Row Center="true" Margin="Row.MarginType.None">
+            <a href="https://github.com/ChromaControl/ChromaControl/releases/tag/@(_version)">Release Notes</a>
+        </Row>
+        <Row Center="true">
+            <a @onclick="OpenLicenseInfo">License and Open Source Notices</a>
+        </Row>
     </Content>
-    <AdditionalButtons>
-
-    </AdditionalButtons>
 </DialogScaffold>

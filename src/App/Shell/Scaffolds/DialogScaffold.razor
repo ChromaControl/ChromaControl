@@ -18,12 +18,12 @@
     }
     <form class="dialog-body-container">
         <fieldset class="dialog-body">
-            <div class="dialog-content @PaddingClass">
+            <div class="dialog-content @PaddingClass @ScrollableClass">
                 @Content
             </div>
             <div class="dialog-footer">
                 @AdditionalButtons
-                <Button @onclick="DialogService.Close" Style="Button.StyleType.Secondary">CANCEL</Button>
+                <Button @onclick="DialogService.Close" Style="Button.StyleType.Secondary">@CancelText</Button>
             </div>
         </fieldset>
     </form>

@@ -36,7 +36,10 @@ public partial class WindowContent
     {
         if (DialogService.Any())
         {
-            _rootAttributes.Add("inert", "");
+            if (_rootAttributes.Count != 0)
+            {
+                _rootAttributes.Add("inert", "");
+            }
         }
         else
         {

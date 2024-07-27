@@ -1,0 +1,13 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.license-text {
+    font-family: var(--font-family-monospace);
+    white-space: pre-wrap;
+    margin-top: 0;
+    margin-bottom: var(--spacing-double);
+    cursor: text;
+    user-select: text;
+    padding: 0;
+}
