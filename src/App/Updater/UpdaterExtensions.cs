@@ -14,7 +14,7 @@ using NetSparkleUpdater.Interfaces;
 using NetSparkleUpdater.SignatureVerifiers;
 using System.IO;
 
-namespace ChromaControl.App.Shell;
+namespace ChromaControl.App.Updater;
 
 /// <summary>
 /// Updater extension methods.
