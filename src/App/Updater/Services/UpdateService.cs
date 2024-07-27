@@ -7,6 +7,7 @@ using ChromaControl.App.Updater.Components;
 using MarkdownSharp;
 using Microsoft.AspNetCore.Components;
 using NetSparkleUpdater;
+using System.Windows;
 
 namespace ChromaControl.App.Updater.Services;
 
@@ -32,6 +33,7 @@ public class UpdateService
 
         _updater.UpdateDetected += UpdateDetected;
         _updater.DownloadFinished += DownloadFinished;
+        _updater.CloseApplication += CloseApplication;
     }
 
     /// <summary>
@@ -83,9 +85,9 @@ public class UpdateService
     /// <summary>
     /// Installs the latest update.
     /// </summary>
-    public void InstallLatestUpdate()
+    public async Task InstallLatestUpdate()
     {
-        _updater.InstallUpdate(_latestUpdate);
+        await _updater.InstallUpdate(_latestUpdate);
     }
 
     /// <summary>
@@ -106,5 +108,10 @@ public class UpdateService
     private void DownloadFinished(AppCastItem item, string path)
     {
         _notificationService.Post<UpdateNotification>();
+    }
+
+    private void CloseApplication()
+    {
+        Application.Current.Shutdown();
     }
 }
