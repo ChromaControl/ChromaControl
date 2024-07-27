@@ -1,0 +1,23 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.dialog-container {
+    position: fixed;
+    inset: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--overlay-color-default);
+    animation: 200ms cubic-bezier(0.33, 1, 0.68, 1) 0s 1 normal none running dialog-overlay-appear;
+}
+
+@keyframes dialog-overlay-appear {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

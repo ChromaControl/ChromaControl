@@ -6,14 +6,27 @@
 [data-theme=light] {
     --foreground-color-default: #212121;
     --foreground-color-muted: #69696c;
+    --foreground-color-inset: #ffffff;
     --foreground-color-tertiary: #000000;
+    --foreground-color-white: #ffffff;
     --foreground-color-neutral: #999999;
-    --foreground-color-accent: #44D62C;
+    --foreground-color-accent: #44d62c;
     --background-color-default: #f4f4f4;
     --background-color-muted: #ffffff;
     --background-color-inset: #ffffff;
+    --background-color-neutral: #888888;
+    --background-color-neutral-muted: #ababab;
+    --background-color-neutral-emphasis: #5f5f5f;
     --background-color-accent: #44d62c;
+    --background-color-accent-muted: #7ce26b;
+    --background-color-accent-emphasis: #30961f;
     --border-color-default: #c7c7c7;
+    --border-color-neutral: #6d6d6d;
+    --border-color-neutral-muted: #343434;
+    --border-color-neutral-muted-emphasis: #252525;
+    --border-color-accent: #37ab24;
+    --border-color-accent-muted: #54b844;
+    --border-color-accent-emphasis: #133b0d;
     --overlay-color-default: rgba(0, 0, 0, 0.75);
 }
 
@@ -21,14 +34,27 @@
     [data-theme=system] {
         --foreground-color-default: #212121;
         --foreground-color-muted: #69696c;
+        --foreground-color-inset: #ffffff;
         --foreground-color-tertiary: #000000;
+        --foreground-color-white: #ffffff;
         --foreground-color-neutral: #999999;
         --foreground-color-accent: #44d62c;
         --background-color-default: #f4f4f4;
         --background-color-muted: #ffffff;
         --background-color-inset: #ffffff;
+        --background-color-neutral: #888888;
+        --background-color-neutral-muted: #ababab;
+        --background-color-neutral-emphasis: #5f5f5f;
         --background-color-accent: #44d62c;
+        --background-color-accent-muted: #7ce26b;
+        --background-color-accent-emphasis: #30961f;
         --border-color-default: #c7c7c7;
+        --border-color-neutral: #6d6d6d;
+        --border-color-neutral-muted: #343434;
+        --border-color-neutral-muted-emphasis: #252525;
+        --border-color-accent: #37ab24;
+        --border-color-accent-muted: #54b844;
+        --border-color-accent-emphasis: #133b0d;
         --overlay-color-default: rgba(0, 0, 0, 0.75);
     }
 }
@@ -36,14 +62,27 @@
 [data-theme=dark] {
     --foreground-color-default: #cccccc;
     --foreground-color-muted: #999999;
+    --foreground-color-inset: #000000;
     --foreground-color-tertiary: #ffffff;
+    --foreground-color-white: #ffffff;
     --foreground-color-neutral: #999999;
     --foreground-color-accent: #44d62c;
     --background-color-default: #222222;
     --background-color-muted: #111111;
     --background-color-inset: #000000;
+    --background-color-neutral: #555555;
+    --background-color-neutral-muted: #888888;
+    --background-color-neutral-emphasis: #3c3c3c;
     --background-color-accent: #44d62c;
+    --background-color-accent-muted: #7ce26b;
+    --background-color-accent-emphasis: #30961f;
     --border-color-default: #111111;
+    --border-color-neutral: #1b1b1b;
+    --border-color-neutral-muted: #262626;
+    --border-color-neutral-muted-emphasis: #171717;
+    --border-color-accent: #36aa23;
+    --border-color-accent-muted: #54b744;
+    --border-color-accent-emphasis: #123a0c;
     --overlay-color-default: rgba(0, 0, 0, 0.75);
 }
 
@@ -51,22 +90,37 @@
     [data-theme=system] {
         --foreground-color-default: #cccccc;
         --foreground-color-muted: #999999;
+        --foreground-color-inset: #000000;
         --foreground-color-tertiary: #ffffff;
+        --foreground-color-white: #ffffff;
         --foreground-color-neutral: #999999;
         --foreground-color-accent: #44d62c;
         --background-color-default: #222222;
         --background-color-muted: #111111;
         --background-color-inset: #000000;
+        --background-color-neutral: #555555;
+        --background-color-neutral-muted: #888888;
+        --background-color-neutral-emphasis: #3c3c3c;
         --background-color-accent: #44d62c;
+        --background-color-accent-muted: #7ce26b;
+        --background-color-accent-emphasis: #30961f;
         --border-color-default: #111111;
+        --border-color-neutral: #1b1b1b;
+        --border-color-neutral-muted: #262626;
+        --border-color-neutral-muted-emphasis: #171717;
+        --border-color-accent: #36aa23;
+        --border-color-accent-muted: #54b744;
+        --border-color-accent-emphasis: #123a0c;
         --overlay-color-default: rgba(0, 0, 0, 0.75);
     }
 }
 
 [data-theme] {
-    --font-family-sans-serif: system-ui, sans-serif, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
-    --font-family-monospace: Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
+    --font-family-sans-serif: Roboto, system-ui, sans-serif, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
+    --font-family-monospace: Roboto Mono, Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-size: 12px;
+    --font-size-md: 14px;
+    --font-weight-semibold: 600;
     --spacing: 10px;
     --spacing-half: 5px;
     --spacing-double: 20px;

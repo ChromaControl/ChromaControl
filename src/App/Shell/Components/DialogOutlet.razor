@@ -2,10 +2,9 @@
 @* The Chroma Control Contributors licenses this file to you under the MIT license. *@
 @* See the LICENSE file in the project root for more information. *@
 
-@inherits LayoutComponentBase
-
-<div class="window" data-theme="system">
-    @Body
-
-    <DialogOutlet />
-</div>
+@if (DialogService.Any())
+{
+    <div class="dialog-container">
+        @DialogService.GetCurrentDialog()
+    </div>
+}

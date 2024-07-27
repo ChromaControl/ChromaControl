@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Wpf;
+using ChromaControl.App.Shell.Services;
 using ChromaControl.Common.Extensions;
 using Microsoft.AspNetCore.Components;
 using System.Diagnostics;
@@ -22,10 +23,16 @@ public partial class WindowMenuBar
     public required BlazorDesktopWindow Window { get; set; }
 
     /// <summary>
-    /// The window.
+    /// The configuration.
     /// </summary>
     [Inject]
     public required IConfiguration Configuration { get; set; }
+
+    /// <summary>
+    /// The dialog service.
+    /// </summary>
+    [Inject]
+    public required DialogService DialogService { get; set; }
 
     private static void NotImplemented()
     {
@@ -75,6 +82,11 @@ public partial class WindowMenuBar
     private void ShowLogs()
     {
         OpenUrlOrPath(Configuration.GetChromaControlPath("logs"));
+    }
+
+    private void ShowAbout()
+    {
+        DialogService.Open<AboutDialog>();
     }
 
     private static void OpenUrlOrPath(string urlOrPath)

@@ -1,0 +1,88 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.dialog {
+    display: flex;
+    flex-direction: column;
+    overflow: unset;
+    border: var(--base-border);
+    padding: 0;
+    color: var(--foreground-color-default);
+    background: var(--background-color-default);
+    opacity: 1;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.dialog-header {
+    height: 50px;
+    border-bottom: var(--base-border);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--spacing-double);
+}
+
+.dialog-header-text {
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-md);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dialog-header-button {
+    flex-shrink: 0;
+    border: 0;
+    height: 16px;
+    width: 16px;
+    margin: 0 calc(var(--spacing) * -1) 0 auto;
+    padding: 0;
+    background: transparent;
+    color: var(--foreground-color-neutral);
+    cursor: pointer;
+}
+
+    .dialog-header-button:hover {
+        color: var(--foreground-color-tertiary);
+    }
+
+.dialog-header-button-icon {
+    fill: currentColor;
+}
+
+.dialog-body-container {
+    min-height: 0;
+    height: 100%;
+}
+
+.dialog-body {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-content-padding-standard {
+    padding: var(--spacing-double);
+}
+
+.dialog-content-padding-none {
+    padding: 0;
+}
+
+.dialog-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: var(--base-border);
+    padding: var(--spacing-double);
+}

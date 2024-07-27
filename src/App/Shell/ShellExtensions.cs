@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Hosting;
+using ChromaControl.App.Shell.Services;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace ChromaControl.App.Shell;
@@ -19,8 +20,16 @@ public static class ShellExtensions
     /// <returns>The <see cref="BlazorDesktopHostBuilder"/> to continue adding configuration to.</returns>
     public static BlazorDesktopHostBuilder ConfigureShell(this BlazorDesktopHostBuilder builder)
     {
-        builder.ConfigureWindow()
+        builder.ConfigureServices()
+            .ConfigureWindow()
             .ConfigureRootComponents();
+
+        return builder;
+    }
+
+    private static BlazorDesktopHostBuilder ConfigureServices(this BlazorDesktopHostBuilder builder)
+    {
+        builder.Services.AddSingleton<DialogService>();
 
         return builder;
     }
