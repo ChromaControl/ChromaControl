@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "ChromaControl.Common.Protos.Settings";
+
+package chromacontrol.settings;
+
+service SettingsGrpc {
+    rpc GetString(GetSettingRequest) returns (StringSettingResponse);
+    rpc SetString(SetStringRequest) returns (EmptySettingResponse);
+}
+
+message EmptySettingResponse { }
+
+message GetSettingRequest {
+    string module = 1;
+    string settingName = 2;
+}
+
+message StringSettingResponse {
+    string value = 1;
+}
+
+message SetStringRequest {
+    string module = 1;
+    string settingName = 2;
+    string settingValue = 3;
+}

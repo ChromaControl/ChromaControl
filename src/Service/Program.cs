@@ -4,6 +4,7 @@
 
 using ChromaControl.Service.Core;
 using ChromaControl.Service.Home;
+using ChromaControl.Service.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.ConfigureCore();
 
 var app = builder.Build();
 
-app.UseHome();
+app.UseSettings()
+    .UseHome();
 
 app.Run();

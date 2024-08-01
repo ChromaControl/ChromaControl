@@ -2,6 +2,8 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using ChromaControl.Common.Protos.Settings;
+
 namespace ChromaControl.App.Shell.Services;
 
 /// <summary>
@@ -9,7 +11,7 @@ namespace ChromaControl.App.Shell.Services;
 /// </summary>
 public class ThemeService
 {
-    private Theme _currentTheme = Theme.System;
+    private readonly SettingsGrpc.SettingsGrpcClient _settingsClient;
 
     /// <summary>
     /// Occurs when the theme changes.
@@ -38,14 +40,29 @@ public class ThemeService
     }
 
     /// <summary>
+    /// Creates a <see cref="ThemeService"/> instance.
+    /// </summary>
+    /// <param name="settingsClient">The <see cref="SettingsGrpc.SettingsGrpcClient"/>.</param>
+    public ThemeService(SettingsGrpc.SettingsGrpcClient settingsClient)
+    {
+        _settingsClient = settingsClient;
+    }
+
+    /// <summary>
     /// Gets the current theme.
     /// </summary>
     /// <returns>The current theme.</returns>
     public async Task<Theme> GetCurrentTheme()
     {
-        await Task.Delay(1);
+        var result = await _settingsClient.GetStringAsync(new()
+        {
+            Module = "shell",
+            SettingName = "theme"
+        });
 
-        return _currentTheme;
+        Enum.TryParse<Theme>(result.Value, true, out var theme);
+
+        return theme;
     }
 
     /// <summary>
@@ -55,10 +72,13 @@ public class ThemeService
     /// <returns>A <see cref="Task"/>.</returns>
     public async Task ChangeTheme(Theme theme)
     {
-        _currentTheme = theme;
-
         ThemeChanged?.Invoke(theme);
 
-        await Task.Delay(1);
+        await _settingsClient.SetStringAsync(new()
+        {
+            Module = "shell",
+            SettingName = "theme",
+            SettingValue = theme.ToString()
+        });
     }
 }
