@@ -36,6 +36,11 @@ public partial class Icon
         /// <summary>
         /// The paintbrush icon.
         /// </summary>
-        Paintbrush
+        Paintbrush,
+
+        /// <summary>
+        /// The package icon.
+        /// </summary>
+        Package
     }
 }
