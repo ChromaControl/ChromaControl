@@ -5,8 +5,6 @@
 using ChromaControl.App.Shell.Services;
 using ChromaControl.App.Updater.Services;
 using Microsoft.AspNetCore.Components;
-using System.Diagnostics;
-using System.IO;
 
 namespace ChromaControl.App.Shell.Components;
 
@@ -15,9 +13,7 @@ namespace ChromaControl.App.Shell.Components;
 /// </summary>
 public partial class AboutDialog
 {
-    private string? _version;
-    private string? _hash;
-    private bool _checkingForUpdates;
+    private (string version, string? hash, bool prerelease) _version;
 
     /// <summary>
     /// The <see cref="DialogService"/>.
@@ -34,47 +30,14 @@ public partial class AboutDialog
     /// <inheritdoc/>
     protected override void OnInitialized()
     {
-        UpdateVersionInfo();
+        UpdateService.StateChanged += UpdateServiceStateChanged;
+
+        _version = UpdateService.GetCurrentVersion();
     }
 
-    private void UpdateVersionInfo()
+    private void UpdateServiceStateChanged()
     {
-        var appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        var appExecutable = $"{AppDomain.CurrentDomain.FriendlyName}.exe";
-        var appPath = Path.Combine(appDirectory, appExecutable);
-        var appVersionInfo = FileVersionInfo.GetVersionInfo(appPath);
-        var appVersion = appVersionInfo.ProductVersion;
-
-        if (appVersion is null)
-        {
-            _version = "Unknown";
-
-            return;
-        }
-
-        var hashIndex = appVersion.IndexOf('+');
-
-        if (hashIndex == -1)
-        {
-            _version = appVersion;
-            return;
-        }
-        else
-        {
-            _version = appVersion[..hashIndex];
-            var hash = appVersion[(hashIndex + 1)..];
-
-            if (hash.Length > 7)
-            {
-                _hash = $"({hash[..7]})";
-            }
-            else
-            {
-                _hash = $"({hash})";
-            }
-
-            return;
-        }
+        InvokeAsync(StateHasChanged);
     }
 
     private void OpenLicenseInfo()
@@ -84,12 +47,8 @@ public partial class AboutDialog
 
     private async Task CheckForUpdates()
     {
-        _checkingForUpdates = true;
-
         await UpdateService.CheckForUpdates();
 
         await Task.Delay(500);
-
-        _checkingForUpdates = false;
     }
 }
