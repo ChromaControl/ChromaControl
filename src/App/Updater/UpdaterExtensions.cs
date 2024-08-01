@@ -68,7 +68,7 @@ public static class UpdaterExtensions
             var updateInfoHandler = services.GetRequiredService<IAppCastHandler>();
             var configuration = services.GetRequiredService<Configuration>();
 
-            return new("https://api.github.com/repos/AndrewBabbitt97/Updates/releases", signatureVerifier)
+            return new("https://api.github.com/repos/ChromaControl/ChromaControl/releases", signatureVerifier)
             {
                 LogWriter = logger,
                 AppCastDataDownloader = updateInfoDownloader,
