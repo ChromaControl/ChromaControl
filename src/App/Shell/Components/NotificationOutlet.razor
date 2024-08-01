@@ -2,7 +2,7 @@
 @* The Chroma Control Contributors licenses this file to you under the MIT license. *@
 @* See the LICENSE file in the project root for more information. *@
 
-<div role="alert" class="notification-container">
+<div role="alert" class="notification-container" @attributes="_rootAttributes">
     @if (NotificationService.Any())
     {
         @NotificationService.GetCurrentNotification()

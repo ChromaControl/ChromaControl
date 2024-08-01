@@ -67,7 +67,7 @@ public partial class WindowTitleBar
     {
         if (DialogService.Any())
         {
-            if (_rootAttributes.Count != 0)
+            if (_rootAttributes.Count == 0)
             {
                 _rootAttributes.Add("inert", "");
             }

@@ -12,20 +12,46 @@ namespace ChromaControl.App.Shell.Components;
 /// </summary>
 public partial class NotificationOutlet
 {
+    private readonly Dictionary<string, object> _rootAttributes = [];
+
     /// <summary>
     /// The <see cref="NotificationService"/>.
     /// </summary>
     [Inject]
     public required NotificationService NotificationService { get; set; }
 
+    /// <summary>
+    /// The <see cref="DialogService"/>.
+    /// </summary>
+    [Inject]
+    public required DialogService DialogService { get; set; }
+
     /// <inheritdoc/>
     protected override void OnInitialized()
     {
         NotificationService.CurrentNotificationChanged += CurrentNotificationChanged;
+        DialogService.CurrentDialogChanged += CurrentDialogChanged;
     }
 
     private async void CurrentNotificationChanged()
     {
         await InvokeAsync(StateHasChanged);
+    }
+
+    private void CurrentDialogChanged()
+    {
+        if (DialogService.Any())
+        {
+            if (_rootAttributes.Count == 0)
+            {
+                _rootAttributes.Add("inert", "");
+            }
+        }
+        else
+        {
+            _rootAttributes.Clear();
+        }
+
+        StateHasChanged();
     }
 }
