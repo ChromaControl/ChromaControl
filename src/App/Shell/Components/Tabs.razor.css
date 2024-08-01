@@ -20,3 +20,10 @@
     border-left: var(--base-border);
     flex: 1;
 }
+
+    .tabs-content > ::deep h2 {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight);
+        margin-top: 0;
+        margin-bottom: var(--spacing);
+    }

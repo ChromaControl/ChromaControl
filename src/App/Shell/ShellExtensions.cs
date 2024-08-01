@@ -31,6 +31,7 @@ public static class ShellExtensions
     {
         builder.Services.AddSingleton<DialogService>();
         builder.Services.AddSingleton<NotificationService>();
+        builder.Services.AddSingleton<ThemeService>();
 
         return builder;
     }

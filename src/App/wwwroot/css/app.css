@@ -128,12 +128,13 @@
     --font-family-monospace: Roboto Mono, Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-size: 12px;
     --font-size-md: 14px;
+    --font-weight: 400;
     --font-weight-semibold: 600;
     --spacing: 10px;
     --spacing-third: 3.333px;
     --spacing-half: 5px;
     --spacing-double: 20px;
-    --spacing-tripple: 30px;
+    --spacing-triple: 30px;
     --border-radius: 0px;
     --base-border: 1px solid var(--border-color-default);
     --foldout-z-index: 17;
@@ -258,6 +259,10 @@ a {
     a:hover {
         color: var(--foreground-color-accent);
     }
+
+input {
+    accent-color: var(--background-color-accent);
+}
 
 ::-webkit-scrollbar {
     width: 10px;

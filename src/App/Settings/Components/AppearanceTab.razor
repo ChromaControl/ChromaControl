@@ -1,0 +1,43 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<h2>THEME</h2>
+
+@if (!_loading)
+{
+    <InputRadioGroup @bind-Value="_theme">
+        <div role="radiogroup" class="theme-selector">
+            <div class="theme" @onclick="ChooseLightTheme">
+                <InputRadio Value="ThemeService.Theme.Light" />
+                <label>
+                    <span>
+                        <img class="theme-image" src="img/light_theme.svg" />
+                        <span class="theme-label">Light</span>
+                    </span>
+                </label>
+            </div>
+            <div class="theme" @onclick="ChooseDarkTheme">
+                <InputRadio Value="ThemeService.Theme.Dark" />
+                <label>
+                    <span>
+                        <img class="theme-image" src="img/dark_theme.svg" />
+                        <span class="theme-label">Dark</span>
+                    </span>
+                </label>
+            </div>
+            <div class="theme" @onclick="ChooseSystemTheme">
+                <InputRadio Value="ThemeService.Theme.System" />
+                <label>
+                    <span>
+                        <span class="theme-system">
+                            <img class="theme-image" src="img/light_theme.svg" />
+                            <img class="theme-image" src="img/dark_theme.svg" />
+                        </span>
+                        <span class="theme-label">System</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </InputRadioGroup>
+}
