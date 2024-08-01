@@ -68,8 +68,8 @@ public class ThemeService
     {
         var result = await _settingsClient.GetStringAsync(new()
         {
-            Module = "shell",
-            Name = "theme"
+            Module = "Shell",
+            Name = "Theme"
         });
 
         Enum.TryParse<Theme>(result.Value, true, out var theme);
@@ -88,9 +88,9 @@ public class ThemeService
 
         await _settingsClient.SetStringAsync(new()
         {
-            Module = "shell",
-            Name = "theme",
-            SettingValue = theme.ToString()
+            Module = "Shell",
+            Name = "Theme",
+            Value = theme.ToString()
         });
     }
 }

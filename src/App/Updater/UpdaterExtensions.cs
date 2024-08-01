@@ -5,14 +5,12 @@
 using BlazorDesktop.Hosting;
 using ChromaControl.App.Updater.Services;
 using ChromaControl.App.Updater.Sparkle;
-using ChromaControl.Common.Extensions;
 using NetSparkleUpdater;
 using NetSparkleUpdater.AssemblyAccessors;
 using NetSparkleUpdater.Configurations;
 using NetSparkleUpdater.Enums;
 using NetSparkleUpdater.Interfaces;
 using NetSparkleUpdater.SignatureVerifiers;
-using System.IO;
 
 namespace ChromaControl.App.Updater;
 
@@ -45,14 +43,7 @@ public static class UpdaterExtensions
             return new AsmResolverAccessor(null);
         });
 
-        builder.Services.AddSingleton<Configuration, JSONConfiguration>(services =>
-        {
-            var accessor = services.GetRequiredService<IAssemblyAccessor>();
-            var config = services.GetRequiredService<IConfiguration>();
-            var jsonPath = Path.Combine(config.GetChromaControlPath("environment"), "Updater.json");
-
-            return new JSONConfiguration(accessor, jsonPath);
-        });
+        builder.Services.AddSingleton<Configuration, UpdateConfiguration>();
 
         builder.Services.AddSingleton<NetSparkleUpdater.Interfaces.ILogger, UpdateLogger>();
         builder.Services.AddSingleton<IAppCastDataDownloader, UpdateInfoDownloader>();

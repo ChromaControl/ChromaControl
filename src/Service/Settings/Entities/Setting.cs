@@ -27,6 +27,16 @@ public class Setting : IEntityTypeConfiguration<Setting>
     /// </summary>
     public string? StringValue { get; set; }
 
+    /// <summary>
+    /// The bool type value.
+    /// </summary>
+    public bool? BoolValue { get; set; }
+
+    /// <summary>
+    /// The date time type value.
+    /// </summary>
+    public DateTime? DateTimeValue { get; set; }
+
     /// <inheritdoc/>
     public void Configure(EntityTypeBuilder<Setting> builder)
     {

@@ -4,9 +4,15 @@ option csharp_namespace = "ChromaControl.Common.Protos.Settings";
 
 package chromacontrol.settings;
 
+import "google/protobuf/timestamp.proto";
+
 service SettingsGrpc {
     rpc GetString(GetSettingRequest) returns (StringSettingResponse);
+    rpc GetBool(GetSettingRequest) returns (BoolSettingResponse);
+    rpc GetDateTime(GetSettingRequest) returns (DateTimeSettingResponse);
     rpc SetString(SetStringRequest) returns (EmptySettingResponse);
+    rpc SetBool(SetBoolRequest) returns (EmptySettingResponse);
+    rpc SetDateTime(SetDateTimeRequest) returns (EmptySettingResponse);
 }
 
 message EmptySettingResponse { }
@@ -20,8 +26,28 @@ message StringSettingResponse {
     string value = 1;
 }
 
+message BoolSettingResponse {
+    bool value = 1;
+}
+
+message DateTimeSettingResponse {
+    google.protobuf.Timestamp value = 1;
+}
+
 message SetStringRequest {
     string module = 1;
     string name = 2;
-    string settingValue = 3;
+    string value = 3;
+}
+
+message SetBoolRequest {
+    string module = 1;
+    string name = 2;
+    bool value = 3;
+}
+
+message SetDateTimeRequest {
+    string module = 1;
+    string name = 2;
+    google.protobuf.Timestamp value = 3;
 }

@@ -2,6 +2,8 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.EntityFrameworkCore;
+
 namespace ChromaControl.Service.Data.Services;
 
 /// <summary>
@@ -52,6 +54,7 @@ public partial class MigrationService : IHostedService
             try
             {
                 await database.Database.EnsureCreatedAsync(cancellationToken);
+                await database.Database.ExecuteSqlRawAsync("PRAGMA journal_mode = delete;", cancellationToken);
                 await database.SaveChangesAsync(cancellationToken);
             }
             catch (Exception ex)
