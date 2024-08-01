@@ -13,7 +13,7 @@ message EmptySettingResponse { }
 
 message GetSettingRequest {
     string module = 1;
-    string settingName = 2;
+    string name = 2;
 }
 
 message StringSettingResponse {
@@ -22,6 +22,6 @@ message StringSettingResponse {
 
 message SetStringRequest {
     string module = 1;
-    string settingName = 2;
+    string name = 2;
     string settingValue = 3;
 }

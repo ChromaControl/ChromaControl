@@ -3,12 +3,14 @@
 // See the LICENSE file in the project root for more information.
 
 using ChromaControl.Service.Core;
+using ChromaControl.Service.Data;
 using ChromaControl.Service.Home;
 using ChromaControl.Service.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.ConfigureCore();
+builder.ConfigureCore()
+    .ConfigureData();
 
 var app = builder.Build();
 

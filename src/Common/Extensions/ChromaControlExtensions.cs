@@ -24,6 +24,7 @@ public static class ChromaControlExtensions
     private readonly static string s_logsPath = Path.Combine(s_environmentPath, "logs");
     private readonly static string s_runtimePath = Path.Combine(s_dataPath, "runtime");
     private readonly static string s_socketPath = Path.Combine(s_runtimePath, "ChromaControl.sock");
+    private readonly static string s_databasePath = Path.Combine(s_environmentPath, "ChromaControl.db");
 
     /// <summary>
     /// Adds Chroma Control services to an <see cref="IServiceCollection"/>.
@@ -92,6 +93,8 @@ public static class ChromaControlExtensions
         config["CHROMACONTROL_PATH_LOGS"] = s_logsPath;
         config["CHROMACONTROL_PATH_RUNTIME"] = s_runtimePath;
         config["CHROMACONTROL_PATH_SOCKET"] = s_socketPath;
+
+        config.GetSection("ConnectionStrings")["Database"] = $"Data Source={s_databasePath}";
 
         config.AddChromaControlKeys();
 

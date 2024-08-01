@@ -49,6 +49,18 @@ public class ThemeService
     }
 
     /// <summary>
+    /// Initializes the theme service.
+    /// </summary>
+    public void Initialize()
+    {
+        Task.Run(async () =>
+        {
+            var theme = await GetCurrentTheme();
+            await ChangeTheme(theme);
+        });
+    }
+
+    /// <summary>
     /// Gets the current theme.
     /// </summary>
     /// <returns>The current theme.</returns>
@@ -57,7 +69,7 @@ public class ThemeService
         var result = await _settingsClient.GetStringAsync(new()
         {
             Module = "shell",
-            SettingName = "theme"
+            Name = "theme"
         });
 
         Enum.TryParse<Theme>(result.Value, true, out var theme);
@@ -77,7 +89,7 @@ public class ThemeService
         await _settingsClient.SetStringAsync(new()
         {
             Module = "shell",
-            SettingName = "theme",
+            Name = "theme",
             SettingValue = theme.ToString()
         });
     }
