@@ -88,13 +88,16 @@ public static class ChromaControlExtensions
             Directory.CreateDirectory(s_runtimePath);
         }
 
-        config["CHROMACONTROL_PATH_DATA"] = s_dataPath;
-        config["CHROMACONTROL_PATH_ENVIRONMENT"] = s_environmentPath;
-        config["CHROMACONTROL_PATH_LOGS"] = s_logsPath;
-        config["CHROMACONTROL_PATH_RUNTIME"] = s_runtimePath;
-        config["CHROMACONTROL_PATH_SOCKET"] = s_socketPath;
+        var paths = config.GetSection("ChromaControl").GetSection("Path");
+        var connectionStrings = config.GetSection("ConnectionStrings");
 
-        config.GetSection("ConnectionStrings")["Database"] = $"Data Source={s_databasePath}";
+        paths["DATA"] = s_dataPath;
+        paths["ENVIRONMENT"] = s_environmentPath;
+        paths["LOGS"] = s_logsPath;
+        paths["RUNTIME"] = s_runtimePath;
+        paths["SOCKET"] = s_socketPath;
+
+        connectionStrings["Database"] = $"Data Source={s_databasePath}";
 
         config.AddChromaControlKeys();
 
@@ -109,7 +112,7 @@ public static class ChromaControlExtensions
     /// <returns>The requested path.</returns>
     public static string GetChromaControlPath(this IConfiguration config, string pathName)
     {
-        var result = config[$"CHROMACONTROL_PATH_{pathName.ToUpper()}"]
+        var result = config.GetSection("ChromaControl").GetSection("Path")[pathName.ToUpper()]
             ?? throw new InvalidOperationException($"The requested path '{pathName}` could not be found.");
 
         return result;
