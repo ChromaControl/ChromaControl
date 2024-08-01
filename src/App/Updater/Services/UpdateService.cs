@@ -59,7 +59,7 @@ public class UpdateService
     /// </summary>
     public void StartService()
     {
-        if (!_started && !_hostEnvironment.IsDevelopment())
+        if (!_started && !IsDevelopmentMode())
         {
             _updater.StartLoop(true, true, TimeSpan.FromMinutes(15));
             _started = true;

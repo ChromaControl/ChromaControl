@@ -31,7 +31,7 @@ public class UpdateLogger : NetSparkleUpdater.Interfaces.ILogger
         }
         else
         {
-            _logger.LogInformation(message, arguments);
+            _logger.LogTrace(message, arguments);
         }
 #pragma warning restore CA2254 // Template should be a static expression
 #pragma warning restore CA1848 // Use the LoggerMessage delegates
