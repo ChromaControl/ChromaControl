@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components;
 namespace ChromaControl.App.Updater.Components;
 
 /// <summary>
-/// The update notification.
+/// The release notes dialog.
 /// </summary>
 public partial class ReleaseNotesDialog
 {
