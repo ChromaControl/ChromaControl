@@ -16,6 +16,7 @@
 }
 
 .tabs-content {
+    padding: var(--spacing-double);
     border-left: var(--base-border);
     flex: 1;
 }
