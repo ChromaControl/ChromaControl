@@ -1,0 +1,21 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.tabs {
+    display: flex;
+}
+
+.tab-items {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    flex-shrink: 0;
+    padding: var(--spacing) 0;
+}
+
+.tabs-content {
+    border-left: var(--base-border);
+    flex: 1;
+}

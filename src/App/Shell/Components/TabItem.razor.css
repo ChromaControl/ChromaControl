@@ -1,0 +1,38 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.tab-item {
+    border: none;
+    box-shadow: none;
+    font-family: var(--font-family-sans-serif);
+    font-size: var(--font-size-md);
+    border-radius: 0px;
+    min-width: 150px;
+    display: flex;
+    justify-content: left;
+    padding: calc(var(--spacing) + var(--spacing-third)) var(--spacing-tripple);
+}
+
+    .tab-item > ::deep span > svg {
+        vertical-align: bottom;
+        margin-right: var(--spacing);
+    }
+
+    .tab-item.inactive {
+        color: var(--foreground-color-default);
+        background-color: var(--background-color-default);
+    }
+
+        .tab-item.inactive:hover {
+            background-color: var(--background-color-muted);
+        }
+
+        .tab-item.inactive > ::deep span > svg {
+            color: var(--foreground-color-muted);
+        }
+
+    .tab-item.active {
+        color: var(--foreground-color-accent);
+        background-color: var(--background-color-muted);
+    }
