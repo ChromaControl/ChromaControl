@@ -18,6 +18,16 @@ public class Database : DbContext
     public DbSet<Setting> Settings => Set<Setting>();
 
     /// <summary>
+    /// The device vendors.
+    /// </summary>
+    public DbSet<DeviceVendor> DeviceVendors => Set<DeviceVendor>();
+
+    /// <summary>
+    /// The device detectors.
+    /// </summary>
+    public DbSet<DeviceDetector> DeviceDetectors => Set<DeviceDetector>();
+
+    /// <summary>
     /// Creates a <see cref="Database"/> instance.
     /// </summary>
     /// <param name="options">The <see cref="DbContextOptions{TContext}"/>.</param>
