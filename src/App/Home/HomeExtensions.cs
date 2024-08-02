@@ -3,7 +3,6 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Hosting;
-using ChromaControl.Common.Extensions;
 
 namespace ChromaControl.App.Home;
 
@@ -19,8 +18,6 @@ public static class HomeExtensions
     /// <returns>The <see cref="BlazorDesktopHostBuilder"/> to continue adding configuration to.</returns>
     public static BlazorDesktopHostBuilder ConfigureHome(this BlazorDesktopHostBuilder builder)
     {
-        builder.Services.AddChromaControlGrpcClient<Common.Protos.Home.HomeClient>();
-
         return builder;
     }
 }
