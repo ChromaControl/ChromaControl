@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="BlazorDesktop" />
+    <PackageReference Include="MediatR" />
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
     <PackageReference Include="NetSparkleUpdater.SparkleUpdater" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />

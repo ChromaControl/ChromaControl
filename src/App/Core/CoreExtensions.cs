@@ -26,6 +26,7 @@ public static class CoreExtensions
     {
         builder.ConfigureChromaControl()
             .ConfigureTelemetry()
+            .ConfigureMediatr()
             .ConfigureHttpClient()
             .ConfigureDeveloperTools();
 
@@ -66,6 +67,16 @@ public static class CoreExtensions
             builder.Services.AddOpenTelemetry()
                 .UseOtlpExporter();
         }
+
+        return builder;
+    }
+
+    private static BlazorDesktopHostBuilder ConfigureMediatr(this BlazorDesktopHostBuilder builder)
+    {
+        builder.Services.AddMediatR(config =>
+        {
+            config.RegisterServicesFromAssemblyContaining<Program>();
+        });
 
         return builder;
     }
