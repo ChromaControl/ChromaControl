@@ -2,6 +2,7 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using ChromaControl.Service.Devices.Entities;
 using ChromaControl.Service.Settings.Entities;
 using Microsoft.EntityFrameworkCore;
 

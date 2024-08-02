@@ -5,7 +5,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ChromaControl.Service.Settings.Entities;
+namespace ChromaControl.Service.Devices.Entities;
 
 /// <summary>
 /// A device detector.
