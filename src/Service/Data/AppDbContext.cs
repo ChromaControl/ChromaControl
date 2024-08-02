@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 namespace ChromaControl.Service.Data;
 
 /// <summary>
-/// The database.
+/// The app database context.
 /// </summary>
-public class Database : DbContext
+public class AppDbContext : DbContext
 {
     /// <summary>
     /// The settings.
@@ -29,15 +29,15 @@ public class Database : DbContext
     public DbSet<DeviceDetector> DeviceDetectors => Set<DeviceDetector>();
 
     /// <summary>
-    /// Creates a <see cref="Database"/> instance.
+    /// Creates an <see cref="AppDbContext"/> instance.
     /// </summary>
     /// <param name="options">The <see cref="DbContextOptions{TContext}"/>.</param>
-    public Database(DbContextOptions<Database> options) : base(options) { }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     /// <inheritdoc/>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Database).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
 
         base.OnModelCreating(modelBuilder);
     }

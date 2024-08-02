@@ -15,15 +15,15 @@ namespace ChromaControl.Service.Settings.Services;
 /// </summary>
 public class SettingsService : SettingsGrpc.SettingsGrpcBase
 {
-    private readonly Database _database;
+    private readonly AppDbContext _context;
 
     /// <summary>
     /// Creates a <see cref="SettingsService"/> instance.
     /// </summary>
-    /// <param name="database">The <see cref="Database"/>.</param>
-    public SettingsService(Database database)
+    /// <param name="context">The <see cref="AppDbContext"/>.</param>
+    public SettingsService(AppDbContext context)
     {
-        _database = database;
+        _context = context;
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// <returns>A <see cref="StringSettingResponse"/>.</returns>
     public override async Task<StringSettingResponse> GetString(GetSettingRequest request, ServerCallContext context)
     {
-        var value = await _database.Settings
+        var value = await _context.Settings
             .Where(s => s.Module == request.Module && s.Name == request.Name)
             .Select(s => s.StringValue)
             .FirstOrDefaultAsync();
@@ -60,7 +60,7 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// <returns>A <see cref="BoolSettingResponse"/>.</returns>
     public override async Task<BoolSettingResponse> GetBool(GetSettingRequest request, ServerCallContext context)
     {
-        var value = await _database.Settings
+        var value = await _context.Settings
             .Where(s => s.Module == request.Module && s.Name == request.Name)
             .Select(s => s.BoolValue)
             .FirstOrDefaultAsync();
@@ -86,7 +86,7 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// <returns>A <see cref="DateTimeSettingResponse"/>.</returns>
     public override async Task<DateTimeSettingResponse> GetDateTime(GetSettingRequest request, ServerCallContext context)
     {
-        var value = await _database.Settings
+        var value = await _context.Settings
             .Where(s => s.Module == request.Module && s.Name == request.Name)
             .Select(s => s.DateTimeValue)
             .FirstOrDefaultAsync();
@@ -112,25 +112,25 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// <returns>A <see cref="EmptySettingResponse"/>.</returns>
     public override async Task<EmptySettingResponse> SetString(SetStringRequest request, ServerCallContext context)
     {
-        var exists = await _database.Settings
+        var exists = await _context.Settings
             .AnyAsync(s => s.Module == request.Module && s.Name == request.Name);
 
         if (exists)
         {
-            await _database.Settings
+            await _context.Settings
                 .Where(s => s.Module == request.Module && s.Name == request.Name)
                 .ExecuteUpdateAsync(p => p.SetProperty(s => s.StringValue, request.Value));
         }
         else
         {
-            _database.Settings.Add(new()
+            _context.Settings.Add(new()
             {
                 Module = request.Module,
                 Name = request.Name,
                 StringValue = request.Value
             });
 
-            await _database.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         return new();
@@ -144,25 +144,25 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// <returns>A <see cref="EmptySettingResponse"/>.</returns>
     public override async Task<EmptySettingResponse> SetBool(SetBoolRequest request, ServerCallContext context)
     {
-        var exists = await _database.Settings
+        var exists = await _context.Settings
             .AnyAsync(s => s.Module == request.Module && s.Name == request.Name);
 
         if (exists)
         {
-            await _database.Settings
+            await _context.Settings
                 .Where(s => s.Module == request.Module && s.Name == request.Name)
                 .ExecuteUpdateAsync(p => p.SetProperty(s => s.BoolValue, request.Value));
         }
         else
         {
-            _database.Settings.Add(new()
+            _context.Settings.Add(new()
             {
                 Module = request.Module,
                 Name = request.Name,
                 BoolValue = request.Value
             });
 
-            await _database.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         return new();
@@ -176,25 +176,25 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// <returns>A <see cref="EmptySettingResponse"/>.</returns>
     public override async Task<EmptySettingResponse> SetDateTime(SetDateTimeRequest request, ServerCallContext context)
     {
-        var exists = await _database.Settings
+        var exists = await _context.Settings
             .AnyAsync(s => s.Module == request.Module && s.Name == request.Name);
 
         if (exists)
         {
-            await _database.Settings
+            await _context.Settings
                 .Where(s => s.Module == request.Module && s.Name == request.Name)
                 .ExecuteUpdateAsync(p => p.SetProperty(s => s.DateTimeValue, request.Value.ToDateTime()));
         }
         else
         {
-            _database.Settings.Add(new()
+            _context.Settings.Add(new()
             {
                 Module = request.Module,
                 Name = request.Name,
                 DateTimeValue = request.Value.ToDateTime()
             });
 
-            await _database.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         return new();

@@ -42,7 +42,7 @@ public partial class MigrationService : IHostedService
     {
         await using var scope = _serviceProvider.CreateAsyncScope();
 
-        var database = scope.ServiceProvider.GetRequiredService<Database>();
+        var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
         var hostLifetime = scope.ServiceProvider.GetRequiredService<IHostApplicationLifetime>();
 
         LogStartingMigration(_logger);
@@ -53,9 +53,9 @@ public partial class MigrationService : IHostedService
         {
             try
             {
-                await database.Database.EnsureCreatedAsync(cancellationToken);
-                await database.Database.ExecuteSqlRawAsync("PRAGMA journal_mode = delete;", cancellationToken);
-                await database.SaveChangesAsync(cancellationToken);
+                await context.Database.EnsureCreatedAsync(cancellationToken);
+                await context.Database.ExecuteSqlRawAsync("PRAGMA journal_mode = delete;", cancellationToken);
+                await context.SaveChangesAsync(cancellationToken);
             }
             catch (Exception ex)
             {

@@ -19,7 +19,7 @@ public static class DataExtensions
     /// <returns>The <see cref="IHostApplicationBuilder"/> to continue adding configuration to.</returns>
     public static IHostApplicationBuilder ConfigureData(this IHostApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<Database>(options =>
+        builder.Services.AddDbContext<AppDbContext>(options =>
         {
             if (builder.Environment.IsDevelopment())
             {
