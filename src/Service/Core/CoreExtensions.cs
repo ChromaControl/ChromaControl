@@ -56,7 +56,11 @@ public static class CoreExtensions
             .WithTracing(tracing =>
             {
                 tracing.AddAspNetCoreInstrumentation()
-                .AddEntityFrameworkCoreInstrumentation();
+                .AddEntityFrameworkCoreInstrumentation(options =>
+                {
+                    options.SetDbStatementForText = true;
+                    options.SetDbStatementForStoredProcedure = true;
+                });
             });
 
         if (!string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]))
