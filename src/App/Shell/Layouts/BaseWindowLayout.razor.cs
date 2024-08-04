@@ -14,7 +14,9 @@ namespace ChromaControl.App.Shell.Layouts;
 /// </summary>
 public partial class BaseWindowLayout
 {
-    private string? _currentTheme;
+    private ThemeService.Theme _currentTheme;
+
+    private string ThemeName => _currentTheme.ToString().ToLower();
 
     /// <summary>
     /// The <see cref="ThemeService"/>.
@@ -35,19 +37,19 @@ public partial class BaseWindowLayout
 
         var cachedTheme = await JSRuntime.LocalStorageGetItem("shell.theme");
 
-        if (cachedTheme != null)
+        if (!string.IsNullOrWhiteSpace(cachedTheme))
         {
-            _currentTheme = cachedTheme;
+            Enum.TryParse(cachedTheme, true, out _currentTheme);
         }
 
-        ThemeService.Initialize();
+        ThemeService.Initialize(_currentTheme);
     }
 
     private async void OnThemeChanged(ThemeService.Theme theme)
     {
-        _currentTheme = theme.ToString().ToLower();
+        _currentTheme = theme;
 
-        await JSRuntime.LocalStorageSetItem("shell.theme", _currentTheme);
+        await JSRuntime.LocalStorageSetItem("shell.theme", ThemeName);
 
         await InvokeAsync(StateHasChanged);
     }

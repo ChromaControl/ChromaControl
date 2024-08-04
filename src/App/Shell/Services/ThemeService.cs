@@ -2,7 +2,8 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using ChromaControl.Common.Protos.Settings;
+using ChromaControl.App.Shell.Queries;
+using MediatR;
 
 namespace ChromaControl.App.Shell.Services;
 
@@ -11,7 +12,8 @@ namespace ChromaControl.App.Shell.Services;
 /// </summary>
 public class ThemeService
 {
-    private readonly SettingsGrpc.SettingsGrpcClient _settingsClient;
+    private Theme _cachedTheme;
+    private readonly IMediator _mediator;
 
     /// <summary>
     /// Occurs when the theme changes.
@@ -42,17 +44,20 @@ public class ThemeService
     /// <summary>
     /// Creates a <see cref="ThemeService"/> instance.
     /// </summary>
-    /// <param name="settingsClient">The <see cref="SettingsGrpc.SettingsGrpcClient"/>.</param>
-    public ThemeService(SettingsGrpc.SettingsGrpcClient settingsClient)
+    /// <param name="mediator">The <see cref="IMediator"/>.</param>
+    public ThemeService(IMediator mediator)
     {
-        _settingsClient = settingsClient;
+        _mediator = mediator;
     }
 
     /// <summary>
     /// Initializes the theme service.
     /// </summary>
-    public void Initialize()
+    /// <param name="initialTheme">The initial theme to use.</param>
+    public void Initialize(Theme initialTheme)
     {
+        _cachedTheme = initialTheme;
+
         Task.Run(async () =>
         {
             var theme = await GetCurrentTheme();
@@ -66,15 +71,18 @@ public class ThemeService
     /// <returns>The current theme.</returns>
     public async Task<Theme> GetCurrentTheme()
     {
-        var result = await _settingsClient.GetStringAsync(new()
+        var result = await _mediator.Send(new GetCurrentTheme.Query());
+
+        if (result.IsSuccess(out var response))
         {
-            Module = "Shell",
-            Name = "Theme"
-        });
+            Enum.TryParse<Theme>(response, true, out var theme);
 
-        Enum.TryParse<Theme>(result.Value, true, out var theme);
-
-        return theme;
+            return theme;
+        }
+        else
+        {
+            return _cachedTheme;
+        }
     }
 
     /// <summary>
@@ -86,11 +94,6 @@ public class ThemeService
     {
         ThemeChanged?.Invoke(theme);
 
-        await _settingsClient.SetStringAsync(new()
-        {
-            Module = "Shell",
-            Name = "Theme",
-            Value = theme.ToString()
-        });
+        await _mediator.Send(new ChangeTheme.Command(theme.ToString()));
     }
 }
