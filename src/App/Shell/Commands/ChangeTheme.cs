@@ -5,7 +5,7 @@
 using ChromaControl.App.Core.Mediator;
 using ChromaControl.Common.Protos.Settings;
 
-namespace ChromaControl.App.Shell.Queries;
+namespace ChromaControl.App.Shell.Commands;
 
 /// <summary>
 /// Changes the theme.

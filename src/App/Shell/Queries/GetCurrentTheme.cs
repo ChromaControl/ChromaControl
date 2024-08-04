@@ -15,7 +15,7 @@ public class GetCurrentTheme
     /// <summary>
     /// Queries for the current theme.
     /// </summary>
-    public struct Query : IQuery<string>;
+    public record struct Query : IQuery<string>;
 
     /// <summary>
     /// Handles getting the current theme.
