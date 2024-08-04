@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="8.1.0" />
-    <PackageVersion Include="BlazorDesktop" Version="8.6.0" />
+    <PackageVersion Include="BlazorDesktop" Version="8.0.8" />
     <PackageVersion Include="ChromaControl.Keys" Version="1.0.3" />
     <PackageVersion Include="CommonTypeUnions" Version="1.0.0" />
     <PackageVersion Include="Google.Protobuf" Version="3.27.3" />
