@@ -76,12 +76,17 @@ public partial class ServiceMonitor : IHostedService
         else
         {
             _serviceProcess = processes[0];
+
+            try
+            {
+                _serviceProcess.EnableRaisingEvents = true;
+            }
+            catch (Exception) { }
         }
 
         if (_serviceProcess != null)
         {
             _serviceProcess.Exited += ServiceProcessExited;
-            _serviceProcess.EnableRaisingEvents = true;
         }
     }
 
