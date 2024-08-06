@@ -14,16 +14,16 @@ public partial class MigrationService : IHostedService
     private readonly IServiceProvider _serviceProvider;
     private readonly ILogger<MigrationService> _logger;
 
-    [LoggerMessage(0, LogLevel.Debug, "Starting configuration database migration...")]
+    [LoggerMessage(0, LogLevel.Information, "Starting configuration database migration...", EventName = "DatabaseMigrationStarted")]
     private static partial void LogStartingMigration(ILogger logger);
 
-    [LoggerMessage(1, LogLevel.Error, "Configuration database migration failed, retrying in 15 seconds...")]
+    [LoggerMessage(1, LogLevel.Error, "Configuration database migration failed, retrying in 15 seconds...", EventName = "DatabaseMigrationFailed")]
     private static partial void LogMigrationFailed(ILogger logger, Exception ex);
 
-    [LoggerMessage(2, LogLevel.Error, "Configuration database migration aborted, failure threshold exceeded.")]
+    [LoggerMessage(2, LogLevel.Error, "Configuration database migration aborted, failure threshold exceeded.", EventName = "DatabaseMigrationAborted")]
     private static partial void LogMigrationAborted(ILogger logger, Exception ex);
 
-    [LoggerMessage(3, LogLevel.Information, "Configuration database migration completed successfully.")]
+    [LoggerMessage(3, LogLevel.Information, "Configuration database migration completed successfully.", EventName = "DatabaseMigrationFinished")]
     private static partial void LogMigrationComplete(ILogger logger);
 
     /// <summary>

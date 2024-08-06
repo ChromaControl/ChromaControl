@@ -21,7 +21,7 @@ public partial class GlobalExceptionHandler<TRequest, TResponse, TException> : I
 {
     private readonly ILogger _logger;
 
-    [LoggerMessage(0, LogLevel.Warning, "Mediator exception handled: {message}")]
+    [LoggerMessage(0, LogLevel.Warning, "Mediator exception handled: {message}", EventName = "ExceptionHandled")]
     private static partial void LogExceptionHandledMessage(ILogger logger, Exception exception, string message);
 
     /// <summary>

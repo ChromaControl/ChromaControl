@@ -18,17 +18,8 @@ internal sealed partial class StartupService : IHostedService
     private readonly IConfiguration _configuration;
     private readonly IHostEnvironment _hostEnvironment;
 
-    [LoggerMessage(0, LogLevel.Information, "Chroma Control version: {version}")]
-    private static partial void LogVersion(ILogger logger, string? version);
-
-    [LoggerMessage(1, LogLevel.Information, "Chroma Control environment: {environment}")]
-    private static partial void LogEnvironment(ILogger logger, string environment);
-
-    [LoggerMessage(2, LogLevel.Information, "Chroma Control app path: {appPath}")]
-    private static partial void LogAppPath(ILogger logger, string appPath);
-
-    [LoggerMessage(3, LogLevel.Information, "Chroma Control data path: {dataPath}")]
-    private static partial void LogDataPath(ILogger logger, string dataPath);
+    [LoggerMessage(0, LogLevel.Information, "Chroma Control {property}: {value}", EventName = "Startup")]
+    private static partial void LogStartup(ILogger logger, string property, string? value);
 
     /// <summary>
     /// Creates a <see cref="StartupService"/> instance.
@@ -46,10 +37,10 @@ internal sealed partial class StartupService : IHostedService
     /// <inheritdoc/>
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        LogVersion(_logger, _configuration.GetSection("ChromaControl")["VERSION"]);
-        LogEnvironment(_logger, _hostEnvironment.EnvironmentName);
-        LogAppPath(_logger, _configuration.GetChromaControlPath("app").Trim('\\'));
-        LogDataPath(_logger, _configuration.GetChromaControlPath("data"));
+        LogStartup(_logger, "version", _configuration.GetSection("ChromaControl")["VERSION"]);
+        LogStartup(_logger, "environment", _hostEnvironment.EnvironmentName);
+        LogStartup(_logger, "app path", _configuration.GetChromaControlPath("app").Trim('\\'));
+        LogStartup(_logger, "data path", _configuration.GetChromaControlPath("data"));
         return Task.CompletedTask;
     }
 

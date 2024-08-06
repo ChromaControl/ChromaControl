@@ -27,11 +27,11 @@ public class UpdateLogger : NetSparkleUpdater.Interfaces.ILogger
 #pragma warning disable CA2254 // Template should be a static expression
         if (message.Contains("Error", StringComparison.OrdinalIgnoreCase))
         {
-            _logger.LogError(message, arguments);
+            _logger.LogError(1, message, arguments);
         }
         else
         {
-            _logger.LogTrace(message, arguments);
+            _logger.LogTrace(0, message, arguments);
         }
 #pragma warning restore CA2254 // Template should be a static expression
 #pragma warning restore CA1848 // Use the LoggerMessage delegates

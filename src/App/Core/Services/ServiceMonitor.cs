@@ -17,8 +17,8 @@ public partial class ServiceMonitor : IHostedService
     private readonly ILogger _logger;
     private readonly string _servicePath;
 
-    [LoggerMessage(0, LogLevel.Warning, "Unable to find the lighting service executable.")]
-    private static partial void LogServiceExecutableMissing(ILogger logger);
+    [LoggerMessage(0, LogLevel.Warning, "Unable to find the lighting service executable.", EventName = "ServiceExecutableNotFound")]
+    private static partial void LogServiceExecutableNotFound(ILogger logger);
 
     /// <summary>
     /// Creates a <see cref="ServiceMonitor"/> instance.
@@ -70,7 +70,7 @@ public partial class ServiceMonitor : IHostedService
             else
             {
                 _serviceProcess = null;
-                LogServiceExecutableMissing(_logger);
+                LogServiceExecutableNotFound(_logger);
             }
         }
         else
