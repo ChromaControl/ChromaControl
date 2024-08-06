@@ -15,14 +15,14 @@ namespace ChromaControl.Common.Services;
 internal sealed partial class StartupService : IHostedService
 {
     private readonly ILogger _logger;
-    private readonly IHostEnvironment _hostEnvironment;
     private readonly IConfiguration _configuration;
+    private readonly IHostEnvironment _hostEnvironment;
 
-    [LoggerMessage(0, LogLevel.Information, "Chroma Control environment: {environment}")]
-    private static partial void LogEnvironment(ILogger logger, string environment);
-
-    [LoggerMessage(1, LogLevel.Information, "Chroma Control version: {version}")]
+    [LoggerMessage(0, LogLevel.Information, "Chroma Control version: {version}")]
     private static partial void LogVersion(ILogger logger, string? version);
+
+    [LoggerMessage(1, LogLevel.Information, "Chroma Control environment: {environment}")]
+    private static partial void LogEnvironment(ILogger logger, string environment);
 
     [LoggerMessage(2, LogLevel.Information, "Chroma Control app path: {appPath}")]
     private static partial void LogAppPath(ILogger logger, string appPath);
@@ -34,20 +34,20 @@ internal sealed partial class StartupService : IHostedService
     /// Creates a <see cref="StartupService"/> instance.
     /// </summary>
     /// <param name="logger">The <see cref="ILogger{TCategoryName}"/>.</param>
-    /// <param name="hostEnvironment">The <see cref="IHostEnvironment"/>.</param>
     /// <param name="configuration">The <see cref="IConfiguration"/>.</param>
-    public StartupService(ILogger<StartupService> logger, IHostEnvironment hostEnvironment, IConfiguration configuration)
+    /// <param name="hostEnvironment">The <see cref="IHostEnvironment"/>.</param>
+    public StartupService(ILogger<StartupService> logger, IConfiguration configuration, IHostEnvironment hostEnvironment)
     {
         _logger = logger;
-        _hostEnvironment = hostEnvironment;
         _configuration = configuration;
+        _hostEnvironment = hostEnvironment;
     }
 
     /// <inheritdoc/>
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        LogEnvironment(_logger, _hostEnvironment.EnvironmentName);
         LogVersion(_logger, _configuration.GetSection("ChromaControl")["VERSION"]);
+        LogEnvironment(_logger, _hostEnvironment.EnvironmentName);
         LogAppPath(_logger, _configuration.GetChromaControlPath("app").Trim('\\'));
         LogDataPath(_logger, _configuration.GetChromaControlPath("data"));
         return Task.CompletedTask;
