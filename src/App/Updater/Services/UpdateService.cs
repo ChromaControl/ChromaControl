@@ -7,8 +7,6 @@ using ChromaControl.App.Updater.Components;
 using MarkdownSharp;
 using Microsoft.AspNetCore.Components;
 using NetSparkleUpdater;
-using System.Diagnostics;
-using System.IO;
 using System.Windows;
 
 namespace ChromaControl.App.Updater.Services;
@@ -27,6 +25,7 @@ public class UpdateService
     private readonly SparkleUpdater _updater;
     private readonly NotificationService _notificationService;
     private readonly IWebHostEnvironment _hostEnvironment;
+    private readonly IConfiguration _configuration;
 
     /// <summary>
     /// Occurs when the updater state changes.
@@ -39,11 +38,13 @@ public class UpdateService
     /// <param name="updater">The <see cref="SparkleUpdater"/>.</param>
     /// <param name="notificationService">The <see cref="NotificationService"/>.</param>
     /// <param name="hostEnvironment">The <see cref="IWebHostEnvironment"/></param>
-    public UpdateService(SparkleUpdater updater, NotificationService notificationService, IWebHostEnvironment hostEnvironment)
+    /// <param name="configuration">The <see cref="IConfiguration"/>.</param>
+    public UpdateService(SparkleUpdater updater, NotificationService notificationService, IWebHostEnvironment hostEnvironment, IConfiguration configuration)
     {
         _updater = updater;
         _notificationService = notificationService;
         _hostEnvironment = hostEnvironment;
+        _configuration = configuration;
 
         _updater.LoopStarted += UpdateLoopStarted;
         _updater.LoopFinished += UpdateLoopFinished;
@@ -77,11 +78,7 @@ public class UpdateService
             return (_currentVersion, _currentHash, _isPrerelease);
         }
 
-        var appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        var appExecutable = $"{AppDomain.CurrentDomain.FriendlyName}.exe";
-        var appPath = Path.Combine(appDirectory, appExecutable);
-        var appVersionInfo = FileVersionInfo.GetVersionInfo(appPath);
-        var appVersion = appVersionInfo.ProductVersion;
+        var appVersion = _configuration.GetSection("ChromaControl")["VERSION"];
 
         if (appVersion is null)
         {

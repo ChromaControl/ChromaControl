@@ -2,12 +2,14 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using ChromaControl.Common.Services;
 using ChromaControl.Keys;
 using Grpc.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NReco.Logging.File;
+using System.Diagnostics;
 using System.IO.Pipes;
 using System.Reflection;
 using System.Security.Principal;
@@ -22,10 +24,8 @@ public static class ChromaControlExtensions
     private readonly static string s_appPath = AppContext.BaseDirectory;
     private readonly static string s_appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
     private readonly static string s_dataPath = Path.Combine(s_appDataPath, "ChromaControl");
-    private readonly static string s_environmentPath = Path.Combine(s_dataPath, "environment");
-    private readonly static string s_logsPath = Path.Combine(s_environmentPath, "logs");
-    private readonly static string s_runtimePath = Path.Combine(s_dataPath, "runtime");
-    private readonly static string s_databasePath = Path.Combine(s_environmentPath, "ChromaControl.db");
+    private readonly static string s_logsPath = Path.Combine(s_dataPath, "logs");
+    private readonly static string s_databasePath = Path.Combine(s_dataPath, "ChromaControl.db");
 
     /// <summary>
     /// Adds Chroma Control services to an <see cref="IServiceCollection"/>.
@@ -44,6 +44,8 @@ public static class ChromaControlExtensions
         {
             Environment.Exit(1);
         }
+
+        services.AddHostedService<StartupService>();
 
         return services;
     }
@@ -74,29 +76,24 @@ public static class ChromaControlExtensions
             Directory.CreateDirectory(s_dataPath);
         }
 
-        if (!Directory.Exists(s_environmentPath))
-        {
-            Directory.CreateDirectory(s_environmentPath);
-        }
-
         if (!Directory.Exists(s_logsPath))
         {
             Directory.CreateDirectory(s_logsPath);
         }
 
-        if (!Directory.Exists(s_runtimePath))
-        {
-            Directory.CreateDirectory(s_runtimePath);
-        }
-
-        var paths = config.GetSection("ChromaControl").GetSection("Path");
+        var chromaControl = config.GetSection("ChromaControl");
+        var paths = chromaControl.GetSection("Path");
         var connectionStrings = config.GetSection("ConnectionStrings");
+
+        var appExecutable = $"{AppDomain.CurrentDomain.FriendlyName}.exe";
+        var appPath = Path.Combine(s_appPath, appExecutable);
+        var appVersionInfo = FileVersionInfo.GetVersionInfo(appPath);
+
+        chromaControl["VERSION"] = appVersionInfo.ProductVersion;
 
         paths["APP"] = s_appPath;
         paths["DATA"] = s_dataPath;
-        paths["ENVIRONMENT"] = s_environmentPath;
         paths["LOGS"] = s_logsPath;
-        paths["RUNTIME"] = s_runtimePath;
 
         connectionStrings["Database"] = $"Data Source={s_databasePath}";
 
