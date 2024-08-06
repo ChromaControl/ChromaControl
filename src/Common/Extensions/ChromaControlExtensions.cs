@@ -8,8 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NReco.Logging.File;
-using System.Net.Sockets;
+using System.IO.Pipes;
 using System.Reflection;
+using System.Security.Principal;
 
 namespace ChromaControl.Common.Extensions;
 
@@ -24,7 +25,6 @@ public static class ChromaControlExtensions
     private readonly static string s_environmentPath = Path.Combine(s_dataPath, "environment");
     private readonly static string s_logsPath = Path.Combine(s_environmentPath, "logs");
     private readonly static string s_runtimePath = Path.Combine(s_dataPath, "runtime");
-    private readonly static string s_socketPath = Path.Combine(s_runtimePath, "ChromaControl.sock");
     private readonly static string s_databasePath = Path.Combine(s_environmentPath, "ChromaControl.db");
 
     /// <summary>
@@ -97,7 +97,6 @@ public static class ChromaControlExtensions
         paths["ENVIRONMENT"] = s_environmentPath;
         paths["LOGS"] = s_logsPath;
         paths["RUNTIME"] = s_runtimePath;
-        paths["SOCKET"] = s_socketPath;
 
         connectionStrings["Database"] = $"Data Source={s_databasePath}";
 
@@ -121,11 +120,11 @@ public static class ChromaControlExtensions
     }
 
     /// <summary>
-    /// 
+    /// Adds a Chroma Control Grpc client.
     /// </summary>
-    /// <typeparam name="TClient"></typeparam>
-    /// <param name="services"></param>
-    /// <returns></returns>
+    /// <typeparam name="TClient">The client type to add.</typeparam>
+    /// <param name="services">The <see cref="IServiceCollection"/>.</param>
+    /// <returns>The original <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddChromaControlGrpcClient<TClient>(this IServiceCollection services) where TClient : ClientBase
     {
         services.AddGrpcClient<TClient>(options =>
@@ -133,22 +132,25 @@ public static class ChromaControlExtensions
             options.Address = new Uri("http://localhost");
             options.ChannelOptionsActions.Add(channel =>
             {
-                var endPoint = new UnixDomainSocketEndPoint(s_socketPath);
-
                 channel.HttpHandler = new SocketsHttpHandler
                 {
                     ConnectCallback = async (_, cancellationToken) =>
                     {
-                        var socket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
+                        var clientStream = new NamedPipeClientStream(
+                            serverName: ".",
+                            pipeName: "ChromaControl",
+                            direction: PipeDirection.InOut,
+                            options: PipeOptions.WriteThrough | PipeOptions.Asynchronous,
+                            impersonationLevel: TokenImpersonationLevel.Anonymous);
 
                         try
                         {
-                            await socket.ConnectAsync(endPoint, cancellationToken).ConfigureAwait(false);
-                            return new NetworkStream(socket, true);
+                            await clientStream.ConnectAsync(cancellationToken).ConfigureAwait(false);
+                            return clientStream;
                         }
                         catch
                         {
-                            socket.Dispose();
+                            clientStream.Dispose();
                             throw;
                         }
                     }

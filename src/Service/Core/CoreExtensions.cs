@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using System.IO.Pipes;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace ChromaControl.Service.Core;
 
@@ -25,7 +28,7 @@ public static class CoreExtensions
         builder.ConfigureChromaControl()
             .ConfigureTelemetry()
             .ConfigureGrpc()
-            .ConfigureUnixSocket();
+            .ConfigureNamedPipe();
 
         return builder;
     }
@@ -79,23 +82,27 @@ public static class CoreExtensions
         return builder;
     }
 
-    private static IHostApplicationBuilder ConfigureUnixSocket(this IHostApplicationBuilder builder)
+    private static IHostApplicationBuilder ConfigureNamedPipe(this IHostApplicationBuilder builder)
     {
         if (builder is not WebApplicationBuilder webAppBuilder)
         {
-            throw new ArgumentException("Unix sockets can only be configured on a WebApplicationBuilder.");
+            throw new ArgumentException("Named pipes can only be configured on a WebApplicationBuilder.");
         }
 
-        var socketPath = builder.Configuration.GetChromaControlPath("socket");
+        webAppBuilder.WebHost.UseNamedPipes(options =>
+        {
+            options.CurrentUserOnly = false;
+            options.PipeSecurity = new();
+
+            options.PipeSecurity.AddAccessRule(new(
+                identity: new SecurityIdentifier(WellKnownSidType.AuthenticatedUserSid, null),
+                rights: PipeAccessRights.ReadWrite | PipeAccessRights.CreateNewInstance,
+                type: AccessControlType.Allow));
+        });
 
         webAppBuilder.WebHost.ConfigureKestrel(options =>
         {
-            if (File.Exists(socketPath))
-            {
-                File.Delete(socketPath);
-            }
-
-            options.ListenUnixSocket(socketPath, listenOptions =>
+            options.ListenNamedPipe("ChromaControl", listenOptions =>
             {
                 listenOptions.Protocols = HttpProtocols.Http2;
             });
