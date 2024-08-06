@@ -50,52 +50,56 @@ public class UpdateConfiguration : Configuration
     /// <inheritdoc/>
     public override void Reload()
     {
-        CheckForUpdate = _settingsClient.GetBool(new()
+        try
         {
-            Module = "Updater",
-            Name = nameof(CheckForUpdate)
-        }).Value;
+            CheckForUpdate = _settingsClient.GetBool(new()
+            {
+                Module = "Updater",
+                Name = nameof(CheckForUpdate)
+            }).Value;
 
-        LastCheckTime = _settingsClient.GetDateTime(new()
-        {
-            Module = "Updater",
-            Name = nameof(LastCheckTime)
-        }).Value.ToDateTime().ToLocalTime();
+            LastCheckTime = _settingsClient.GetDateTime(new()
+            {
+                Module = "Updater",
+                Name = nameof(LastCheckTime)
+            }).Value.ToDateTime().ToLocalTime();
 
-        LastVersionSkipped = _settingsClient.GetString(new()
-        {
-            Module = "Updater",
-            Name = nameof(LastVersionSkipped)
-        }).Value;
+            LastVersionSkipped = _settingsClient.GetString(new()
+            {
+                Module = "Updater",
+                Name = nameof(LastVersionSkipped)
+            }).Value;
 
-        DidRunOnce = _settingsClient.GetBool(new()
-        {
-            Module = "Updater",
-            Name = nameof(DidRunOnce)
-        }).Value;
+            DidRunOnce = _settingsClient.GetBool(new()
+            {
+                Module = "Updater",
+                Name = nameof(DidRunOnce)
+            }).Value;
 
-        IsFirstRun = !DidRunOnce;
+            IsFirstRun = !DidRunOnce;
 
-        PreviousVersionOfSoftwareRan = _settingsClient.GetString(new()
-        {
-            Module = "Updater",
-            Name = nameof(PreviousVersionOfSoftwareRan)
-        }).Value;
+            PreviousVersionOfSoftwareRan = _settingsClient.GetString(new()
+            {
+                Module = "Updater",
+                Name = nameof(PreviousVersionOfSoftwareRan)
+            }).Value;
 
-        if (IsFirstRun)
-        {
-            SaveDidRunOnceAsTrue();
+            if (IsFirstRun)
+            {
+                SaveDidRunOnceAsTrue();
+            }
+            else
+            {
+                SaveValues();
+            }
+
+            LastConfigUpdate = _settingsClient.GetDateTime(new()
+            {
+                Module = "Updater",
+                Name = nameof(LastConfigUpdate)
+            }).Value.ToDateTime().ToLocalTime();
         }
-        else
-        {
-            SaveValues();
-        }
-
-        LastConfigUpdate = _settingsClient.GetDateTime(new()
-        {
-            Module = "Updater",
-            Name = nameof(LastConfigUpdate)
-        }).Value.ToDateTime().ToLocalTime();
+        catch (Exception) { }
     }
 
     private void SaveDidRunOnceAsTrue()
@@ -108,46 +112,50 @@ public class UpdateConfiguration : Configuration
 
     private void SaveValues()
     {
-        _settingsClient.SetBool(new()
+        try
         {
-            Module = "Updater",
-            Name = nameof(CheckForUpdate),
-            Value = true
-        });
+            _settingsClient.SetBool(new()
+            {
+                Module = "Updater",
+                Name = nameof(CheckForUpdate),
+                Value = true
+            });
 
-        _settingsClient.SetDateTime(new()
-        {
-            Module = "Updater",
-            Name = nameof(LastCheckTime),
-            Value = Timestamp.FromDateTime(LastCheckTime.ToUniversalTime())
-        });
+            _settingsClient.SetDateTime(new()
+            {
+                Module = "Updater",
+                Name = nameof(LastCheckTime),
+                Value = Timestamp.FromDateTime(LastCheckTime.ToUniversalTime())
+            });
 
-        _settingsClient.SetString(new()
-        {
-            Module = "Updater",
-            Name = nameof(LastVersionSkipped),
-            Value = LastVersionSkipped
-        });
+            _settingsClient.SetString(new()
+            {
+                Module = "Updater",
+                Name = nameof(LastVersionSkipped),
+                Value = LastVersionSkipped
+            });
 
-        _settingsClient.SetBool(new()
-        {
-            Module = "Updater",
-            Name = nameof(DidRunOnce),
-            Value = DidRunOnce
-        });
+            _settingsClient.SetBool(new()
+            {
+                Module = "Updater",
+                Name = nameof(DidRunOnce),
+                Value = DidRunOnce
+            });
 
-        _settingsClient.SetDateTime(new()
-        {
-            Module = "Updater",
-            Name = nameof(LastConfigUpdate),
-            Value = Timestamp.FromDateTime(LastConfigUpdate.ToUniversalTime())
-        });
+            _settingsClient.SetDateTime(new()
+            {
+                Module = "Updater",
+                Name = nameof(LastConfigUpdate),
+                Value = Timestamp.FromDateTime(LastConfigUpdate.ToUniversalTime())
+            });
 
-        _settingsClient.SetString(new()
-        {
-            Module = "Updater",
-            Name = nameof(PreviousVersionOfSoftwareRan),
-            Value = InstalledVersion
-        });
+            _settingsClient.SetString(new()
+            {
+                Module = "Updater",
+                Name = nameof(PreviousVersionOfSoftwareRan),
+                Value = InstalledVersion
+            });
+        }
+        catch (Exception) { }
     }
 }

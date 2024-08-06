@@ -5,6 +5,7 @@
 global using static CommonTypeUnions.Extensions.ResultExtensions;
 global using CommonTypeUnions.Unions;
 using BlazorDesktop.Hosting;
+using ChromaControl.App.Core.Services;
 using ChromaControl.Common.Extensions;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
@@ -27,6 +28,7 @@ public static class CoreExtensions
     public static BlazorDesktopHostBuilder ConfigureCore(this BlazorDesktopHostBuilder builder)
     {
         builder.ConfigureChromaControl()
+            .ConfigureBackgroundServices()
             .ConfigureTelemetry()
             .ConfigureMediatr()
             .ConfigureHttpClient()
@@ -40,6 +42,13 @@ public static class CoreExtensions
         builder.Configuration.AddChromaControlConfiguration();
         builder.Services.AddChromaControlServices();
         builder.Logging.AddChromaControlLogging();
+
+        return builder;
+    }
+
+    private static BlazorDesktopHostBuilder ConfigureBackgroundServices(this BlazorDesktopHostBuilder builder)
+    {
+        builder.Services.AddHostedService<ServiceMonitor>();
 
         return builder;
     }

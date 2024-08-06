@@ -18,6 +18,7 @@ namespace ChromaControl.Common.Extensions;
 /// </summary>
 public static class ChromaControlExtensions
 {
+    private readonly static string s_appPath = AppContext.BaseDirectory;
     private readonly static string s_appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
     private readonly static string s_dataPath = Path.Combine(s_appDataPath, "ChromaControl");
     private readonly static string s_environmentPath = Path.Combine(s_dataPath, "environment");
@@ -91,6 +92,7 @@ public static class ChromaControlExtensions
         var paths = config.GetSection("ChromaControl").GetSection("Path");
         var connectionStrings = config.GetSection("ConnectionStrings");
 
+        paths["APP"] = s_appPath;
         paths["DATA"] = s_dataPath;
         paths["ENVIRONMENT"] = s_environmentPath;
         paths["LOGS"] = s_logsPath;
