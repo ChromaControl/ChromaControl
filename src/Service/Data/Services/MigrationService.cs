@@ -56,6 +56,8 @@ public partial class MigrationService : IHostedService
                 await context.Database.EnsureCreatedAsync(cancellationToken);
                 await context.Database.ExecuteSqlRawAsync("PRAGMA journal_mode = delete;", cancellationToken);
                 await context.SaveChangesAsync(cancellationToken);
+
+                GC.Collect();
             }
             catch (Exception ex)
             {
