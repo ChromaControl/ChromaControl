@@ -2,9 +2,14 @@
 @* The Chroma Control Contributors licenses this file to you under the MIT license. *@
 @* See the LICENSE file in the project root for more information. *@
 
-@if (DialogService.Any())
+@if (DialogService.Dialogs.Any())
 {
     <div class="dialog-container">
-        @DialogService.GetCurrentDialog()
+        @foreach (var dialog in DialogService.Dialogs)
+        {
+            <div @key="dialog.Key" style="@(dialog.Value == DialogService.Dialogs.Last().Value ? "" : "display: none;")">
+                @dialog.Value
+            </div>
+        }
     </div>
 }

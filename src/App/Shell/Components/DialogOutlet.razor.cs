@@ -21,10 +21,10 @@ public partial class DialogOutlet
     /// <inheritdoc/>
     protected override void OnInitialized()
     {
-        DialogService.CurrentDialogChanged += CurrentDialogChanged;
+        DialogService.DialogsChanged += DialogsChanged;
     }
 
-    private void CurrentDialogChanged()
+    private void DialogsChanged()
     {
         StateHasChanged();
     }

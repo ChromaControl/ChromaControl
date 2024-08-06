@@ -15,6 +15,7 @@ public class ThemeService
 {
     private Theme _cachedTheme;
     private readonly IMediator _mediator;
+    private readonly DialogService _dialogService;
 
     /// <summary>
     /// Occurs when the theme changes.
@@ -46,9 +47,11 @@ public class ThemeService
     /// Creates a <see cref="ThemeService"/> instance.
     /// </summary>
     /// <param name="mediator">The <see cref="IMediator"/>.</param>
-    public ThemeService(IMediator mediator)
+    /// <param name="dialogService">The <see cref="DialogService"/>.</param>
+    public ThemeService(IMediator mediator, DialogService dialogService)
     {
         _mediator = mediator;
+        _dialogService = dialogService;
     }
 
     /// <summary>
@@ -62,7 +65,7 @@ public class ThemeService
         Task.Run(async () =>
         {
             var theme = await GetCurrentTheme();
-            await ChangeTheme(theme);
+            await ChangeTheme(theme, false);
         });
     }
 
@@ -90,11 +93,17 @@ public class ThemeService
     /// Changes the current theme.
     /// </summary>
     /// <param name="theme">The theme to change to.</param>
+    /// <param name="showErrors">If errors should be show.</param>
     /// <returns>A <see cref="Task"/>.</returns>
-    public async Task ChangeTheme(Theme theme)
+    public async Task ChangeTheme(Theme theme, bool showErrors = true)
     {
         ThemeChanged?.Invoke(theme);
 
-        await _mediator.Send(new ChangeTheme.Command(theme.ToString()));
+        var result = await _mediator.Send(new ChangeTheme.Command(theme.ToString()));
+
+        if (result.IsFailure(out var error) && showErrors)
+        {
+            _dialogService.ShowError(error);
+        }
     }
 }

@@ -30,7 +30,7 @@ public partial class NotificationOutlet
     protected override void OnInitialized()
     {
         NotificationService.CurrentNotificationChanged += CurrentNotificationChanged;
-        DialogService.CurrentDialogChanged += CurrentDialogChanged;
+        DialogService.DialogsChanged += DialogsChanged;
     }
 
     private async void CurrentNotificationChanged()
@@ -38,9 +38,9 @@ public partial class NotificationOutlet
         await InvokeAsync(StateHasChanged);
     }
 
-    private void CurrentDialogChanged()
+    private void DialogsChanged()
     {
-        if (DialogService.Any())
+        if (DialogService.Dialogs.Any())
         {
             if (_rootAttributes.Count == 0)
             {

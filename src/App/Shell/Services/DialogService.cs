@@ -2,6 +2,7 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using ChromaControl.App.Shell.Components;
 using Microsoft.AspNetCore.Components;
 
 namespace ChromaControl.App.Shell.Services;
@@ -11,12 +12,17 @@ namespace ChromaControl.App.Shell.Services;
 /// </summary>
 public class DialogService
 {
-    private readonly Stack<RenderFragment> _dialogs = [];
+    private readonly List<KeyValuePair<Guid, RenderFragment>> _dialogs = [];
 
     /// <summary>
-    /// Occurs when the current dialog changes.
+    /// The dialogs.
     /// </summary>
-    public event Action? CurrentDialogChanged;
+    public IEnumerable<KeyValuePair<Guid, RenderFragment>> Dialogs => _dialogs;
+
+    /// <summary>
+    /// Occurs when the dialogs changes.
+    /// </summary>
+    public event Action? DialogsChanged;
 
     /// <summary>
     /// Opens a dialog.
@@ -24,13 +30,16 @@ public class DialogService
     /// <typeparam name="TDialog">The dialog type.</typeparam>
     public void Open<TDialog>() where TDialog : IComponent
     {
-        _dialogs.Push(new(builder =>
-        {
-            builder.OpenComponent<TDialog>(0);
-            builder.CloseComponent();
-        }));
+        AddDialog<TDialog>([]);
+    }
 
-        CurrentDialogChanged?.Invoke();
+    /// <summary>
+    /// Shows an error dialog.
+    /// </summary>
+    /// <param name="message"></param>
+    public void ShowError(string message)
+    {
+        AddDialog<ErrorDialog>(new() { { "Message", message } });
     }
 
     /// <summary>
@@ -38,28 +47,25 @@ public class DialogService
     /// </summary>
     public void Close()
     {
-        _dialogs.Pop();
+        _dialogs.RemoveAt(_dialogs.Count - 1);
 
-        CurrentDialogChanged?.Invoke();
+        DialogsChanged?.Invoke();
     }
 
-    /// <summary>
-    /// If there are any dialogs open.
-    /// </summary>
-    /// <returns>If there are any dialogs open.</returns>
-    public bool Any()
+    private void AddDialog<TDialog>(Dictionary<string, object> parameters) where TDialog : IComponent
     {
-        return _dialogs.Count != 0;
-    }
+        _dialogs.Add(new(Guid.NewGuid(), builder =>
+        {
+            builder.OpenComponent<TDialog>(0);
 
-    /// <summary>
-    /// Gets the current dialog.
-    /// </summary>
-    /// <returns>The dialog.</returns>
-    public RenderFragment? GetCurrentDialog()
-    {
-        _dialogs.TryPeek(out var dialog);
+            foreach (var parameter in parameters)
+            {
+                builder.AddComponentParameter(1, parameter.Key, parameter.Value);
+            }
 
-        return dialog;
+            builder.CloseComponent();
+        }));
+
+        DialogsChanged?.Invoke();
     }
 }

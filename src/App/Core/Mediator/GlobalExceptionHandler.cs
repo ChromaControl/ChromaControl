@@ -45,7 +45,7 @@ public partial class GlobalExceptionHandler<TRequest, TResponse, TException> : I
     {
         if (exception is RpcException)
         {
-            state.SetHandled(CreateResponse(exception, "Unable to communicate with the background service."));
+            state.SetHandled(CreateResponse(exception, "Unable to communicate with the lighting service."));
         }
         else
         {

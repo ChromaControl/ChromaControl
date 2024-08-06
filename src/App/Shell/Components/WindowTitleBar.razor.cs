@@ -55,7 +55,7 @@ public partial class WindowTitleBar
     protected override void OnInitialized()
     {
         Window.OnFullscreenChanged += OnFullscreenChanged;
-        DialogService.CurrentDialogChanged += CurrentDialogChanged;
+        DialogService.DialogsChanged += DialogsChanged;
     }
 
     private void OnFullscreenChanged(object? sender, bool e)
@@ -63,9 +63,9 @@ public partial class WindowTitleBar
         StateHasChanged();
     }
 
-    private void CurrentDialogChanged()
+    private void DialogsChanged()
     {
-        if (DialogService.Any())
+        if (DialogService.Dialogs.Any())
         {
             if (_rootAttributes.Count == 0)
             {
