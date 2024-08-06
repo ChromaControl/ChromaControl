@@ -59,7 +59,12 @@ public static class ChromaControlExtensions
     {
         var logFilePath = Path.Combine(s_logsPath, $"{Assembly.GetEntryAssembly()!.GetName().Name}.log");
 
-        logging.AddFile(logFilePath, true);
+        logging.AddFile(logFilePath, config =>
+        {
+            config.Append = true;
+            config.FileSizeLimitBytes = 1024 * 1024 * 64;
+            config.MaxRollingFiles = 2;
+        });
 
         return logging;
     }
