@@ -19,6 +19,8 @@ CloseApplications=force
 SetupIconFile={#PublishDir}\wwwroot\favicon.ico
 LicenseFile={#LicenseFile}
 MissingRunOnceIdsWarning=no
+WizardImageFile=images\WizardImage0.bmp,images\WizardImage1.bmp
+WizardSmallImageFile=images\WizardSmallImage0.bmp,images\WizardSmallImage1.bmp,images\WizardSmallImage2.bmp,images\WizardSmallImage3.bmp,images\WizardSmallImage4.bmp,images\WizardSmallImage5.bmp,images\WizardSmallImage6.bmp
 
 [Files]
 Source: "{#PublishDir}\**"; DestDir: "{app}"; Flags: recursesubdirs ignoreversion
