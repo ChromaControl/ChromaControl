@@ -7,9 +7,9 @@ using ChromaControl.Common.Protos.Lighting;
 namespace ChromaControl.App.Lighting.Services;
 
 /// <summary>
-/// The notification dispatcher.
+/// The lighting service.
 /// </summary>
-public class NotificationDispatcher
+public class LightingService
 {
     /// <summary>
     /// Occurs when the devices are updated.
@@ -17,7 +17,7 @@ public class NotificationDispatcher
     public event Action? DevicesUpdated;
 
     /// <summary>
-    /// Raised <see cref="DevicesUpdated"/>.
+    /// Raises a notification.
     /// </summary>
     public void RaiseNotification(NotificationType type)
     {

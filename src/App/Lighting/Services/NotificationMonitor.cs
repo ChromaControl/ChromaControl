@@ -13,17 +13,17 @@ namespace ChromaControl.App.Lighting.Services;
 public class NotificationMonitor : BackgroundService
 {
     private readonly LightingGrpc.LightingGrpcClient _lightingClient;
-    private readonly NotificationDispatcher _notificationDispatcher;
+    private readonly LightingService _lightingService;
 
     /// <summary>
     /// Creates a <see cref="NotificationMonitor"/> instance.
     /// </summary>
     /// <param name="lightingClient">The <see cref="LightingGrpc.LightingGrpcClient"/>.</param>
-    /// <param name="notificationDispatcher">The <see cref="NotificationDispatcher"/>.</param>
-    public NotificationMonitor(LightingGrpc.LightingGrpcClient lightingClient, NotificationDispatcher notificationDispatcher)
+    /// <param name="lightingService">The <see cref="LightingService"/>.</param>
+    public NotificationMonitor(LightingGrpc.LightingGrpcClient lightingClient, LightingService lightingService)
     {
         _lightingClient = lightingClient;
-        _notificationDispatcher = notificationDispatcher;
+        _lightingService = lightingService;
     }
 
     /// <inheritdoc/>
@@ -37,7 +37,7 @@ public class NotificationMonitor : BackgroundService
 
                 await foreach (var notification in call.ResponseStream.ReadAllAsync(cancellationToken: stoppingToken))
                 {
-                    _notificationDispatcher.RaiseNotification(notification.Type);
+                    _lightingService.RaiseNotification(notification.Type);
                 }
 
                 await Task.Delay(100, stoppingToken);
