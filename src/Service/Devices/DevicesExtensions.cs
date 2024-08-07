@@ -4,7 +4,7 @@
 
 using ChromaControl.Service.Devices.Services;
 
-namespace ChromaControl.Service.Settings;
+namespace ChromaControl.Service.Devices;
 
 /// <summary>
 /// Devices extension methods.
