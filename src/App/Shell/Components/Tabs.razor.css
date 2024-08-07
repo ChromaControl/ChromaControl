@@ -4,6 +4,8 @@
 
 .tabs {
     display: flex;
+    flex: 1;
+    min-height: 0;
 }
 
 .tab-items {
@@ -19,6 +21,8 @@
     padding: var(--spacing-double);
     border-left: var(--base-border);
     flex: 1;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
     .tabs-content > ::deep h2 {
