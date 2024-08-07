@@ -20,6 +20,8 @@
     --background-color-accent: #44d62c;
     --background-color-accent-muted: #7ce26b;
     --background-color-accent-emphasis: #30961f;
+    --background-color-danger: #c83200;
+    --background-color-danger-emphasis: #bd4444;
     --background-color-disabled: #dcdcdc;
     --background-color-scroll: #cccccc;
     --border-color-default: #c7c7c7;
@@ -29,6 +31,8 @@
     --border-color-accent: #37ab24;
     --border-color-accent-muted: #54b844;
     --border-color-accent-emphasis: #133b0d;
+    --border-color-danger: #9d533a;
+    --border-color-danger-emphasis: #3c2525;
     --overlay-color-default: rgba(0, 0, 0, 0.75);
 }
 
@@ -50,6 +54,8 @@
         --background-color-accent: #44d62c;
         --background-color-accent-muted: #7ce26b;
         --background-color-accent-emphasis: #30961f;
+        --background-color-danger: #c83200;
+        --background-color-danger-emphasis: #bd4444;
         --background-color-disabled: #dcdcdc;
         --background-color-scroll: #cccccc;
         --border-color-default: #c7c7c7;
@@ -59,6 +65,8 @@
         --border-color-accent: #37ab24;
         --border-color-accent-muted: #54b844;
         --border-color-accent-emphasis: #133b0d;
+        --border-color-danger: #9d533a;
+        --border-color-danger-emphasis: #3c2525;
         --overlay-color-default: rgba(0, 0, 0, 0.75);
     }
 }
@@ -80,6 +88,8 @@
     --background-color-accent: #44d62c;
     --background-color-accent-muted: #7ce26b;
     --background-color-accent-emphasis: #30961f;
+    --background-color-danger: #c83200;
+    --background-color-danger-emphasis: #a42b2b;
     --background-color-disabled: #313131;
     --background-color-scroll: #4e4e4e;
     --border-color-default: #111111;
@@ -89,6 +99,8 @@
     --border-color-accent: #36aa23;
     --border-color-accent-muted: #54b744;
     --border-color-accent-emphasis: #123a0c;
+    --border-color-danger: #843b22;
+    --border-color-danger-emphasis: #2c1414;
     --overlay-color-default: rgba(0, 0, 0, 0.75);
 }
 
@@ -110,6 +122,8 @@
         --background-color-accent: #44d62c;
         --background-color-accent-muted: #7ce26b;
         --background-color-accent-emphasis: #30961f;
+        --background-color-danger: #c83200;
+        --background-color-danger-emphasis: #a42b2b;
         --background-color-disabled: #313131;
         --background-color-scroll: #4e4e4e;
         --border-color-default: #111111;
@@ -119,6 +133,8 @@
         --border-color-accent: #36aa23;
         --border-color-accent-muted: #54b744;
         --border-color-accent-emphasis: #123a0c;
+        --border-color-danger: #843b22;
+        --border-color-danger-emphasis: #2c1414;
         --overlay-color-default: rgba(0, 0, 0, 0.75);
     }
 }

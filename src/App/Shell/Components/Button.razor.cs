@@ -44,6 +44,11 @@ public partial class Button
         /// <summary>
         /// A secondary button.
         /// </summary>
-        Secondary
+        Secondary,
+
+        /// <summary>
+        /// A danger button.
+        /// </summary>
+        Danger
     }
 }

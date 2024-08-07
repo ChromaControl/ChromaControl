@@ -50,3 +50,19 @@
         border: 1px solid var(--border-color-neutral-emphasis);
         background-color: var(--background-color-neutral-emphasis);
     }
+
+.button-danger {
+    border: 1px solid var(--border-color-neutral);
+    color: var(--foreground-color-white);
+    background-color: var(--background-color-neutral);
+}
+
+    .button-danger:not([aria-disabled=true]):hover {
+        border: 1px solid var(--border-color-danger);
+        background-color: var(--background-color-danger);
+    }
+
+    .button-danger:not([aria-disabled=true]):active {
+        border: 1px solid var(--border-color-danger-emphasis);
+        background-color: var(--background-color-danger-emphasis);
+    }
