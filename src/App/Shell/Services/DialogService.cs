@@ -13,6 +13,7 @@ namespace ChromaControl.App.Shell.Services;
 public class DialogService
 {
     private readonly List<KeyValuePair<Guid, RenderFragment>> _dialogs = [];
+    private readonly List<TaskCompletionSource<dynamic>> _tasks = [];
 
     /// <summary>
     /// The dialogs.
@@ -36,18 +37,41 @@ public class DialogService
     /// <summary>
     /// Shows an error dialog.
     /// </summary>
-    /// <param name="message"></param>
+    /// <param name="message">The error message.</param>
     public void ShowError(string message)
     {
         AddDialog<ErrorDialog>(new() { { "Message", message } });
     }
 
     /// <summary>
+    /// Shows a warning dialog.
+    /// </summary>
+    /// <param name="message">The warning message.</param>
+    /// <returns>A <see cref="Task"/>.</returns>
+    public Task<dynamic> ShowWarning(string message)
+    {
+        AddDialog<WarningDialog>(new() { { "Message", message } });
+
+        var task = new TaskCompletionSource<dynamic>();
+        _tasks.Add(task);
+
+        return task.Task;
+    }
+
+    /// <summary>
     /// Closes the current dialog.
     /// </summary>
-    public void Close()
+    public void Close(dynamic? result = null)
     {
         _dialogs.RemoveAt(_dialogs.Count - 1);
+
+        var task = _tasks.LastOrDefault();
+
+        if (task != null && task.Task != null && !task.Task.IsCompleted)
+        {
+            _tasks.Remove(task);
+            task.SetResult(result);
+        }
 
         DialogsChanged?.Invoke();
     }
