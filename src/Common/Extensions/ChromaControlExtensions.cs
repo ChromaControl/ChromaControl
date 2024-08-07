@@ -147,7 +147,7 @@ public static class ChromaControlExtensions
 
                         try
                         {
-                            await clientStream.ConnectAsync(10, cancellationToken).ConfigureAwait(false);
+                            await clientStream.ConnectAsync(cancellationToken).ConfigureAwait(false);
                             return clientStream;
                         }
                         catch
