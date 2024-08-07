@@ -13,6 +13,7 @@ builder.ConfigureCore()
 
 var app = builder.Build();
 
-app.UseSettings();
+app.UseSettings()
+    .UseDevices();
 
 app.Run();

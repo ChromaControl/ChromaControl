@@ -1,0 +1,19 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.vendor-checkbox-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: var(--spacing-half);
+}
+
+.vendor-checkbox-item input {
+    margin-right: var(--spacing-half);
+}
+
+.dangerous {
+    fill: var(--background-color-danger);
+    margin-right: var(--spacing-third);
+}
