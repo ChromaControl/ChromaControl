@@ -14,6 +14,7 @@
   <ItemGroup>
     <Content Include="Installer.iss" />
     <Content Include="Build.targets" />
+    <Content Include="images\*.*" />
   </ItemGroup>
 
 </Project>
