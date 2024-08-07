@@ -35,6 +35,15 @@ public class DialogService
     }
 
     /// <summary>
+    /// Shows a info dialog.
+    /// </summary>
+    /// <param name="message">The info message.</param>
+    public void ShowInfo(string message)
+    {
+        AddDialog<InfoDialog>(new() { { "Message", message } });
+    }
+
+    /// <summary>
     /// Shows an error dialog.
     /// </summary>
     /// <param name="message">The error message.</param>

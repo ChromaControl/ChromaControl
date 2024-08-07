@@ -6,7 +6,10 @@ using BlazorDesktop.Wpf;
 using ChromaControl.App.Shell.Services;
 using ChromaControl.Common.Extensions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Win32;
 using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
 using System.Windows;
 
 namespace ChromaControl.App.Shell.Components;
@@ -77,6 +80,49 @@ public partial class WindowMenuBar
     private static void ContactSupport()
     {
         OpenUrlOrPath("https://discord.gg/6xGy7cycrt");
+    }
+
+    private async Task CreateSupportBundle()
+    {
+        var (shouldSave, fileName) = await Task.Run<(bool result, string fileName)>(() =>
+        {
+            var dialog = new SaveFileDialog
+            {
+                FileName = $"SupportBundle-{DateTime.Now:yyyy-MM-dd_hh-mm-ss}",
+                DefaultExt = ".zip",
+                Filter = "Zip archives (.zip)|*.zip"
+            };
+
+            return (dialog.ShowDialog() ?? false, dialog.FileName);
+        });
+
+        if (shouldSave)
+        {
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+
+            using var zipStream = new FileStream(fileName, FileMode.Create);
+            using var zip = new ZipArchive(zipStream, ZipArchiveMode.Create);
+
+            var dataPath = Configuration.GetChromaControlPath("data");
+
+            foreach (var file in Directory.EnumerateFiles(dataPath, "*.*", SearchOption.AllDirectories))
+            {
+                var entryName = file[dataPath.Length..].TrimStart(Path.DirectorySeparatorChar);
+                var entry = zip.CreateEntry(entryName);
+
+                entry.LastWriteTime = File.GetLastWriteTime(file);
+
+                using var fileStream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var entryStream = entry.Open();
+
+                await fileStream.CopyToAsync(entryStream);
+            }
+        }
+
+        DialogService.ShowInfo($"Support bundle saved to: {fileName}");
     }
 
     private static void ShowUserGuides()
