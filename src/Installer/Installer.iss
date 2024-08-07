@@ -1,3 +1,5 @@
+#include "CodeDependencies.iss"
+
 [Setup]
 AppId=ChromaControl
 AppName={#Product}
@@ -36,3 +38,11 @@ Filename: "{app}\ChromaControl.App.exe"; Description: "Start Chroma Control"; Fl
 [UninstallRun]
 Filename: "{sys}\taskkill.exe"; Parameters: "/F /IM ChromaControl.App.exe"; StatusMsg: "Stopping Chroma Control..."; Flags: runhidden
 Filename: "{sys}\taskkill.exe"; Parameters: "/F /IM ChromaControl.Service.exe"; StatusMsg: "Stopping Chroma Control Service..."; Flags: runhidden
+
+[Code]
+function InitializeSetup: Boolean;
+begin
+  Dependency_AddVC2015To2022;
+  Dependency_AddWebView2;
+  Result := True;
+end;

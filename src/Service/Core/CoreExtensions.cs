@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using ChromaControl.Common.Extensions;
+using ChromaControl.SDK.OpenRGB.Extensions;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
@@ -38,6 +39,8 @@ public static class CoreExtensions
         builder.Configuration.AddChromaControlConfiguration();
         builder.Services.AddChromaControlServices();
         builder.Logging.AddChromaControlLogging();
+
+        builder.Services.AddOpenRGBSDK();
 
         return builder;
     }

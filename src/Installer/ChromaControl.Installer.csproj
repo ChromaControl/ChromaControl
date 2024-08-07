@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <Content Include="Installer.iss" />
+    <Content Include="CodeDependencies.iss" />
     <Content Include="Build.targets" />
     <Content Include="images\*.*" />
   </ItemGroup>
