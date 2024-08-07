@@ -2,7 +2,7 @@
 @* The Chroma Control Contributors licenses this file to you under the MIT license. *@
 @* See the LICENSE file in the project root for more information. *@
 
-<div class="dialog" style="width: @(Width)px;">
+<div class="dialog" style="width: @(Width)px; @(Height != 0 ? $"min-height: {Height}px; height: {Height}px;" : "")">
     @if (Title != null)
     {
         <div class="dialog-header">

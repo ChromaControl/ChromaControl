@@ -31,6 +31,12 @@ public partial class DialogScaffold
     public RenderFragment? AdditionalButtons { get; set; }
 
     /// <summary>
+    /// The height of the dialog.
+    /// </summary>
+    [Parameter]
+    public int Height { get; set; } = 0;
+
+    /// <summary>
     /// The width of the dialog.
     /// </summary>
     [Parameter]

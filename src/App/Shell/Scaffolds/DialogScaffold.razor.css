@@ -58,6 +58,8 @@
 .dialog-body-container {
     min-height: 0;
     height: 100%;
+    flex: 1;
+    display: flex;
 }
 
 .dialog-body {
@@ -66,13 +68,18 @@
     padding: 0;
     min-width: 0;
     min-height: 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    flex: 1;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .dialog-content-scrollable {
-    height: 300px;
     overflow-x: hidden;
     overflow-y: auto;
 }
