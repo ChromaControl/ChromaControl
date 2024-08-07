@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="ChromaControl.SDK.OpenRGB" />
+    <PackageReference Include="ChromaControl.SDK.Synapse" />
     <PackageReference Include="Grpc.AspNetCore" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
       <PrivateAssets>all</PrivateAssets>
