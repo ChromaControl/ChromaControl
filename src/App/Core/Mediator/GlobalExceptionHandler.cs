@@ -43,9 +43,16 @@ public partial class GlobalExceptionHandler<TRequest, TResponse, TException> : I
     /// <returns>A <see cref="Task"/>.</returns>
     public Task Handle(TRequest request, TException exception, RequestExceptionHandlerState<TResponse> state, CancellationToken cancellationToken)
     {
-        if (exception is RpcException)
+        if (exception is RpcException rpcException)
         {
-            state.SetHandled(CreateResponse(exception, "Unable to communicate with the lighting service."));
+            if (rpcException.StatusCode == StatusCode.Unimplemented)
+            {
+                state.SetHandled(CreateResponse(exception, "The lighting service does not support this feature."));
+            }
+            else
+            {
+                state.SetHandled(CreateResponse(exception, "Unable to communicate with the lighting service."));
+            }
         }
         else
         {
