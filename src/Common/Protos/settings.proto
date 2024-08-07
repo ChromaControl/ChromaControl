@@ -10,12 +10,12 @@ service SettingsGrpc {
     rpc GetString(GetSettingRequest) returns (StringSettingResponse);
     rpc GetBool(GetSettingRequest) returns (BoolSettingResponse);
     rpc GetDateTime(GetSettingRequest) returns (DateTimeSettingResponse);
-    rpc SetString(SetStringRequest) returns (EmptySettingResponse);
-    rpc SetBool(SetBoolRequest) returns (EmptySettingResponse);
-    rpc SetDateTime(SetDateTimeRequest) returns (EmptySettingResponse);
+    rpc SetString(SetStringRequest) returns (EmptyMessage);
+    rpc SetBool(SetBoolRequest) returns (EmptyMessage);
+    rpc SetDateTime(SetDateTimeRequest) returns (EmptyMessage);
 }
 
-message EmptySettingResponse { }
+message EmptyMessage { }
 
 message GetSettingRequest {
     string module = 1;

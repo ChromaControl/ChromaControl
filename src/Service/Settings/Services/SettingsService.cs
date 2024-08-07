@@ -109,8 +109,8 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// </summary>
     /// <param name="request">The <see cref="SetStringRequest"/>.</param>
     /// <param name="context">The <see cref="ServerCallContext"/>.</param>
-    /// <returns>A <see cref="EmptySettingResponse"/>.</returns>
-    public override async Task<EmptySettingResponse> SetString(SetStringRequest request, ServerCallContext context)
+    /// <returns>A <see cref="EmptyMessage"/>.</returns>
+    public override async Task<EmptyMessage> SetString(SetStringRequest request, ServerCallContext context)
     {
         var exists = await _context.Settings
             .AnyAsync(s => s.Module == request.Module && s.Name == request.Name);
@@ -141,8 +141,8 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// </summary>
     /// <param name="request">The <see cref="SetBoolRequest"/>.</param>
     /// <param name="context">The <see cref="ServerCallContext"/>.</param>
-    /// <returns>A <see cref="EmptySettingResponse"/>.</returns>
-    public override async Task<EmptySettingResponse> SetBool(SetBoolRequest request, ServerCallContext context)
+    /// <returns>A <see cref="EmptyMessage"/>.</returns>
+    public override async Task<EmptyMessage> SetBool(SetBoolRequest request, ServerCallContext context)
     {
         var exists = await _context.Settings
             .AnyAsync(s => s.Module == request.Module && s.Name == request.Name);
@@ -173,8 +173,8 @@ public class SettingsService : SettingsGrpc.SettingsGrpcBase
     /// </summary>
     /// <param name="request">The <see cref="SetDateTimeRequest"/>.</param>
     /// <param name="context">The <see cref="ServerCallContext"/>.</param>
-    /// <returns>A <see cref="EmptySettingResponse"/>.</returns>
-    public override async Task<EmptySettingResponse> SetDateTime(SetDateTimeRequest request, ServerCallContext context)
+    /// <returns>A <see cref="EmptyMessage"/>.</returns>
+    public override async Task<EmptyMessage> SetDateTime(SetDateTimeRequest request, ServerCallContext context)
     {
         var exists = await _context.Settings
             .AnyAsync(s => s.Module == request.Module && s.Name == request.Name);
