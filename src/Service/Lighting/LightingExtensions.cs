@@ -4,7 +4,6 @@
 
 using ChromaControl.SDK.OpenRGB.Extensions;
 using ChromaControl.SDK.Synapse.Extensions;
-using ChromaControl.Service.Devices.Services;
 using ChromaControl.Service.Lighting.Services;
 using ChromaControl.Service.Lighting.Workers;
 

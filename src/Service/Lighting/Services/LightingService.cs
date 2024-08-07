@@ -3,10 +3,9 @@
 // See the LICENSE file in the project root for more information.
 
 using ChromaControl.Common.Protos.Lighting;
-using ChromaControl.Service.Lighting.Services;
 using Grpc.Core;
 
-namespace ChromaControl.Service.Devices.Services;
+namespace ChromaControl.Service.Lighting.Services;
 
 /// <summary>
 /// The lighting service
