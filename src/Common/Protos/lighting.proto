@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "ChromaControl.Common.Protos.Lighting";
+
+package chromacontrol.lighting;
+
+service LightingGrpc {
+    rpc StreamNotifications(EmptyMessage) returns (stream Notification);
+}
+
+message EmptyMessage { }
+
+enum NotificationType {
+    DEVICES_UPDATED = 0;
+}
+
+message Notification {
+    NotificationType type = 1;
+}
