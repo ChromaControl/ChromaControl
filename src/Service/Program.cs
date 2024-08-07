@@ -4,6 +4,7 @@
 
 using ChromaControl.Service.Core;
 using ChromaControl.Service.Data;
+using ChromaControl.Service.Devices;
 using ChromaControl.Service.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
