@@ -143,6 +143,7 @@
     --font-family-sans-serif: Roboto, system-ui, sans-serif, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-family-monospace: Roboto Mono, Consolas, monospace, Segoe UI, Segoe UI Emoji, Segoe UI Symbol;
     --font-size: 12px;
+    --font-size-sm: 11px;
     --font-size-md: 14px;
     --font-weight: 400;
     --font-weight-semibold: 600;
