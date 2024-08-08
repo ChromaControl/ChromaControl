@@ -4,7 +4,6 @@
 
 using BlazorDesktop.Hosting;
 using ChromaControl.App.Core;
-using ChromaControl.App.Home;
 using ChromaControl.App.Lighting;
 using ChromaControl.App.Settings;
 using ChromaControl.App.Shell;
@@ -18,7 +17,6 @@ builder.ConfigureCore()
     .ConfigureSettings()
     .ConfigureShell()
     .ConfigureLighting()
-    .ConfigureHome()
     .ConfigureTutorials();
 
 await builder.Build().RunAsync();
