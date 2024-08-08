@@ -25,6 +25,7 @@ public static class ChromaControlExtensions
     private readonly static string s_appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
     private readonly static string s_dataPath = Path.Combine(s_appDataPath, "ChromaControl");
     private readonly static string s_logsPath = Path.Combine(s_dataPath, "logs");
+    private readonly static string s_configPath = Path.Combine(s_dataPath, "config");
     private readonly static string s_databasePath = Path.Combine(s_dataPath, "ChromaControl.db");
 
     /// <summary>
@@ -86,6 +87,11 @@ public static class ChromaControlExtensions
             Directory.CreateDirectory(s_logsPath);
         }
 
+        if (!Directory.Exists(s_configPath))
+        {
+            Directory.CreateDirectory(s_configPath);
+        }
+
         var chromaControl = config.GetSection("ChromaControl");
         var paths = chromaControl.GetSection("Path");
         var connectionStrings = config.GetSection("ConnectionStrings");
@@ -99,6 +105,7 @@ public static class ChromaControlExtensions
         paths["APP"] = s_appPath;
         paths["DATA"] = s_dataPath;
         paths["LOGS"] = s_logsPath;
+        paths["CONFIG"] = s_configPath;
 
         connectionStrings["Database"] = $"Data Source={s_databasePath}";
 
