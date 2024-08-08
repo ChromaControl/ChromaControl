@@ -4,7 +4,6 @@
 
 using ChromaControl.Service.Core;
 using ChromaControl.Service.Data;
-using ChromaControl.Service.Devices;
 using ChromaControl.Service.Lighting;
 using ChromaControl.Service.Settings;
 
@@ -17,7 +16,6 @@ builder.ConfigureCore()
 var app = builder.Build();
 
 app.UseSettings()
-    .UseDevices()
     .UseLighting();
 
 app.Run();

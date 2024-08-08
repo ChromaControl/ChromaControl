@@ -7,9 +7,9 @@ using ChromaControl.Common.Protos.Lighting;
 namespace ChromaControl.App.Lighting.Services;
 
 /// <summary>
-/// The lighting service.
+/// The event service.
 /// </summary>
-public class LightingService
+public class EventService
 {
     /// <summary>
     /// Occurs when the devices are updated.
@@ -17,13 +17,13 @@ public class LightingService
     public event Action? DevicesUpdated;
 
     /// <summary>
-    /// Raises a notification.
+    /// Raises an event.
     /// </summary>
-    public void RaiseNotification(NotificationType type)
+    public void RaiseEvent(EventType type)
     {
         switch (type)
         {
-            case NotificationType.DevicesUpdated:
+            case EventType.DevicesUpdated:
                 DevicesUpdated?.Invoke();
                 break;
             default:

@@ -42,7 +42,7 @@ public static class LightingExtensions
 
     private static IHostApplicationBuilder ConfigureServices(this IHostApplicationBuilder builder)
     {
-        builder.Services.AddSingleton<NotificationDispatcher>();
+        builder.Services.AddSingleton<EventDispatcher>();
         builder.Services.AddHostedService<LightingWorker>();
 
         return builder;

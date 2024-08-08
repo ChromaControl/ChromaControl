@@ -3,9 +3,9 @@
 // See the LICENSE file in the project root for more information.
 
 using ChromaControl.App.Core.Mediator;
-using ChromaControl.Common.Protos.Devices;
+using ChromaControl.Common.Protos.Lighting;
 
-namespace ChromaControl.App.Devices.Commands;
+namespace ChromaControl.App.Lighting.Commands;
 
 /// <summary>
 /// Toggles a vendor.
@@ -24,21 +24,21 @@ public class ToggleVendor
     /// </summary>
     public class Handler : ICommandHandler<Command>
     {
-        private readonly DevicesGrpc.DevicesGrpcClient _devicesClient;
+        private readonly LightingGrpc.LightingGrpcClient _lightingClient;
 
         /// <summary>
         /// Creates a <see cref="Handler"/> instance.
         /// </summary>
-        /// <param name="devicesClient">The <see cref="DevicesGrpc.DevicesGrpcClient"/>.</param>
-        public Handler(DevicesGrpc.DevicesGrpcClient devicesClient)
+        /// <param name="lightingClient">The <see cref="LightingGrpc.LightingGrpcClient"/>.</param>
+        public Handler(LightingGrpc.LightingGrpcClient lightingClient)
         {
-            _devicesClient = devicesClient;
+            _lightingClient = lightingClient;
         }
 
         /// <inheritdoc/>
         public async Task<Result<int, string>> Handle(Command request, CancellationToken cancellationToken)
         {
-            await _devicesClient.ToggleVendorAsync(new()
+            await _lightingClient.ToggleVendorAsync(new()
             {
                 Name = request.Name,
                 Enabled = request.Enabled

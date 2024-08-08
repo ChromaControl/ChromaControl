@@ -5,7 +5,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ChromaControl.Service.Devices.Entities;
+namespace ChromaControl.Service.Lighting.Entities;
 
 /// <summary>
 /// A device vendor.

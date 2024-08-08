@@ -7,20 +7,20 @@ using ChromaControl.Common.Protos.Lighting;
 namespace ChromaControl.Service.Lighting.Services;
 
 /// <summary>
-/// The notification dispatcher.
+/// The event dispatcher.
 /// </summary>
-public class NotificationDispatcher
+public class EventDispatcher
 {
     /// <summary>
     /// Occurs when any event happens.
     /// </summary>
-    public event Action<NotificationType>? EventTriggered;
+    public event Action<EventType>? EventTriggered;
 
     /// <summary>
-    /// Raised <see cref="EventTriggered"/>.
+    /// Raises <see cref="EventType.DevicesUpdated"/>.
     /// </summary>
     public void RaiseDevicesUpdated()
     {
-        EventTriggered?.Invoke(NotificationType.DevicesUpdated);
+        EventTriggered?.Invoke(EventType.DevicesUpdated);
     }
 }

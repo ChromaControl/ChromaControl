@@ -10,20 +10,20 @@ namespace ChromaControl.App.Lighting.Services;
 /// <summary>
 /// Monitors for notifications.
 /// </summary>
-public class NotificationMonitor : BackgroundService
+public class EventMonitor : BackgroundService
 {
     private readonly LightingGrpc.LightingGrpcClient _lightingClient;
-    private readonly LightingService _lightingService;
+    private readonly EventService _eventService;
 
     /// <summary>
-    /// Creates a <see cref="NotificationMonitor"/> instance.
+    /// Creates a <see cref="EventMonitor"/> instance.
     /// </summary>
     /// <param name="lightingClient">The <see cref="LightingGrpc.LightingGrpcClient"/>.</param>
-    /// <param name="lightingService">The <see cref="LightingService"/>.</param>
-    public NotificationMonitor(LightingGrpc.LightingGrpcClient lightingClient, LightingService lightingService)
+    /// <param name="eventService">The <see cref="EventService"/>.</param>
+    public EventMonitor(LightingGrpc.LightingGrpcClient lightingClient, EventService eventService)
     {
         _lightingClient = lightingClient;
-        _lightingService = lightingService;
+        _eventService = eventService;
     }
 
     /// <inheritdoc/>
@@ -33,11 +33,11 @@ public class NotificationMonitor : BackgroundService
         {
             try
             {
-                using var call = _lightingClient.StreamNotifications(new(), cancellationToken: stoppingToken);
+                using var call = _lightingClient.StreamEvents(new(), cancellationToken: stoppingToken);
 
-                await foreach (var notification in call.ResponseStream.ReadAllAsync(cancellationToken: stoppingToken))
+                await foreach (var eventInstance in call.ResponseStream.ReadAllAsync(cancellationToken: stoppingToken))
                 {
-                    _lightingService.RaiseNotification(notification.Type);
+                    _eventService.RaiseEvent(eventInstance.Type);
                 }
 
                 await Task.Delay(100, stoppingToken);

@@ -4,7 +4,6 @@
 
 using BlazorDesktop.Hosting;
 using ChromaControl.App.Core;
-using ChromaControl.App.Devices;
 using ChromaControl.App.Home;
 using ChromaControl.App.Lighting;
 using ChromaControl.App.Settings;
@@ -18,7 +17,6 @@ builder.ConfigureCore()
     .ConfigureUpdater()
     .ConfigureSettings()
     .ConfigureShell()
-    .ConfigureDevices()
     .ConfigureLighting()
     .ConfigureHome()
     .ConfigureTutorials();

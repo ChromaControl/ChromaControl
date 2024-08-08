@@ -2,15 +2,15 @@
 // The Chroma Control Contributors licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using ChromaControl.App.Devices.Commands;
-using ChromaControl.App.Devices.Queries;
+using ChromaControl.App.Lighting.Commands;
+using ChromaControl.App.Lighting.Queries;
 using ChromaControl.App.Shell.Services;
-using ChromaControl.Common.Protos.Devices;
+using ChromaControl.Common.Protos.Lighting;
 using Google.Protobuf.Collections;
 using MediatR;
 using Microsoft.AspNetCore.Components;
 
-namespace ChromaControl.App.Devices.Components;
+namespace ChromaControl.App.Lighting.Components;
 
 /// <summary>
 /// The vendor list component.

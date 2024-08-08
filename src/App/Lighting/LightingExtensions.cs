@@ -23,8 +23,8 @@ public static class LightingExtensions
     public static BlazorDesktopHostBuilder ConfigureLighting(this BlazorDesktopHostBuilder builder)
     {
         builder.Services.AddChromaControlGrpcClient<LightingGrpc.LightingGrpcClient>();
-        builder.Services.TryAddSingleton<LightingService>();
-        builder.Services.AddHostedService<NotificationMonitor>();
+        builder.Services.TryAddSingleton<EventService>();
+        builder.Services.AddHostedService<EventMonitor>();
 
         return builder;
     }
