@@ -12,15 +12,15 @@ namespace ChromaControl.Service.Lighting.Services;
 /// </summary>
 public class LightingService : LightingGrpc.LightingGrpcBase
 {
-    private readonly NotificationDispatcher _notificationManager;
+    private readonly NotificationDispatcher _notificationDispatcher;
 
     /// <summary>
     /// Creates a <see cref="LightingService"/> instance.
     /// </summary>
-    /// <param name="notificationManager">The <see cref="NotificationDispatcher"/>.</param>
-    public LightingService(NotificationDispatcher notificationManager)
+    /// <param name="notificationDispatcher">The <see cref="NotificationDispatcher"/>.</param>
+    public LightingService(NotificationDispatcher notificationDispatcher)
     {
-        _notificationManager = notificationManager;
+        _notificationDispatcher = notificationDispatcher;
     }
 
     /// <summary>
@@ -37,13 +37,13 @@ public class LightingService : LightingGrpc.LightingGrpcBase
             await responseStream.WriteAsync(new() { Type = type });
         }
 
-        _notificationManager.EventTriggered += EventAction;
+        _notificationDispatcher.EventTriggered += EventAction;
 
         while (!context.CancellationToken.IsCancellationRequested)
         {
             await Task.Delay(5000, context.CancellationToken);
         }
 
-        _notificationManager.EventTriggered -= EventAction;
+        _notificationDispatcher.EventTriggered -= EventAction;
     }
 }
