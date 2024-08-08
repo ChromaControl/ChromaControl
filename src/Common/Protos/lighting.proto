@@ -5,6 +5,7 @@ option csharp_namespace = "ChromaControl.Common.Protos.Lighting";
 package chromacontrol.lighting;
 
 service LightingGrpc {
+    rpc RestartService(EmptyMessage) returns (EmptyMessage);
     rpc StreamNotifications(EmptyMessage) returns (stream Notification);
 }
 

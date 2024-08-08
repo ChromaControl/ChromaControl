@@ -4,9 +4,8 @@
 
 using ChromaControl.SDK.OpenRGB;
 using ChromaControl.Service.Data;
+using ChromaControl.Service.Data.Extensions;
 using ChromaControl.Service.Lighting.Services;
-using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Nodes;
 
 namespace ChromaControl.Service.Lighting.Workers;
 
@@ -56,20 +55,7 @@ public class LightingWorker : IHostedService
 
         var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-        var config = JsonNode.Parse("{\"Detectors\":{\"detectors\":{}}}")!;
-
-        var detectors = await context.DeviceDetectors
-            .Select(d => new
-            {
-                d.Name,
-                d.Vendor.Enabled
-            })
-            .ToListAsync();
-
-        foreach (var detector in detectors)
-        {
-            config["Detectors"]!["detectors"]![detector.Name] = detector.Enabled;
-        }
+        var config = await context.GenerateConfig();
 
         _openRGBService.UpdateConfiguration(config);
     }

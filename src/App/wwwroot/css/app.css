@@ -302,6 +302,10 @@ input {
         cursor: pointer;
     }
 
+::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+}
+
 .selectable-text {
     user-select: text;
     cursor: auto;

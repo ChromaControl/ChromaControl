@@ -1,0 +1,71 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.tutorial {
+    display: flex;
+    flex-grow: 1;
+    min-width: 0;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 14px;
+}
+
+.tutorial-container {
+    display: flex;
+    align-items: center;
+    padding: 40px;
+}
+
+.tutorial-body {
+    max-width: 500px;
+    width: 100%;
+}
+
+.tutorial-section {
+    min-height: calc(100vh - 2 * 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+.tutorial-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tutorial-title {
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: var(--spacing);
+}
+
+.tutorial-title span {
+    display: inline-block;
+}
+
+.tutorial-description {
+    margin: var(--spacing) 0;
+}
+
+.tutorial-user-content {
+    display: flex;
+    flex-direction: column;
+    margin: var(--spacing-double);
+}
+
+.tutorial-user-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+::deep .tutorial-user-buttons button {
+    margin-right: var(--spacing);
+}
+
+    ::deep .tutorial-user-buttons button:last-child {
+        margin-right: 0;
+    }

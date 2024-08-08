@@ -1,0 +1,19 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+@page "/tutorials/vendors"
+
+<TutorialScaffold
+    Title="Configure Vendors"
+    Description="Vendors enabled here will be controlled by Chroma Control, asd thus Razer Synapse.">
+    <Content>
+        <div class="vendors-container">
+            <ChromaControl.App.Devices.Components.VendorList />
+        </div>
+    </Content>
+    <Buttons>
+        <Button Style="Button.StyleType.Primary" @onclick="NavigateForward">FINISH</Button>
+        <Button @onclick="NavigateBackward">BACK</Button>
+    </Buttons>
+</TutorialScaffold>

@@ -9,6 +9,7 @@ using ChromaControl.App.Home;
 using ChromaControl.App.Lighting;
 using ChromaControl.App.Settings;
 using ChromaControl.App.Shell;
+using ChromaControl.App.Tutorials;
 using ChromaControl.App.Updater;
 
 var builder = BlazorDesktopHostBuilder.CreateDefault(args);
@@ -19,6 +20,7 @@ builder.ConfigureCore()
     .ConfigureShell()
     .ConfigureDevices()
     .ConfigureLighting()
-    .ConfigureHome();
+    .ConfigureHome()
+    .ConfigureTutorials();
 
 await builder.Build().RunAsync();

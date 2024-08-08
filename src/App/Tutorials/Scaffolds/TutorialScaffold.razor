@@ -1,0 +1,32 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="tutorial">
+    <div class="tutorial-container">
+        <div class="tutorial-body">
+            <section class="tutorial-section">
+                <div class="tutorial-content">
+                    <h1 class="tutorial-title">
+                        @Title
+                        @if (TitleExtended != null)
+                        {
+                            <span>@TitleExtended</span>
+                        }
+                    </h1>
+                    <p class="tutorial-description">
+                        @Description
+                    </p>
+                    <div>
+                        <div class="tutorial-user-content">
+                            @Content
+                        </div>
+                        <div class="tutorial-user-buttons">
+                            @Buttons
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
