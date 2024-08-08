@@ -16,19 +16,19 @@ namespace ChromaControl.Service.Lighting.Workers;
 public class LightingWorker : IHostedService
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly NotificationDispatcher _notificationManager;
+    private readonly NotificationDispatcher _notificationDispatcher;
     private readonly IOpenRGBService _openRGBService;
 
     /// <summary>
     /// Creates a <see cref="LightingWorker"/> instance.
     /// </summary>
     /// <param name="serviceProvider">The <see cref="IServiceProvider"/>.</param>
-    /// <param name="notificationManager">The <see cref="NotificationDispatcher"/>.</param>
+    /// <param name="notificationDispatcher">The <see cref="NotificationDispatcher"/>.</param>
     /// <param name="openRGBService">The <see cref="IOpenRGBService"/>.</param>
-    public LightingWorker(IServiceProvider serviceProvider, NotificationDispatcher notificationManager, IOpenRGBService openRGBService)
+    public LightingWorker(IServiceProvider serviceProvider, NotificationDispatcher notificationDispatcher, IOpenRGBService openRGBService)
     {
         _serviceProvider = serviceProvider;
-        _notificationManager = notificationManager;
+        _notificationDispatcher = notificationDispatcher;
         _openRGBService = openRGBService;
         _openRGBService.DeviceListUpdated += DeviceListUpdated;
     }
@@ -47,7 +47,7 @@ public class LightingWorker : IHostedService
 
     private void DeviceListUpdated(object? sender, IReadOnlyList<SDK.OpenRGB.Structs.OpenRGBDevice> e)
     {
-        _notificationManager.RaiseDevicesUpdated();
+        _notificationDispatcher.RaiseDevicesUpdated();
     }
 
     private async Task WriteConfiguration()
