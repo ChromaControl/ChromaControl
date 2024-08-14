@@ -16,7 +16,7 @@
     <PackageVersion Include="Grpc.Tools" Version="2.65.0" />
     <PackageVersion Include="MediatR" Version="12.4.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.7" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.7.0" />
     <PackageVersion Include="NetSparkleUpdater.SparkleUpdater" Version="3.0.0-preview20240716002" />
