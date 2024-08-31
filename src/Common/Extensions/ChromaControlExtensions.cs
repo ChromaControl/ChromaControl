@@ -21,12 +21,12 @@ namespace ChromaControl.Common.Extensions;
 /// </summary>
 public static class ChromaControlExtensions
 {
-    private readonly static string s_appPath = AppContext.BaseDirectory;
-    private readonly static string s_appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-    private readonly static string s_dataPath = Path.Combine(s_appDataPath, "ChromaControl");
-    private readonly static string s_logsPath = Path.Combine(s_dataPath, "logs");
-    private readonly static string s_configPath = Path.Combine(s_dataPath, "config");
-    private readonly static string s_databasePath = Path.Combine(s_dataPath, "ChromaControl.db");
+    private static readonly string s_appPath = AppContext.BaseDirectory;
+    private static readonly string s_appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+    private static readonly string s_dataPath = Path.Combine(s_appDataPath, "ChromaControl");
+    private static readonly string s_logsPath = Path.Combine(s_dataPath, "logs");
+    private static readonly string s_configPath = Path.Combine(s_dataPath, "config");
+    private static readonly string s_databasePath = Path.Combine(s_dataPath, "ChromaControl.db");
 
     /// <summary>
     /// Adds Chroma Control services to an <see cref="IServiceCollection"/>.
