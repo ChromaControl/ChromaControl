@@ -2,7 +2,7 @@
 /* The Chroma Control Contributors licenses this file to you under the MIT license. */
 /* See the LICENSE file in the project root for more information. */
 
-.devices-view {
+.device-group-view {
     min-width: 0;
     display: flex;
     flex-direction: row;
@@ -33,7 +33,7 @@
     overflow: hidden auto;
 }
 
-.device-group-view {
+.device-view-container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
