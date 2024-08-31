@@ -14,7 +14,7 @@ namespace ChromaControl.App.Lighting.Components;
 /// <summary>
 /// The device group view component.
 /// </summary>
-public partial class DeviceGroupView
+public partial class DeviceGroupView : IDisposable
 {
     /// <summary>
     /// The <see cref="EventService"/>.
@@ -60,6 +60,14 @@ public partial class DeviceGroupView
         _activeGroup = newItem.Name;
 
         StateHasChanged();
+    }
+
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+        EventService.DevicesUpdated -= OnDevicesUpdated;
+
+        GC.SuppressFinalize(this);
     }
 
     private async Task UpdateGroupsList()
