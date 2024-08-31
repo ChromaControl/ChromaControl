@@ -12,7 +12,7 @@ namespace ChromaControl.App.Shell.Components;
 public partial class TabItem
 {
     /// <summary>
-    /// The label of the tab item.
+    /// The content of the tab item.
     /// </summary>
     [Parameter, EditorRequired]
     public required Type Content { get; set; }
