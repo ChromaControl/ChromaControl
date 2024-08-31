@@ -9,6 +9,7 @@ service LightingGrpc {
     rpc StreamEvents(EmptyMessage) returns (stream Event);
     rpc GetVendors(EmptyMessage) returns (VendorListResponse);
     rpc ToggleVendor(ToggleVendorRequest) returns (EmptyMessage);
+    rpc GetDeviceGroups(EmptyMessage) returns (DeviceGroupsResponse);
 }
 
 message EmptyMessage { }
@@ -34,4 +35,14 @@ message VendorListResponse {
 message ToggleVendorRequest {
     string name = 1;
     bool enabled = 2;
+}
+
+message DeviceGroup {
+    string name = 1;
+    string vendor = 2;
+    string type = 3;
+}
+
+message DeviceGroupsResponse {
+    repeated DeviceGroup groups = 1;
 }

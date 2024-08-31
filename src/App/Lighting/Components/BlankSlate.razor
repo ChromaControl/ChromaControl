@@ -1,0 +1,32 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="blank-slate">
+    <div class="blank-slate-content">
+        <div class="blank-slate-header">
+            <h1>No Device Group Selected</h1>
+            <p>There is no device group selected. Here are some friendly suggestions for what to do next.</p>
+        </div>
+
+        <div class="blank-slate-action">
+            <div class="blank-slate-action-content">
+                <div class="blank-slate-action-text">
+                    <h2>Select Device Group</h2>
+                    <p class="description">Selecting a device group on the left will populate this pane with settings for it.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="blank-slate-action">
+            <div class="blank-slate-action-content">
+                <div class="blank-slate-action-text">
+                    <h2>Open The Settings</h2>
+                    <p class="description">You may still need to configure the enabled device vendors in the settings. By enabling vendors, their devices will show in the left side groups list.</p>
+                    <p class="discoverability">Always available in the toolbar under file or <kbd>Ctrl</kbd> + <kbd>,</kbd></p>
+                </div>
+                <Button Style="Button.StyleType.Secondary" @onclick="ShowSettings">Open Settings</Button>
+            </div>
+        </div>
+    </div>
+</div>

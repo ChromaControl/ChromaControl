@@ -1,0 +1,29 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="devices-view">
+    <div class="device-group-container">
+        <div class="device-group-header">
+            Device Groups
+        </div>
+        <div class="device-group-list">
+            <CascadingValue Value="this" Name="DeviceGroupView" IsFixed="true">
+                @foreach (var group in _groups)
+                {
+                    <DeviceGroup Name="@group.Name" Vendor="@group.Vendor" Type="@group.Type" />
+                }
+            </CascadingValue>
+        </div>
+    </div>
+    <div class="device-group-view">
+        @if (_activeGroup == null)
+        {
+            <BlankSlate />
+        }
+        else
+        {
+            @_activeGroup
+        }
+    </div>
+</div>

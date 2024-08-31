@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using BlazorDesktop.Wpf;
+using ChromaControl.App.Settings.Components;
 using ChromaControl.App.Shell.Services;
 using ChromaControl.Common.Extensions;
 using Microsoft.AspNetCore.Components;
@@ -44,7 +45,7 @@ public partial class WindowMenuBar
 
     private void ShowSettings()
     {
-        DialogService.Open<Settings.Components.SettingsDialog>();
+        DialogService.Open<SettingsDialog>();
     }
 
     private static void Exit()

@@ -1,0 +1,81 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.blank-slate {
+    padding: var(--spacing-quad);
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.blank-slate-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.blank-slate-header {
+    margin-bottom: var(--spacing-double);
+}
+
+    .blank-slate-header h1 {
+        padding: 0;
+        margin: 0;
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-light);
+    }
+
+    .blank-slate-header p {
+        margin: 0;
+    }
+
+.blank-slate-action {
+    border-radius: 5px;
+    background: var(--background-color-muted);
+}
+
+    .blank-slate-action:not(:last-child) {
+        margin-bottom: var(--spacing);
+    }
+
+.blank-slate-action-content {
+    padding: var(--spacing-double);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.blank-slate-action-text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+    .blank-slate-action-text:not(:last-child) {
+        margin-right: var(--spacing-double);
+    }
+
+    .blank-slate-action-text h2 {
+        margin: 0;
+        padding: 0;
+        font-size: var(--font-size);
+        font-weight: var(--font-weight-semibold);
+    }
+
+    .blank-slate-action-text p.description {
+        margin: 0;
+        padding: 0;
+        font-size: var(--font-size);
+        margin-bottom: var(--spacing-half);
+    }
+
+    .blank-slate-action-text p.discoverability {
+        margin: 0;
+        padding: 0;
+        font-size: var(--font-size);
+        color: var(--foreground-color-muted);
+    }

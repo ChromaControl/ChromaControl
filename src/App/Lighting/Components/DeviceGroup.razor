@@ -1,0 +1,16 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="device-group @StateClass" role="tab" aria-selected="@AriaSelected" tabindex="@TabIndex" @onclick="OnSelect">
+    <div class="device-group-content-wrapper">
+        <div class="device-group-content">
+            <div class="device-group-name">
+                <span>@Name</span>
+            </div>
+            <div class="device-group-vendor">
+                <span>@Vendor</span> &bull; <span>@Type</span>
+            </div>
+        </div>
+    </div>
+</div>

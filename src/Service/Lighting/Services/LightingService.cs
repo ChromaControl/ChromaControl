@@ -6,6 +6,7 @@ using ChromaControl.Common.Protos.Lighting;
 using ChromaControl.SDK.OpenRGB;
 using ChromaControl.Service.Data;
 using ChromaControl.Service.Data.Extensions;
+using ChromaControl.Service.Lighting.Extensions;
 using Grpc.Core;
 using Microsoft.EntityFrameworkCore;
 
@@ -112,5 +113,31 @@ public class LightingService : LightingGrpc.LightingGrpcBase
             .ExecuteUpdateAsync(p => p.SetProperty(s => s.Enabled, request.Enabled));
 
         return new();
+    }
+
+    /// <summary>
+    /// Gets the device groups.
+    /// </summary>
+    /// <param name="request">The <see cref="EmptyMessage"/>.</param>
+    /// <param name="context">The <see cref="ServerCallContext"/>.</param>
+    /// <returns>A <see cref="DeviceGroupsResponse"/>.</returns>
+    public override async Task<DeviceGroupsResponse> GetDeviceGroups(EmptyMessage request, ServerCallContext context)
+    {
+        var devices = await _openRGBService.GetDeviceListAsync(context.CancellationToken);
+
+        var groups = devices.Select(d => new DeviceGroup()
+        {
+            Name = d.Name,
+            Vendor = d.Vendor,
+            Type = d.Type.ToFriendlyName()
+        })
+        .Distinct()
+        .OrderBy(g => g.Name);
+
+        var response = new DeviceGroupsResponse();
+
+        response.Groups.AddRange(groups);
+
+        return response;
     }
 }

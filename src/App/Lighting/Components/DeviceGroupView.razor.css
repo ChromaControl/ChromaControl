@@ -1,0 +1,42 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.devices-view {
+    min-width: 0;
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+}
+
+.device-group-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border-right: 1px solid var(--border-color-default);
+    background: var(--background-color-tertiary);
+    width: 250px;
+}
+
+.device-group-header {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 var(--spacing);
+    text-align: center;
+    border-bottom: 1px solid var(--border-color-default);
+    background: var(--background-color-tertiary);
+}
+
+.device-group-list {
+    overflow: hidden auto;
+}
+
+.device-group-view {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
