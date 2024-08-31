@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ChromaControl.App.Shell.Components;
 
@@ -38,9 +39,28 @@ public partial class WindowMenuBar
     [Inject]
     public required DialogService DialogService { get; set; }
 
-    private static void NotImplemented()
+    /// <inheritdoc/>
+    protected override void OnInitialized()
     {
-        MessageBox.Show("This function has not been implemented yet.");
+        Window.KeyDown += OnKeyDown;
+    }
+
+    private void OnKeyDown(object sender, KeyEventArgs e)
+    {
+        if ((Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) && e.Key == Key.N)
+        {
+            AddNewDevice();
+        }
+
+        if ((Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)) && e.Key == Key.OemComma)
+        {
+            ShowSettings();
+        }
+    }
+
+    private static void AddNewDevice()
+    {
+        MessageBox.Show("Adding additional devices is not supported yet.", "Not Supported");
     }
 
     private void ShowSettings()
