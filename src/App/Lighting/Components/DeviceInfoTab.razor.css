@@ -1,0 +1,14 @@
+* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.label {
+    margin-bottom: var(--spacing-half);
+}
+
+.value {
+    margin-top: 0;
+    margin-bottom: var(--spacing);
+    font-size: var(--font-size-sm);
+    color: var(--foreground-color-muted);
+}

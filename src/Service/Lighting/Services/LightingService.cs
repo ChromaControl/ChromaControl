@@ -125,18 +125,72 @@ public class LightingService : LightingGrpc.LightingGrpcBase
     {
         var devices = await _openRGBService.GetDeviceListAsync(context.CancellationToken);
 
-        var groups = devices.Select(d => new DeviceGroup()
-        {
-            Name = d.Name,
-            Vendor = d.Vendor,
-            Type = d.Type.ToFriendlyName()
-        })
-        .Distinct()
-        .OrderBy(g => g.Name);
+        var groups = devices
+            .Select(d => new DeviceGroup()
+            {
+                Name = d.Name,
+                Vendor = d.Vendor,
+                Type = d.Type.ToFriendlyName()
+            })
+            .Distinct()
+            .OrderBy(g => g.Name);
 
         var response = new DeviceGroupsResponse();
 
         response.Groups.AddRange(groups);
+
+        return response;
+    }
+
+    /// <summary>
+    /// Gets the devices in a group.
+    /// </summary>
+    /// <param name="request">The <see cref="GetGroupDevicesRequest"/>.</param>
+    /// <param name="context">The <see cref="ServerCallContext"/>.</param>
+    /// <returns>A <see cref="DevicesResponse"/>.</returns>
+    public override async Task<DevicesResponse> GetGroupDevices(GetGroupDevicesRequest request, ServerCallContext context)
+    {
+        var devices = await _openRGBService.GetDeviceListAsync(context.CancellationToken);
+
+        var groupDevices = devices
+            .Where(d => d.Name == request.GroupName)
+            .Select((d, i) => new Device()
+            {
+                Index = d.Index,
+                Name = $"{d.Name} {i + 1}"
+            })
+            .OrderBy(g => g.Name);
+
+        var response = new DevicesResponse();
+
+        response.Devices.AddRange(groupDevices);
+
+        return response;
+    }
+
+    /// <summary>
+    /// Gets info for a specific device.
+    /// </summary>
+    /// <param name="request">The <see cref="GetDeviceInfoRequest"/>.</param>
+    /// <param name="context">The <see cref="ServerCallContext"/>.</param>
+    /// <returns>A <see cref="DeviceInfoResponse"/>.</returns>
+    public override async Task<DeviceInfoResponse> GetDeviceInfo(GetDeviceInfoRequest request, ServerCallContext context)
+    {
+        var devices = await _openRGBService.GetDeviceListAsync(context.CancellationToken);
+
+        var device = devices.First(d => d.Index == request.DeviceIndex);
+
+        var response = new DeviceInfoResponse()
+        {
+            Index = device.Index,
+            Name = device.Name,
+            Type = device.Type.ToFriendlyName(),
+            Vendor = string.IsNullOrWhiteSpace(device.Vendor) ? "N/A" : device.Vendor,
+            Description = string.IsNullOrWhiteSpace(device.Description) ? "N/A" : device.Description,
+            Version = string.IsNullOrWhiteSpace(device.Version) ? "N/A" : device.Version,
+            Serial = string.IsNullOrWhiteSpace(device.Serial) ? "N/A" : device.Serial,
+            Location = string.IsNullOrWhiteSpace(device.Location) ? "N/A" : device.Location
+        };
 
         return response;
     }

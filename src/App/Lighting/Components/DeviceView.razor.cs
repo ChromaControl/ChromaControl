@@ -12,10 +12,16 @@ using Microsoft.AspNetCore.Components;
 namespace ChromaControl.App.Lighting.Components;
 
 /// <summary>
-/// The device group view component.
+/// The device view component.
 /// </summary>
-public partial class DeviceGroupView : IDisposable
+public partial class DeviceView : IDisposable
 {
+    /// <summary>
+    /// The name of the group.
+    /// </summary>
+    [Parameter, EditorRequired]
+    public required string Group { get; set; }
+
     /// <summary>
     /// The <see cref="EventService"/>.
     /// </summary>
@@ -35,29 +41,33 @@ public partial class DeviceGroupView : IDisposable
     public required DialogService DialogService { get; set; }
 
     /// <summary>
-    /// Occurs when the active group changes.
+    /// Occurs when the active device changes.
     /// </summary>
-    public event EventHandler<DeviceGroup>? ActiveGroupChanged;
+    public event EventHandler<Device>? ActiveDeviceChanged;
 
-    private RepeatedField<Common.Protos.Lighting.DeviceGroup> _groups = [];
-    private Common.Protos.Lighting.DeviceGroup? _activeGroup;
+    private RepeatedField<Common.Protos.Lighting.Device> _devices = [];
+    private Common.Protos.Lighting.Device? _activeDevice;
 
     /// <inheritdoc />
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        await UpdateGroupsList();
-
         EventService.DevicesUpdated += OnDevicesUpdated;
     }
 
-    /// <summary>
-    /// Changes the active group.
-    /// </summary>
-    /// <param name="newItem">The new active group.</param>
-    public void ChangeActiveGroup(DeviceGroup newItem)
+    /// <inheritdoc/>
+    protected override async Task OnParametersSetAsync()
     {
-        _activeGroup = _groups.First(g => g.Name == newItem.Name);
-        ActiveGroupChanged?.Invoke(this, newItem);
+        await UpdateDevicesList();
+    }
+
+    /// <summary>
+    /// Changes the active device.
+    /// </summary>
+    /// <param name="newItem">The new active device.</param>
+    public void ChangeActiveDevice(Device newItem)
+    {
+        _activeDevice = _devices.First(d => d.Index == newItem.Index);
+        ActiveDeviceChanged?.Invoke(this, newItem);
 
         StateHasChanged();
     }
@@ -70,30 +80,30 @@ public partial class DeviceGroupView : IDisposable
         GC.SuppressFinalize(this);
     }
 
-    private async Task UpdateGroupsList()
+    private async Task UpdateDevicesList()
     {
-        var response = await Mediator.Send(new GetDeviceGroups.Query());
+        var response = await Mediator.Send(new GetGroupDevices.Query(Group));
 
-        if (response.IsSuccess(out var groups))
+        if (response.IsSuccess(out var devices))
         {
-            _groups = groups;
+            _devices = devices;
         }
         else if (response.IsFailure(out var error))
         {
-            _groups = [];
+            _devices = [];
 
             DialogService.ShowError(error);
         }
 
-        if (_activeGroup != null && !_groups.Any(g => g.Name == _activeGroup.Name))
+        if (_activeDevice != null && !_devices.Any(d => d.Index == _activeDevice.Index))
         {
-            _activeGroup = null;
+            _activeDevice = null;
         }
     }
 
     private async void OnDevicesUpdated()
     {
-        await UpdateGroupsList();
+        await UpdateDevicesList();
         await InvokeAsync(StateHasChanged);
     }
 }

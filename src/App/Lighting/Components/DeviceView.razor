@@ -1,0 +1,32 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<div class="device-view">
+    <div class="device-view-container">
+        <div class="device-view-header">
+            Devices
+        </div>
+        <div class="device-view-list">
+            <CascadingValue Value="this" Name="DeviceView" IsFixed="true">
+                @for (var i = 0; i < _devices.Count; i++)
+                {
+                    <Device DefaultItem="i == 0" Index="@_devices[i].Index" Name="@_devices[i].Name" />
+                }
+            </CascadingValue>
+        </div>
+    </div>
+    <div class="device-settings-container">
+        @if (_activeDevice != null)
+        {
+            <div class="device-settings-wrapper">
+                <div class="device-summary">
+                    <div class="device-summary-name">
+                        <span>@_activeDevice.Name</span>
+                    </div>
+                </div>
+                <DeviceSettings DeviceIndex="_activeDevice.Index" />
+            </div>
+        }
+    </div>
+</div>

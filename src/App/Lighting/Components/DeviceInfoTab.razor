@@ -1,0 +1,32 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<h2>DEVICE INFO</h2>
+
+@if (_deviceInfo != null)
+{
+    <label class="label">Name</label>
+    <p class="value">@_deviceInfo.Name</p>
+
+    <label class="label">Vendor</label>
+    <p class="value">@_deviceInfo.Vendor</p>
+
+    <label class="label">Type</label>
+    <p class="value">@_deviceInfo.Type</p>
+
+    <label class="label">Index</label>
+    <p class="value">@_deviceInfo.Index</p>
+
+    <label class="label">Description</label>
+    <p class="value">@_deviceInfo.Description</p>
+
+    <label class="label">Version</label>
+    <p class="value">@_deviceInfo.Version</p>
+
+    <label class="label">Serial</label>
+    <p class="value">@_deviceInfo.Serial</p>
+
+    <label class="label">Location</label>
+    <p class="value">@_deviceInfo.Location</p>
+}

@@ -23,7 +23,17 @@
         }
         else
         {
-            @_activeGroup
+            <div class="device-view-wrapper">
+                <div class="device-view-summary">
+                    <div class="device-view-summary-title">
+                        <span>@_activeGroup.Name</span>
+                    </div>
+                    <div class="device-view-summary-details">
+                        <span>@_activeGroup.Vendor</span> &bull; <span>@_activeGroup.Type</span>
+                    </div>
+                </div>
+                <DeviceView Group="@_activeGroup.Name" />
+            </div>
         }
     </div>
 </div>

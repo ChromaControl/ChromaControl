@@ -10,6 +10,8 @@ service LightingGrpc {
     rpc GetVendors(EmptyMessage) returns (VendorListResponse);
     rpc ToggleVendor(ToggleVendorRequest) returns (EmptyMessage);
     rpc GetDeviceGroups(EmptyMessage) returns (DeviceGroupsResponse);
+    rpc GetGroupDevices(GetGroupDevicesRequest) returns (DevicesResponse);
+    rpc GetDeviceInfo(GetDeviceInfoRequest) returns (DeviceInfoResponse);
 }
 
 message EmptyMessage { }
@@ -45,4 +47,32 @@ message DeviceGroup {
 
 message DeviceGroupsResponse {
     repeated DeviceGroup groups = 1;
+}
+
+message GetGroupDevicesRequest {
+    string groupName = 1;
+}
+
+message Device {
+    int32 index = 1;
+    string name = 2;
+}
+
+message DevicesResponse {
+    repeated Device devices = 1;
+}
+
+message GetDeviceInfoRequest {
+    int32 deviceIndex = 1;
+}
+
+message DeviceInfoResponse {
+    int32 index = 1;
+    string name = 2;
+    string type = 3;
+    string vendor = 4;
+    string description = 5;
+    string version = 6;
+    string serial = 7;
+    string location = 8;
 }

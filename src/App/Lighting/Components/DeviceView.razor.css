@@ -2,7 +2,7 @@
 /* The Chroma Control Contributors licenses this file to you under the MIT license. */
 /* See the LICENSE file in the project root for more information. */
 
-.device-group-view {
+.device-view {
     min-width: 0;
     display: flex;
     flex-direction: row;
@@ -11,7 +11,7 @@
     min-height: 0;
 }
 
-.device-group-view-container {
+.device-view-container {
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -20,7 +20,7 @@
     width: 250px;
 }
 
-.device-group-view-header {
+.device-view-header {
     height: 30px;
     line-height: 30px;
     padding: 0 var(--spacing);
@@ -29,11 +29,11 @@
     background: var(--background-color-tertiary);
 }
 
-.device-group-view-list {
+.device-view-list {
     overflow: hidden auto;
 }
 
-.device-view-container {
+.device-settings-container {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -41,35 +41,28 @@
     height: 100%;
 }
 
-.device-view-wrapper {
+.device-settings-wrapper {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    max-height: 100%;
+    flex-grow: 1;
     min-width: 0;
+    max-height: 100%;
 }
 
-.device-view-summary {
+.device-summary {
+    height: 30px;
+    background: var(--background-color-tertiary);
+    border-bottom: 1px solid var(--border-color-default);
     display: flex;
-    flex-direction: column;
-    min-height: 0;
-    border-bottom: var(--base-border);
-}
-
-.device-view-summary-title {
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-semibold);
-    line-height: 16px;
-    word-wrap: break-word;
-    display: flex;
-    padding: var(--spacing);
-    padding-bottom: var(--spacing-half);
-}
-
-.device-view-summary-details {
-    padding: var(--spacing);
-    padding-top: 0;
-    padding-bottom: var(--spacing-half);
-    font-size: var(--font-size-sm);
+    flex-direction: row;
+    flex-shrink: 0;
+    flex-grow: 0;
     align-items: center;
+    padding: var(--spacing-half) var(--spacing);
+}
+
+.device-summary-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

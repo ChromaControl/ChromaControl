@@ -41,6 +41,11 @@ public partial class Icon
         /// <summary>
         /// The package icon.
         /// </summary>
-        Package
+        Package,
+
+        /// <summary>
+        /// The question icon.
+        /// </summary>
+        Question
     }
 }
