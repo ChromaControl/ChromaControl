@@ -9,7 +9,7 @@ namespace ChromaControl.App.Lighting.Components;
 /// <summary>
 /// The device group component.
 /// </summary>
-public partial class DeviceGroup
+public partial class DeviceGroup : IDisposable
 {
     /// <summary>
     /// The name of the group.
@@ -44,6 +44,14 @@ public partial class DeviceGroup
     protected override void OnInitialized()
     {
         GroupView.ActiveGroupChanged += ActiveGroupChanged;
+    }
+
+    /// <inheritdoc/>
+    public void Dispose()
+    {
+        GroupView.ActiveGroupChanged -= ActiveGroupChanged;
+
+        GC.SuppressFinalize(this);
     }
 
     private void ActiveGroupChanged(object? sender, DeviceGroup e)
