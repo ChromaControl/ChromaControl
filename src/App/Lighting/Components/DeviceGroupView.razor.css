@@ -11,7 +11,7 @@
     min-height: 0;
 }
 
-.device-group-container {
+.device-group-view-container {
     display: flex;
     flex-direction: column;
     min-height: 0;
@@ -20,7 +20,7 @@
     width: 250px;
 }
 
-.device-group-header {
+.device-group-view-header {
     height: 30px;
     line-height: 30px;
     padding: 0 var(--spacing);
@@ -29,7 +29,7 @@
     background: var(--background-color-tertiary);
 }
 
-.device-group-list {
+.device-group-view-list {
     overflow: hidden auto;
 }
 
