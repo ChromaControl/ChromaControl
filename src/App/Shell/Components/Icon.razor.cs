@@ -46,6 +46,11 @@ public partial class Icon
         /// <summary>
         /// The question icon.
         /// </summary>
-        Question
+        Question,
+
+        /// <summary>
+        /// The unfold icon.
+        /// </summary>
+        Unfold
     }
 }

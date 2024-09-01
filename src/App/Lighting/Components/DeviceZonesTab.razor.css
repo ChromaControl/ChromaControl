@@ -1,0 +1,34 @@
+/* Licensed to the Chroma Control Contributors under one or more agreements. */
+/* The Chroma Control Contributors licenses this file to you under the MIT license. */
+/* See the LICENSE file in the project root for more information. */
+
+.zone {
+    margin-bottom: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+    .zone label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: var(--spacing-third);
+    }
+
+    .zone ::deep input {
+        border: var(--muted-border);
+        border-radius: var(--border-radius);
+        background: var(--background-color-muted);
+        color: currentColor;
+        font-size: var(--font-size);
+        font-family: var(--font-family-sans-serif);
+        height: 25px;
+        width: 100%;
+    }
+
+        .zone ::deep input:active,
+        .zone ::deep input:hover,
+        .zone ::deep input:focus {
+            border: var(--accent-border);
+        }

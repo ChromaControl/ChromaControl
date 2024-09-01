@@ -194,4 +194,48 @@ public class LightingService : LightingGrpc.LightingGrpcBase
 
         return response;
     }
+
+    /// <summary>
+    /// Gets zones for a specific device.
+    /// </summary>
+    /// <param name="request">The <see cref="GetDeviceZonesRequest"/>.</param>
+    /// <param name="context">The <see cref="ServerCallContext"/>.</param>
+    /// <returns>A <see cref="DeviceZonesResponse"/>.</returns>
+    public override async Task<DeviceZonesResponse> GetDeviceZones(GetDeviceZonesRequest request, ServerCallContext context)
+    {
+        var devices = await _openRGBService.GetDeviceListAsync(context.CancellationToken);
+
+        var device = devices.First(d => d.Index == request.DeviceIndex);
+
+        var deviceZones = device.Zones
+            .Select(z => new DeviceZone()
+            {
+                Index = z.Index,
+                Name = z.Name,
+                MinimumLeds = z.MinimumLeds,
+                MaximumLeds = z.MaximumLeds,
+                LedCount = z.LedCount
+            })
+            .OrderBy(g => g.Name);
+
+        var response = new DeviceZonesResponse();
+
+        response.Zones.AddRange(deviceZones);
+
+        return response;
+    }
+
+    /// <summary>
+    /// Resizes a zone for a specific device.
+    /// </summary>
+    /// <param name="request">The <see cref="ResizeDeviceZoneRequest"/>.</param>
+    /// <param name="context">The <see cref="ServerCallContext"/>.</param>
+    /// <returns>A <see cref="EmptyMessage"/>.</returns>
+    public override async Task<EmptyMessage> ResizeDeviceZone(ResizeDeviceZoneRequest request, ServerCallContext context)
+    {
+        _eventDispatcher.ZoneResized = true;
+        await _openRGBService.ResizeZoneAsync(request.DeviceIndex, request.ZoneIndex, request.NewSize, context.CancellationToken);
+
+        return new EmptyMessage();
+    }
 }

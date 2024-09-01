@@ -29,6 +29,7 @@
     --background-color-disabled: #dcdcdc;
     --background-color-scroll: #cccccc;
     --border-color-default: #c7c7c7;
+    --border-color-muted: #d7d7d7;
     --border-color-neutral: #6d6d6d;
     --border-color-neutral-muted: #343434;
     --border-color-neutral-muted-emphasis: #252525;
@@ -66,6 +67,7 @@
         --background-color-disabled: #dcdcdc;
         --background-color-scroll: #cccccc;
         --border-color-default: #c7c7c7;
+        --border-color-muted: #d7d7d7;
         --border-color-neutral: #6d6d6d;
         --border-color-neutral-muted: #343434;
         --border-color-neutral-muted-emphasis: #252525;
@@ -103,6 +105,7 @@
     --background-color-disabled: #313131;
     --background-color-scroll: #4e4e4e;
     --border-color-default: #111111;
+    --border-color-muted: #5a5a5a;
     --border-color-neutral: #1b1b1b;
     --border-color-neutral-muted: #262626;
     --border-color-neutral-muted-emphasis: #171717;
@@ -140,6 +143,7 @@
         --background-color-disabled: #313131;
         --background-color-scroll: #4e4e4e;
         --border-color-default: #111111;
+        --border-color-muted: #5a5a5a;
         --border-color-neutral: #1b1b1b;
         --border-color-neutral-muted: #262626;
         --border-color-neutral-muted-emphasis: #171717;
@@ -170,6 +174,8 @@
     --spacing-quad: 40px;
     --border-radius: 0px;
     --base-border: 1px solid var(--border-color-default);
+    --muted-border: 1px solid var(--border-color-muted);
+    --accent-border: 1px solid var(--border-color-accent);
     --foldout-z-index: 17;
 }
 
@@ -273,7 +279,7 @@ button {
 
 kbd {
     border-radius: var(--border-radius);
-    border: var(--base-border);
+    border: var(--muted-border);
     display: inline-block;
     padding: 1px 2px;
     line-height: 1;

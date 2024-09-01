@@ -17,10 +17,22 @@ public class EventDispatcher
     public event Action<EventType>? EventTriggered;
 
     /// <summary>
+    /// If a zone has been resized.
+    /// </summary>
+    public bool ZoneResized { get; set; }
+
+    /// <summary>
     /// Raises <see cref="EventType.DevicesUpdated"/>.
     /// </summary>
     public void RaiseDevicesUpdated()
     {
-        EventTriggered?.Invoke(EventType.DevicesUpdated);
+        if (ZoneResized)
+        {
+            ZoneResized = false;
+        }
+        else
+        {
+            EventTriggered?.Invoke(EventType.DevicesUpdated);
+        }
     }
 }

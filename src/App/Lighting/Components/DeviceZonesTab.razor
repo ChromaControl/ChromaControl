@@ -1,0 +1,21 @@
+﻿@* Licensed to the Chroma Control Contributors under one or more agreements. *@
+@* The Chroma Control Contributors licenses this file to you under the MIT license. *@
+@* See the LICENSE file in the project root for more information. *@
+
+<h2>DEVICE ZONES</h2>
+
+@foreach (var zone in _zones)
+{
+    <div class="zone">
+        <label for="@($"zone_{zone.Index}")">@zone.Name LEDs</label>
+
+        @if (zone.MinimumLeds == zone.MaximumLeds)
+        {
+            <InputNumber id="@($"zone_{zone.Index}")" @bind-Value="zone.LedCount" disabled />
+        }
+        else
+        {
+            <InputNumber id="@($"zone_{zone.Index}")" @bind-Value="zone.LedCount" min="@zone.MinimumLeds" max="@zone.MaximumLeds" @bind-Value:after="() => OnZoneChanged(zone)" />
+        }
+    </div>
+}

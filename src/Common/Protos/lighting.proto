@@ -12,6 +12,8 @@ service LightingGrpc {
     rpc GetDeviceGroups(EmptyMessage) returns (DeviceGroupsResponse);
     rpc GetGroupDevices(GetGroupDevicesRequest) returns (DevicesResponse);
     rpc GetDeviceInfo(GetDeviceInfoRequest) returns (DeviceInfoResponse);
+    rpc GetDeviceZones(GetDeviceZonesRequest) returns (DeviceZonesResponse);
+    rpc ResizeDeviceZone(ResizeDeviceZoneRequest) returns (EmptyMessage);
 }
 
 message EmptyMessage { }
@@ -75,4 +77,26 @@ message DeviceInfoResponse {
     string version = 6;
     string serial = 7;
     string location = 8;
+}
+
+message GetDeviceZonesRequest {
+    int32 deviceIndex = 1;
+}
+
+message DeviceZone {
+    int32 index = 1;
+    string name = 2;
+    int32 minimumLeds = 3;
+    int32 maximumLeds = 4;
+    int32 ledCount = 5;
+}
+
+message DeviceZonesResponse {
+    repeated DeviceZone zones = 1;
+}
+
+message ResizeDeviceZoneRequest {
+    int32 deviceIndex = 1;
+    int32 zoneIndex = 2;
+    int32 newSize = 3;
 }
