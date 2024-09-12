@@ -10,7 +10,7 @@
     <PackageVersion Include="ChromaControl.SDK.OpenRGB" Version="1.0.6" />
     <PackageVersion Include="ChromaControl.SDK.Synapse" Version="1.0.6" />
     <PackageVersion Include="CommonTypeUnions" Version="1.0.1" />
-    <PackageVersion Include="Google.Protobuf" Version="3.28.0" />
+    <PackageVersion Include="Google.Protobuf" Version="3.28.1" />
     <PackageVersion Include="Grpc.AspNetCore" Version="2.65.0" />
     <PackageVersion Include="Grpc.Net.ClientFactory" Version="2.65.0" />
     <PackageVersion Include="Grpc.Tools" Version="2.66.0" />
