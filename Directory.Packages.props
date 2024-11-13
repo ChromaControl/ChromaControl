@@ -4,7 +4,7 @@
     <NoWarn>NU1507</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="8.2.2" />
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.0.0" />
     <PackageVersion Include="BlazorDesktop" Version="8.0.8" />
     <PackageVersion Include="ChromaControl.Keys" Version="1.0.3" />
     <PackageVersion Include="ChromaControl.SDK.OpenRGB" Version="1.0.6" />
