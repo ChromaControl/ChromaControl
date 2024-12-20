@@ -1,4 +1,4 @@
-# {PR title}
+## Checklist
 
 <!-- Thank you for submitting a pull request to our repo. -->
 
@@ -10,14 +10,10 @@ below to ensure a smooth review and merge process for your PR. -->
 - [ ] You've included inline docs for your change, where applicable.
 - [ ] There's an open issue for the PR that you are making. If you'd like to propose a new feature or change, please open an issue to discuss the change or find an existing issue.
 
-<!-- Once all that is done, you're ready to go. Open the PR with the contents below. -->
-
-## Summary of the changes
-
-{Summary}
+<!-- Once all that is done, you're ready to go. Open the PR with the content below. -->
 
 ## Description
 
 {Detail}
 
-Fixes #{bug number}
+Fixes #{issue number}
